@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+<!--<header>-->
+<!--    <h2 class="logo">Logo</h2>-->
+<!--    <nav class="navigation">-->
+<!--        <a href="#">Home</a>-->
+<!--        <a href="#">About</a>-->
+<!--        <a href="#">Servieces</a>-->
+<!--        <a href="#">Contact</a>-->
+<!--        <button class="login-btn">login</button>-->
+<!--    </nav>-->
+<!---->
+<!--</header>-->
+
+<div class="container">
+    <div class="form-box login">
+        <h2 class="head">Login</h2>
+        <form id="form" method="POST" action="post_login.php">
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                <input name = "login" type="email" id="email">
+                <label id="e_label">Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <input name = "password"  type="password" id="pass" >
+                <label id="p_label">Password</label>
+            </div>
+            <div class="remember-forget">
+                <label for=""><input type="checkbox">Remember me</label><a href="#">forget password?</a>
+            </div>
+            <button type="submit" class="btn">login
+            </button>
+            <div class="login-register">
+                <p>Don't have a account?<a href="#">Reister now?</a></p>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+    body{
+        height: 100vh;
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("https://ik.imagekit.io/6xlvknckc/forest%20deer.JPG?updatedAt=1690220775424");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+
+    }
+
+    /* header start */
+    header{
+        width: 100vw;
+        /*   height:80px; */
+        background-color:lightseagreen;
+        padding: 20px 100px;
+        position: fixed;
+        left: 0;
+        top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0.9;
+        box-shadow: 0px 0px 5px white;
+        overflow:hidden;
+    }
+
+    .logo{
+        font-size: 2em;
+        color: aliceblue;
+    }
+
+    .navigation a{
+        position: relative;
+        font-size: 1.2em;
+        color: aliceblue;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 40px;
+    }
+    .navigation a::after{
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: -7px;
+        width: 100%;
+        height: 3px;
+        background-color: aliceblue;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s;
+    }
+
+    .navigation a:hover::after{
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    .navigation .login-btn{
+        text-align: center;
+        font-size: 1.5em;
+        height: 45px;
+        width:140px;
+        border:2px solid white;
+        background-color:#274C4A;
+        margin-left: 20px;
+        color:aliceblue;
+        border-radius: 20px;
+
+    }
+
+    .login-btn:hover{
+        background-color: rgba(241, 241, 241, 0.8);
+        color:#274C4A;
+    }
+    .container:hover{
+        opacity:1;
+
+    }
+
+    /*header end */
+
+    /*form container start */
+    .container{
+        position: relative;
+        width: 300px;
+        height: 370px;
+        background-color: transparent;
+        border: 2px solid #274C4A;
+        border-radius: 20px;
+        backdrop-filter:blur(10px);
+        box-shadow: 0px 0px 10px rgb(199, 196, 196);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        tansition:all 1s;
+
+    }
+
+    .container .form-box{
+        width: 100%;
+        padding: 10%;
+
+    }
+    .form-box h2{
+        font-size: 2em;
+        color: #274C4A;
+        text-align: center;
+    }
+    .form-box .input-box{
+        position: relative;
+        width: 100%;
+        height: 45px;
+        border-bottom: 2px solid  #274C4A ;
+        margin: 30px 0px;
+    }
+
+    .form-box .input-box label{
+        position: absolute;
+        top:50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-weight: 500;
+        color: #274C4A;
+    }
+
+    .input-box input{
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #274C4A;
+        font-size: 1em;
+    }
+    label{
+        transition: 1s;
+    }
+    .input-box input:focus ~ label{
+        top: -5px;
+        opacity:0;
+    }
+
+
+    .input-box .icon{
+        font-size: 1.2em;
+        position: absolute;
+        right: 5px;
+        line-height:45px;
+        color: #274C4A;
+
+    }
+
+    .remember-forget {
+        font-size: 0.9em;
+        color: #274C4A;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .remember-forget a{
+        font-size: 1em;
+        color: #274C4A;
+        text-decoration: none;
+        font-weight: 500s;
+    }
+
+    .remember-forget label input{
+        accent-color: black;
+        margin-right: 5px;
+    }
+    .remember-forget a:hover{
+        text-decoration: underline;
+    }
+    .btn {
+        width: 100%;
+        height: 50px;
+        border: none;
+        border-radius: 20px;
+        margin: 30px 0px;
+        font-weight: 600;
+        font-size: 1.2em;
+        color: #fff;
+        background-color: #274c4a98;
+
+    }
+    .btn:hover{
+        color:#274C4A;
+        background-color: rgba(221, 218, 218, 0.709);
+
+    }
+
+    .login-register{
+        font-size: 0.9em;
+        color: #ffffff;
+        text-align: center;
+        margin: -15px 0px;
+        padding: 5px;
+    }
+    .login-register p a{
+        color: #ffffff;
+        text-decoration: none;
+        font: 0.9em;
+    }
+    .login-register p a:hover{
+        text-decoration: underline;
+    }
+
+    /* form container end */
+    @media screen and (max-width:843px) {
+        header .login-btn{
+            display:none;
+        }
+        .container .head{
+            color:#fff;
+        }
+        .form-box .input-box label{
+            color:#fff;
+        }
+
+    }
+
+
+</style>
