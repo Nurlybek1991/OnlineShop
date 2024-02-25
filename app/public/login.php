@@ -23,25 +23,31 @@
 
 <div class="container">
     <div class="form-box login">
-        <h2 class="head">Login</h2>
+        <h2 class="head">Логин</h2>
         <form id="form" method="POST" action="post_login.php">
             <div class="input-box">
                 <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                <?php if (isset($errors['login'])): ?>
+                    <label style="color: red"><?php echo $errors['login']; ?></label>
+                <?php endif; ?>
                 <input name = "login" type="email" id="email">
-                <label id="e_label">Email</label>
+                <label id="e_label">Почта</label>
             </div>
             <div class="input-box">
                 <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                <?php if (isset($errors['password'])): ?>
+                    <label style="color: red"><?php echo $errors['password']; ?></label>
+                <?php endif; ?>
                 <input name = "password"  type="password" id="pass" >
-                <label id="p_label">Password</label>
+                <label id="p_label">Пароль</label>
             </div>
             <div class="remember-forget">
-                <label for=""><input type="checkbox">Remember me</label><a href="#">forget password?</a>
+                <label for=""><input type="checkbox">Сохранить</label><a href="#">забыли пароль?</a>
             </div>
-            <button type="submit" class="btn">login
+            <button type="submit" class="btn">Логин
             </button>
             <div class="login-register">
-                <p>Don't have a account?<a href="#">Reister now?</a></p>
+                <p>У вас нет аккаунта?<a href="/registrate.php">Зарегистироваться?</a></p>
             </div>
         </form>
     </div>
@@ -64,7 +70,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("https://ik.imagekit.io/6xlvknckc/forest%20deer.JPG?updatedAt=1690220775424");
+        background-image: url("https://img1.akspic.ru/crops/9/6/4/8/6/168469/168469-ananas-limon-ananas_yabloko-frukty-voda-1920x1080.jpg");
         background-size: cover;
         background-repeat: no-repeat;
 

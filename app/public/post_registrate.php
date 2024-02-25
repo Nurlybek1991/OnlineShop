@@ -1,75 +1,75 @@
 <?php
 
-function validate(array $data)
+function validate(array $data): array
 {
     $errors = [];
 
     if (isset($data['name'])) {
         $name = $data['name'];
         if (empty($name)) {
-            $errors['name'] = 'Введите Имя';
+            $errors['name'] = 'Укажите имя.';
         } elseif (strlen($name) < 2) {
-            $errors['name'] = 'Имя должно содержать более 2 символов';
+            $errors['name'] = 'Имя должно содержать более 2 символов.';
         }
     } else {
-        $errors['name'] = 'Введите Имя';
+        $errors['name'] = 'Укажите имя.';
     }
 
     if (isset($data['surname'])) {
         $surname = $data['surname'];
         if (empty($surname)) {
-            $errors['surname'] = 'Введите Фамилию';
+            $errors['surname'] = 'Укажите фамилию.';
         } elseif (strlen($surname) < 2) {
-            $errors['surname'] = 'Фамилия должна содержать более 2 символов';
+            $errors['surname'] = 'Фамилия должна содержать более 2 символов.';
         }
     } else {
-        $errors['surname'] = 'Введите Фамилию';
+        $errors['surname'] = 'Укажите фамилию.';
     }
 
     if (isset($data['phone'])) {
         $phone = $data['phone'];
         if (empty($phone)) {
-            $errors['phone'] = 'Введите Номер Телефона';
+            $errors['phone'] = 'Введите Номер Телефона.';
         } elseif (strlen($phone) < 6) {
-            $errors['phone'] = 'Номер Телефона должен содержать более 6 символов';
+            $errors['phone'] = 'Номер Телефона должен содержать более 6 символов.';
         }
     } else {
-        $errors['phone'] = 'Введите Номер Телефона';
+        $errors['phone'] = 'Введите Номер Телефона.';
     }
 
     if (isset($data['email'])) {
         $email = $data['email'];
         if (empty($email)) {
-            $errors['email'] = 'Введите почта';
-        } elseif (strlen($email) < 4) {
-            $errors['email'] = 'Электронная почта должна содержать более 4 символов';
+            $errors['email'] = 'Укажите почту.';
+        } elseif (strlen($email) < 5)  {
+            $errors['email'] = 'Имя почты должно быть длиной от 5 символов.';
         } elseif (!strpos($email, '@')) {
-            $errors['email'] = 'Некорректная почта';
+            $errors['email'] = 'Введено некорректное имя почты, нет символа @.';
         }
     } else {
-        $errors['email'] = 'Введите почта';
+        $errors['email'] = 'Укажите почту.';
     }
 
     if (isset($data['password'])) {
         $password = $data['password'];
         if (empty($password)) {
-            $errors['password'] = 'Введите в поле Пароль';
-        } elseif (strlen($password) < 6) {
-            $errors['password'] = 'Пароль должен содержать 6 символов';
+            $errors['password'] = 'Укажите пароль.';
+        } elseif (strlen($password) < 8) {
+            $errors['password'] = 'Используйте не менее 8 символов.';
         }
     } else {
-        $errors['password'] = 'Введите в поле Пароль';
+        $errors['password'] = 'Укажите пароль.';
     }
 
     if (isset($data['c_password'])) {
         $passwordRep = $data['c_password'];
         if (empty($passwordRep)) {
-            $errors['c_password'] = 'Повторите Пароль';
+            $errors['c_password'] = 'Укажите  в поле пароль.';
         } elseif ($passwordRep !== $password) {
-            $errors['c_password'] = 'Пароли не совподают';
+            $errors['password'] = 'Пароли не совпадают. Повторите попытку.';
         }
     } else {
-        $errors['c_password'] = 'Повторите Пароль';
+        $errors['c_password'] = 'Укажите  в поле пароль.';
     }
 
     return $errors;

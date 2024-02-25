@@ -77,7 +77,7 @@
                 </div>
             </form>
             <input form="form" type="submit" name="register" id="register" value="Регистрация" />
-            <span id="login">Уже зарегистрированы? <a href="login.php" title="Login">Логин</a></span>
+            <span id="login">Уже зарегистрированы? <a href="/login.php" title="Login">Логин</a></span>
         </div>
     </div>
 </main>
