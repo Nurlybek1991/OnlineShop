@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +48,7 @@
             <button type="submit" class="btn">Логин
             </button>
             <div class="login-register">
-                <p>У вас нет аккаунта?<a href="/registrate.php">Зарегистироваться?</a></p>
+                <p>У вас нет аккаунта?<a href="registrate.php">Зарегистироваться?</a></p>
             </div>
         </form>
     </div>

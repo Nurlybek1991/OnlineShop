@@ -1,5 +1,5 @@
 <?php
-
+//print_r($_POST);die;
 function validate(array $data): array
 {
     $errors = [];
@@ -54,18 +54,19 @@ function validate(array $data): array
         $password = $data['password'];
         if (empty($password)) {
             $errors['password'] = 'Укажите пароль.';
-        } elseif (strlen($password) < 8) {
-            $errors['password'] = 'Используйте не менее 8 символов.';
+        } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,30}$/', $password)) {
+            $errors['password'] = 'Пароль должен состоять из букв (латиница) и цифр, иметь хотябы одну букву или цифру верхнего регистра';
         }
     } else {
         $errors['password'] = 'Укажите пароль.';
     }
 
     if (isset($data['c_password'])) {
+        $password = $data['password'];
         $passwordRep = $data['c_password'];
         if (empty($passwordRep)) {
             $errors['c_password'] = 'Укажите  в поле пароль.';
-        } elseif ($passwordRep !== $password) {
+        } elseif ($password !== $passwordRep) {
             $errors['password'] = 'Пароли не совпадают. Повторите попытку.';
         }
     } else {
@@ -88,18 +89,29 @@ if (empty($errors)) {
 
 
     $pdo = new PDO("pgsql:host=db;dbname=postgres", "dbuser", "dbpwd");
-
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone, email, password) VALUES (:name, :surname, :phone, :email,  :password)");
-    $stmt->execute(['name' => $name, 'surname' => $surname, 'phone' => $phone, 'email' => $email, 'password' => $password]);
-
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email=:email");
     $stmt->execute(['email' => $email]);
-
     $data = $stmt->fetch();
 
-    print_r($data);
+    if ($data) {
+        $errors['email'] = die($status ="Такая почта уже существует!");
+
+    } else {
+
+        $pdo = new PDO("pgsql:host=db;dbname=postgres", "dbuser", "dbpwd");
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $pdo->prepare("INSERT INTO users (name, surname, phone, email, password) VALUES (:name, :surname, :phone, :email,  :password)");
+        $stmt->execute(['name' => $name, 'surname' => $surname, 'phone' => $phone, 'email' => $email, 'password' => $password]);
+
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email=:email");
+        $stmt->execute(['email' => $email]);
+        $data = $stmt->fetch();
+
+        print_r($data['name'] . ', успешно зарегистрированы!');
+    }
+
 }
 
 require_once './registrate.php';

@@ -44,12 +44,17 @@ if (empty($errors)) {
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email=:email");
     $stmt->execute(['email' => $login]);
 
-    $data = $stmt->fetch();
-    if (empty($data)) {
+    $user = $stmt->fetch();
+
+    if (empty($user)) {
         $errors['login'] = 'Логин введен неверно';
     } else {
-        if (password_verify($password, $data['password'])) {
-            echo 'Логин успешно введен';
+        if (password_verify($password, $user['password'])) {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+//            hearder('location:/main.php');
+            echo 'Добро пожаловать!';
+
         } else {
             $errors['login'] = 'Логин или пароль введен неверно';
         }
