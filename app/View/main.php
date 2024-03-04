@@ -1,26 +1,9 @@
-<?php
-session_start();
-if (isset($_SESSION['user_id'])) {
-    $pdo = new PDO("pgsql:host=db;dbname=postgres", "dbuser", "dbpwd");
-    $stmt = $pdo->query('SELECT * FROM products');
-    $products = $stmt->fetchAll();
-    if (empty($products)) {
-        echo 'Продуктов нет!';
-        die();
-    } else {
-//        header('location:/main.php');
-        echo 'Добро пожаловать!';
-    }
-} else {
-    header('location:/login.php');
-}
 
-?>
 
 <div class="container">
     <div class="navbar">
         <div class="logo">
-            <a href="index.html"><img src="" alt="Онлайн магазин" width="125px" /></a>
+            <a href="index.html"><img src="" alt="Онлайн магазин   Panda Logo" width="125px"/></a>
         </div>
         <nav>
             <ul id="MenuItems">
@@ -28,7 +11,7 @@ if (isset($_SESSION['user_id'])) {
                 <li><a href="product.html">ПРОДУКТЫ</a></li>
                 <li><a href="#">О НАС</a></li>
                 <li><a href="#">КОНТАКТЫ</a></li>
-                <li><a href="/registrate.php">АККАУНТ</a></li>
+                <li><a href="/registrate">АККАУНТ</a></li>
             </ul>
         </nav>
         <a href="cart.html"><img src="https://w7.pngwing.com/pngs/510/125/png-transparent-shopping-cart-software-online-shopping-e-commerce-shopping-cart-service-orange-shopping-centre-thumbnail.png" alt="" width="30px" height="30px" /></a>
@@ -39,87 +22,87 @@ if (isset($_SESSION['user_id'])) {
 <div class="small-container">
     <div class="row row-2">
         <h2>Продукты</h2>
-        <select>
-            <option value="">Default Shorting</option>
-            <option value="">Short by price</option>
-            <option value="">Short by popularity</option>
-            <option value="">Short by rating</option>
-            <option value="">Short by sale</option>
-        </select>
+                <select>
+                    <option value="">Сортировка</option>
+                    <option value="">По цене</option>
+                    <option value="">По популярности</option>
+                    <option value="">В топе</option>
+                    <option value="">По скидке</option>
+                </select>
     </div>
 
-    <form id="form" method="POST" action="">
+    <form id="form" method="POST" action="/main">
 
-    <div class="row">
-        <?php /** @var TYPE_NAME $products */
-        foreach ($products as $product): ?>
-        <div class="col-4">
-            <img src="<?php echo $product['image'] ?>" alt="" />
-            <h4><?php echo $product['name'] ?></h4>
-<!--            <div class="rating">-->
-<!--                <span>Rs.3600 </span><P>(20%)</p>-->
-<!--            </div>-->
-            <p><?php echo $product['price'] . ' тенге' ?></p>
+        <div class="row">
+            <?php /** @var TYPE_NAME $products */
+            foreach ($products as $product): ?>
+            <div class="col-4">
+                <img src="<?php echo $product['image'] ?>" alt="" />
+                <h4><?php echo $product['name'] ?></h4>
+<!--                            <div class="rating">-->
+<!--                                <span>14400  тенге</span><P>(Скидка 20%)</p>-->
+<!--                            </div>-->
+                <p><?php echo $product['price'] . ' тенге' ?></p>
+
+            </div>
             <?php endforeach; ?>
+                <div class="page-btn">
+                    <span>1</span>
+                    <span>2</span>
+<!--                    <span>3</span>-->
+<!--                    <span>4</span>-->
+                    <span>&#8594;</span>
+                </div>
         </div>
 
-    <div class="page-btn">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>&#8594;</span>
-    </div>
+<!--         Footer-->
+<!--        <div class="footer">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="footer-col-1">-->
+<!--                        <h3>Download Our App</h3>-->
+<!--                        <p>Download App for Android and iso mobile phone.</p>-->
+<!--                        <div class="app-logo">-->
+<!--                            <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="" />-->
+<!--                            <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="" />-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="footer-col-2">-->
+<!--                        <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />-->
+<!--                        <p>-->
+<!--                            Our Purpose Is To Sustainably Make the Pleasure and Benefits of-->
+<!--                            Sports Accessible to the Many.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!---->
+                    <div class="footer-col-3">
+                        <h3>Пользовательская доска</h3>
+                        <ul>
+                            <li>Купоны</li>
+                            <li>Посты</li>
+                            <li>Политика магазина</li>
+                            <li>Игры</li>
+                        </ul>
+                    </div>
+<!---->
+                    <div class="footer-col-4">
+                        <h3>Обратная связь</h3>
+                        <ul>
+                            <li>Facebook</li>
+                            <li>Vk.com</li>
+                            <li>Instagram</li>
+                            <li>YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr />
+                <p class="copyright">Copyright &copy; 2024 - Panda Logo</p>
+</div>
+</form>
 </div>
 
-<!-- Footer -->
-<!--<div class="footer">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="footer-col-1">-->
-<!--                <h3>Download Our App</h3>-->
-<!--                <p>Download App for Android and iso mobile phone.</p>-->
-<!--                <div class="app-logo">-->
-<!--                    <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="" />-->
-<!--                    <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="" />-->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="footer-col-2">-->
-<!--                <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />-->
-<!--                <p>-->
-<!--                    Our Purpose Is To Sustainably Make the Pleasure and Benefits of-->
-<!--                    Sports Accessible to the Many.-->
-<!--                </p>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="footer-col-3">-->
-<!--                <h3>Useful Links</h3>-->
-<!--                <ul>-->
-<!--                    <li>Coupons</li>-->
-<!--                    <li>Blog Post</li>-->
-<!--                    <li>Return Policy</li>-->
-<!--                    <li>Join Affiliate</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="footer-col-4">-->
-<!--                <h3>Follow us</h3>-->
-<!--                <ul>-->
-<!--                    <li>Facebook</li>-->
-<!--                    <li>Twitter</li>-->
-<!--                    <li>Instagram</li>-->
-<!--                    <li>YouTube</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <hr />-->
-<!--        <p class="copyright">Copyright &copy; 2021 - Red Store</p>-->
-<!--    </div>-->
-<!--    </form>-->
-<!--</div>-->
-
-<!-- js for toggle menu -->
+<!-- js for toggle menu-->
 <script>
     var MenuItems = document.getElementById('MenuItems');
     MenuItems.style.maxHeight = '0px';

@@ -25,7 +25,7 @@
 <div class="container">
     <div class="form-box login">
         <h2 class="head">Логин</h2>
-        <form id="form" method="POST" action="post_login.php">
+        <form id="form" method="POST" action="">
             <div class="input-box">
                 <span class="icon"><i class="fa-solid fa-envelope"></i></span>
                 <?php if (isset($errors['login'])): ?>
@@ -48,7 +48,7 @@
             <button type="submit" class="btn">Логин
             </button>
             <div class="login-register">
-                <p>У вас нет аккаунта?<a href="registrate.php">Зарегистироваться?</a></p>
+                <p>У вас нет аккаунта?<a href="/registrate">Зарегистироваться?</a></p>
             </div>
         </form>
     </div>

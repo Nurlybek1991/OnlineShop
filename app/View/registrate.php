@@ -30,7 +30,7 @@
         <meta charset=»UTF-8″>
         <div class="form">
             <h2>Форма регистрации</h2>
-            <form id="form" method="POST" action="post_registrate.php">
+            <form id="form" method="POST" action="/registrate">
                 <div class="inputWrapper">
                     <input type="text" name="name" id="name" required />
                     <?php if (isset($errors['name'])): ?>
@@ -77,7 +77,7 @@
                 </div>
             </form>
             <input form="form" type="submit" name="register" id="register" value="Регистрация" />
-            <span id="login">Уже зарегистрированы? <a href="login.php" title="Login">Логин</a></span>
+            <span id="login">Уже зарегистрированы? <a href="/login" title="Login">Логин</a></span>
         </div>
     </div>
 </main>
