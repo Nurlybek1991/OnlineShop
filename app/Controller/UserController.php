@@ -1,8 +1,14 @@
 <?php
-require_once './../Model/Model.php';
+
 require_once './../Model/User.php';
 class UserController
 {
+    private User $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = new User;
+    }
     public function getRegistrate(): void
     {
         require_once './../View/registrate.php';
@@ -23,14 +29,12 @@ class UserController
             $password = password_hash($password, PASSWORD_DEFAULT);
             $passwordRep = $_POST['c_password'];
 
-            $addUsers = new User();
-            $addUsers->addUsers($name,$surname,$phone,$email,$password);
+            $this->userModel->addUser($name,$surname,$phone,$email,$password);
 
-            $getUserEmail = new User();
-            $getUserEmail->getEmail($email);
+            $this->userModel->getByEmail($email);
             header('location:/login');
-
         }
+
         require_once './../View/registrate.php';
 
     }
@@ -81,8 +85,7 @@ class UserController
             } elseif (!strpos($email, '@')) {
                 $errors['email'] = 'Введено некорректное имя почты, нет символа @.';
             } elseif (true) {
-                $getEmail = new User();
-                $user = $getEmail->getEmail($email);
+                $user = $this->userModel->getByEmail($email);
                 if ($user) {
                     $errors['email'] = "Такая почта уже существует!";
                 }
@@ -132,8 +135,7 @@ class UserController
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $getEmail = new User();
-            $user = $getEmail->getLogin($login);
+            $user = $this->userModel->getByLogin($login);
 
             if (empty($user)) {
                 $errors['login'] = 'Логин введен неверно';
@@ -142,7 +144,6 @@ class UserController
                     session_start();
                     $_SESSION['user_id'] = $user['id'];
                     header('location:/main');
-                    echo 'Добро пожаловать ' . $user['name'] . '!';
                 } else {
                     $errors['login'] = 'Логин или пароль введен неверно';
                 }
@@ -181,5 +182,13 @@ class UserController
         }
 
         return $errors;
+    }
+
+    public function checkUser(): void
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
     }
 }

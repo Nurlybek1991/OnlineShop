@@ -25,7 +25,7 @@
 <div class="container">
     <div class="form-box login">
         <h2 class="head">Логин</h2>
-        <form id="form" method="POST" action="">
+        <form id="form" method="POST" action="/login">
             <div class="input-box">
                 <span class="icon"><i class="fa-solid fa-envelope"></i></span>
                 <?php if (isset($errors['login'])): ?>

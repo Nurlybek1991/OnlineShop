@@ -1,4 +1,11 @@
-
+<?php
+require_once './../Model/Product.php';
+$productModel = new Product();
+$products = $productModel->getAll();
+if (empty($products)) {
+    echo 'Продуктов нет!';
+}
+?>
 
 <div class="container">
     <div class="navbar">
@@ -14,47 +21,55 @@
                 <li><a href="/registrate">АККАУНТ</a></li>
             </ul>
         </nav>
-        <a href="cart.html"><img src="https://w7.pngwing.com/pngs/510/125/png-transparent-shopping-cart-software-online-shopping-e-commerce-shopping-cart-service-orange-shopping-centre-thumbnail.png" alt="" width="30px" height="30px" /></a>
-        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />
+        <a href="/cart"><img
+                    src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
+                    alt="" width="30px" height="30px"/></a>
+        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
     </div>
 </div>
 
 <div class="small-container">
     <div class="row row-2">
         <h2>Продукты</h2>
-                <select>
-                    <option value="">Сортировка</option>
-                    <option value="">По цене</option>
-                    <option value="">По популярности</option>
-                    <option value="">В топе</option>
-                    <option value="">По скидке</option>
-                </select>
+        <select>
+            <option value="">Сортировка</option>
+            <option value="">По цене</option>
+            <option value="">По популярности</option>
+            <option value="">В топе</option>
+            <option value="">По скидке</option>
+        </select>
     </div>
-
-    <form id="form" method="POST" action="/main">
-
-        <div class="row">
-            <?php /** @var TYPE_NAME $products */
-            foreach ($products as $product): ?>
-            <div class="col-4">
-                <img src="<?php echo $product['image'] ?>" alt="" />
-                <h4><?php echo $product['name'] ?></h4>
-<!--                            <div class="rating">-->
-<!--                                <span>14400  тенге</span><P>(Скидка 20%)</p>-->
-<!--                            </div>-->
+</div>
+<div class="row">
+    <?php /** @var TYPE_NAME $products */
+    foreach ($products as $product): ?>
+        <div class="col-4">
+            <form id="form" method="POST" action="/main">
+                <img src="<?php echo $product['image'] ?>" alt="Card image"/>
+                <h3><?php echo $product['name'] ?></h3>
+                <label for="product_id"></label>
                 <p><?php echo $product['price'] . ' тенге' ?></p>
-
-            </div>
-            <?php endforeach; ?>
-                <div class="page-btn">
-                    <span>1</span>
-                    <span>2</span>
-<!--                    <span>3</span>-->
-<!--                    <span>4</span>-->
-                    <span>&#8594;</span>
-                </div>
+                <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id" hidden="" value="<?php echo $product['id'] ?>">
+                <label for="quantity"></label>
+                <input type="text" id="quantity" class="fadeIn third" name="quantity" placeholder="Количество"<?php if (isset($errors['quantity'])): ?>>
+                    <label style="color: red"><?php echo $errors['quantity']; ?> </label<?php endif; ?>>
+                <input type="submit" class="fadeIn_fourth" value="Добавить в корзину">
+            </form>
         </div>
+        <!--                <div class="card-footer">-->
+        <!--                            <div class="rating">-->
+        <!--                                <span>14400  тенге</span><P>(Скидка 20%)</p>-->
 
+    <?php endforeach; ?>
+    </div>
+<!--    <div class="page-btn">-->
+<!--        <span>1</span>-->
+<!--        <span>2</span>-->
+<!--        <!--                    <span>3</span>-->-->
+<!--        <!--                    <span>4</span>-->-->
+<!--        <span>&#8594;</span>-->
+<!--    </div>-->
+<!--</div>-->
 <!--         Footer-->
 <!--        <div class="footer">-->
 <!--            <div class="container">-->
@@ -76,30 +91,29 @@
 <!--                        </p>-->
 <!--                    </div>-->
 <!---->
-                    <div class="footer-col-3">
-                        <h3>Пользовательская доска</h3>
-                        <ul>
-                            <li>Купоны</li>
-                            <li>Посты</li>
-                            <li>Политика магазина</li>
-                            <li>Игры</li>
-                        </ul>
-                    </div>
-<!---->
-                    <div class="footer-col-4">
-                        <h3>Обратная связь</h3>
-                        <ul>
-                            <li>Facebook</li>
-                            <li>Vk.com</li>
-                            <li>Instagram</li>
-                            <li>YouTube</li>
-                        </ul>
-                    </div>
-                </div>
-                <hr />
-                <p class="copyright">Copyright &copy; 2024 - Panda Logo</p>
+<div class="footer-col-3">
+    <h3>Пользовательская доска</h3>
+    <ul>
+        <li>Купоны</li>
+        <li>Посты</li>
+        <li>Политика магазина</li>
+        <li>Игры</li>
+    </ul>
 </div>
-</form>
+
+<div class="footer-col-4">
+    <h3>Обратная связь</h3>
+    <ul>
+        <li>Facebook</li>
+        <li>Vk.com</li>
+        <li>Instagram</li>
+        <li>YouTube</li>
+    </ul>
+</div>
+</div>
+<hr/>
+<p class="copyright">Copyright &copy; 2024 - Panda Logo</p>
+</div>
 </div>
 
 <!-- js for toggle menu-->
@@ -133,9 +147,11 @@
         align-items: center;
         padding: 20px;
     }
-    span{
-        text-decoration:line-through;
+
+    span {
+        text-decoration: line-through;
     }
+
     nav {
         flex: 1;
         text-align: right;
@@ -252,6 +268,7 @@
         line-height: 60px;
         color: #555;
     }
+
     .title::after {
         content: "";
         background: #ff523b;
@@ -415,6 +432,7 @@
     .app-logo {
         margin-top: 20px;
     }
+
     .app-logo img {
         width: 140px;
     }
@@ -448,6 +466,7 @@
             overflow: hidden;
             transition: max-height 0.5s;
         }
+
         nav ul li {
             display: block;
             margin-right: 50px;
@@ -458,6 +477,7 @@
         nav ul li a {
             color: #fff;
         }
+
         .menu-icon {
             display: block;
             cursor: pointer;
@@ -577,6 +597,7 @@
         background: #ff523b;
         font-weight: normal;
     }
+
     td {
         padding: 10px 5px;
     }
@@ -616,6 +637,7 @@
     th:last-child {
         text-align: right;
     }
+
     /* account page */
     .account-page {
         padding: 50px 0;
@@ -702,6 +724,7 @@
         .row {
             text-align: center;
         }
+
         .col-2,
         .col-3,
         .col-4 {
@@ -715,10 +738,12 @@
         .single-product .col-2 {
             padding: 20px 0;
         }
+
         .single-product h1 {
             font-size: 26px;
             line-height: 32px;
         }
+
         .cart-info p {
             display: none;
         }

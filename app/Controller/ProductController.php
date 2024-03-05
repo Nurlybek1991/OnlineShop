@@ -1,55 +1,58 @@
 <?php
 
 require_once './../Model/Product.php';
-require_once './../Model/UserProduct.php';
+require_once './../Model/UserProducts.php';
+require_once './../Controller/UserController.php';
+
 class ProductController
 {
+    private UserProducts $userProductsModel;
+    private Product $productModel;
+    private UserController $userController;
 
-    public function getAddProduct(): void
+    public function __construct()
     {
-        require_once './../View/addProduct.php';
+        $this->userProductsModel = new UserProducts;
+        $this->productModel = new Product;
+        $this->userController = new UserController;
     }
 
     public function postAddProduct(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
+
+        $this->userController->checkUser();
         $userId = $_SESSION['user_id'];
 
         $errors = $this->validateAddProduct($_POST);
-
         if (empty($errors)) {
 
             $productId = $_POST['product_id'];
             $quantity = $_POST['quantity'];
 
-            $addUserProducts = new UserProduct();
-            $addUserProducts->addUserProducts($userId, $productId, $quantity);
+            $this->userProductsModel->addProductsByUser($userId, $productId, $quantity);
 
-            header('Location: /cart');
-//            echo 'Успешно добавлен продукт!';
+            header('Location: /main');
+
         } else {
-            require_once './../View/addProduct.php';
+            require_once './../View/main.php';
         }
     }
 
-    private function validateAddProduct($data): array
+    private function validateAddProduct(array $data): array
     {
 
         $errors = [];
 
+
         if (isset($data['product_id'])) {
             $productId = $data['product_id'];
-
-            $getProduct = new Product();
-            if (empty($getProduct->getProductById($productId))) {
+            if (empty($this->productModel->getById($productId))) {
                 $errors['product_id'] = 'Такого продукта нет.';
             }
         } else {
             $errors['product_id'] = 'Введите продукты в поле.';
         }
+
 
         if (isset($data["quantity"])) {
             $quantity = $data['quantity'];
@@ -62,13 +65,9 @@ class ProductController
             $errors['quantity'] = 'Введите количество в поле.';
         }
 
+
         return $errors;
 
-    }
-
-    public function getCart()
-    {
-        require_once './../View/cart.php';
     }
 
 
