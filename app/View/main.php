@@ -1,7 +1,4 @@
 <?php
-require_once './../Model/Product.php';
-$productModel = new Product();
-$products = $productModel->getAll();
 if (empty($products)) {
     echo 'Продуктов нет!';
 }
@@ -10,7 +7,8 @@ if (empty($products)) {
 <div class="container">
     <div class="navbar">
         <div class="logo">
-            <a href="index.html"><img src="" alt="Онлайн магазин   Panda Logo" width="125px"/></a>
+<!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
+            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
         </div>
         <nav>
             <ul id="MenuItems">

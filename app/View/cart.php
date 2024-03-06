@@ -1,19 +1,21 @@
 <div class="container">
     <div class="navbar">
         <div class="logo">
-            <a href="index.html"><img src="https://i.ibb.co/kDVwgwp/logo.png" alt="RedStore" width="125px" /></a>
+<!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="" width="125px" /></a>-->
+
+                <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
         </div>
         <nav>
             <ul id="MenuItems">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="product.html">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="account.html">Account</a></li>
+                <li><a href="index.html">Домой</a></li>
+                <li><a href="product.html">Продукты</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li><a href="account.html">Аккаунт</a></li>
             </ul>
         </nav>
-        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>
-        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />
+<!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
+<!--        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />-->
     </div>
 </div>
 
@@ -22,9 +24,9 @@
 <div class="small-container cart-page">
     <table>
         <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
+            <th>Товар</th>
+            <th>Колличество</th>
+            <th>Цена</th>
         </tr>
 
         <tr>
@@ -35,7 +37,7 @@
                         <p>Red Printed T-Shirt</p>
                         <small>Price ₹500.00</small>
                         <br />
-                        <a href="#">Remove</a>
+                        <a href="#">Удалить</a>
                     </div>
                 </div>
             </td>
@@ -77,15 +79,15 @@
     <div class="total-price">
         <table>
             <tr>
-                <td>Subtotal</td>
+                <td>Итого</td>
                 <td>₹3500.00</td>
             </tr>
             <tr>
-                <td>Tax</td>
+                <td>Налог</td>
                 <td>₹15.00</td>
             </tr>
             <tr>
-                <td>Total</td>
+                <td>Итого с налогом</td>
                 <td>₹3515.00</td>
             </tr>
         </table>
@@ -93,50 +95,50 @@
 </div>
 
 <!-- Footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col-1">
-                <h3>Download Our App</h3>
-                <p>Download App for Android and iso mobile phone.</p>
-                <div class="app-logo">
-                    <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="" />
-                    <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="" />
-                </div>
-            </div>
-
-            <div class="footer-col-2">
-                <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />
-                <p>
-                    Our Purpose Is To Sustainably Make the Pleasure and Benefits of
-                    Sports Accessible to the Many.
-                </p>
-            </div>
-
-            <div class="footer-col-3">
-                <h3>Useful Links</h3>
-                <ul>
-                    <li>Coupons</li>
-                    <li>Blog Post</li>
-                    <li>Return Policy</li>
-                    <li>Join Affiliate</li>
-                </ul>
-            </div>
-
-            <div class="footer-col-4">
-                <h3>Follow us</h3>
-                <ul>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>YouTube</li>
-                </ul>
-            </div>
-        </div>
-        <hr />
-        <p class="copyright">Copyright &copy; 2021 - Red Store</p>
-    </div>
-</div>
+<!--<div class="footer">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="footer-col-1">-->
+<!--                <h3>Download Our App</h3>-->
+<!--                <p>Download App for Android and iso mobile phone.</p>-->
+<!--                <div class="app-logo">-->
+<!--                    <img src="https://i.ibb.co/KbPTYYQ/play-store.png" alt="" />-->
+<!--                    <img src="https://i.ibb.co/hVM4X2p/app-store.png" alt="" />-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="footer-col-2">-->
+<!--                <img src="https://i.ibb.co/j3FNGj7/logo-white.png" alt="" />-->
+<!--                <p>-->
+<!--                    Our Purpose Is To Sustainably Make the Pleasure and Benefits of-->
+<!--                    Sports Accessible to the Many.-->
+<!--                </p>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="footer-col-3">-->
+<!--                <h3>Useful Links</h3>-->
+<!--                <ul>-->
+<!--                    <li>Coupons</li>-->
+<!--                    <li>Blog Post</li>-->
+<!--                    <li>Return Policy</li>-->
+<!--                    <li>Join Affiliate</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="footer-col-4">-->
+<!--                <h3>Follow us</h3>-->
+<!--                <ul>-->
+<!--                    <li>Facebook</li>-->
+<!--                    <li>Twitter</li>-->
+<!--                    <li>Instagram</li>-->
+<!--                    <li>YouTube</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <hr />-->
+<!--        <p class="copyright">Copyright &copy; 2021 - Red Store</p>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script>
     var MenuItems = document.getElementById('MenuItems');

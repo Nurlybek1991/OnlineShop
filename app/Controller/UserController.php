@@ -1,6 +1,6 @@
 <?php
 
-require_once './../Model/User.php';
+
 class UserController
 {
     private User $userModel;
@@ -29,7 +29,7 @@ class UserController
             $password = password_hash($password, PASSWORD_DEFAULT);
             $passwordRep = $_POST['c_password'];
 
-            $this->userModel->addUser($name,$surname,$phone,$email,$password);
+            $this->userModel->create($name,$surname,$phone,$email,$password);
 
             $this->userModel->getByEmail($email);
             header('location:/login');
@@ -135,7 +135,7 @@ class UserController
             $login = $_POST['login'];
             $password = $_POST['password'];
 
-            $user = $this->userModel->getByLogin($login);
+            $user = $this->userModel->getByEmail($login);
 
             if (empty($user)) {
                 $errors['login'] = 'Логин введен неверно';
@@ -183,12 +183,5 @@ class UserController
 
         return $errors;
     }
-
-    public function checkUser(): void
-    {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
-    }
+    
 }

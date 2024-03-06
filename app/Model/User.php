@@ -1,10 +1,8 @@
 <?php
-require_once './../Model/Model.php';
 class User extends Model
 {
 
-    //Добавление пользователей
-    public function addUser(string $name, string $surname, int $phone, string $email, string $password): void
+    public function create(string $name, string $surname, int $phone, string $email, string $password): void
     {
 
         $stmt = $this->pdo->prepare("INSERT INTO users (name, surname, phone, email, password) VALUES (:name, :surname, :phone, :email,  :password)");
@@ -12,7 +10,6 @@ class User extends Model
 
     }
 
-//    Вывод пользователей по почте
     public function getByEmail(string $email)
     {
 
@@ -21,13 +18,13 @@ class User extends Model
         return $stmt->fetch();
     }
 
-// Вывод пользователей по логину
-    public function getByLogin(string $login)
-    {
 
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email");
-        $stmt->execute(['email' => $login]);
-        return $stmt->fetch();
+    public function checkInSession(): void
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
     }
 
 }

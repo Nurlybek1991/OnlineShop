@@ -1,5 +1,4 @@
 <?php
-
 class CartController
 {
     public function getCart(): void

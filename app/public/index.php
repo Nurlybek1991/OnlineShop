@@ -1,12 +1,34 @@
 <?php
 
-require_once './../Controller/UserController.php';
-require_once './../Controller/MainController.php';
-require_once './../Controller/ProductController.php';
-require_once './../Controller/CartController.php';
-
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
+
+$autoloadController = function (string $className) {
+    $path = "./../Controller/$className.php";
+    if (file_exists($path)) {
+        require_once $path;
+
+        return true;
+    }
+
+    return false;
+};
+
+$autoloadModel = function (string $className) {
+    $path = "./../Model/$className.php";
+    if (file_exists($path)) {
+        require_once $path;
+
+        return true;
+    }
+
+    return false;
+};
+
+spl_autoload_register($autoloadController);
+spl_autoload_register($autoloadModel);
+
+
 
 if ($uri === '/registrate') {
     $obj = new UserController();

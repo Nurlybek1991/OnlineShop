@@ -1,12 +1,14 @@
 <?php
-require_once './../Controller/UserController.php';
 class MainController
 {
     public function getMain(): void
     {
 
-        $user = new UserController();
-        $user->checkUser();
+        $userModel = new User();
+        $userModel->checkInSession();
+
+        $productModel = new Product();
+        $products = $productModel->getAll();
 
         require_once './../View/main.php';
     }

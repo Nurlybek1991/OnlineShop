@@ -1,26 +1,22 @@
 <?php
 
-require_once './../Model/Product.php';
-require_once './../Model/UserProducts.php';
-require_once './../Controller/UserController.php';
-
 class ProductController
 {
-    private UserProducts $userProductsModel;
+    private UserProduct $userProductsModel;
     private Product $productModel;
-    private UserController $userController;
+    private User $userModel;
 
     public function __construct()
     {
-        $this->userProductsModel = new UserProducts;
+        $this->userProductsModel = new UserProduct;
         $this->productModel = new Product;
-        $this->userController = new UserController;
+        $this->userModel = new User;
     }
 
     public function postAddProduct(): void
     {
 
-        $this->userController->checkUser();
+        $this->userModel->checkInSession();
         $userId = $_SESSION['user_id'];
 
         $errors = $this->validateAddProduct($_POST);
@@ -29,7 +25,7 @@ class ProductController
             $productId = $_POST['product_id'];
             $quantity = $_POST['quantity'];
 
-            $this->userProductsModel->addProductsByUser($userId, $productId, $quantity);
+            $this->userProductsModel->addProduct($userId, $productId, $quantity);
 
             header('Location: /main');
 
