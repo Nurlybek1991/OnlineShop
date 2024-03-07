@@ -10,7 +10,7 @@ class User extends Model
 
     }
 
-    public function getByEmail(string $email)
+    public function getByEmail(string $email): mixed
     {
 
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email");

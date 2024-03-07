@@ -1,21 +1,21 @@
 <div class="container">
     <div class="navbar">
         <div class="logo">
-<!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="" width="125px" /></a>-->
+            <!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="" width="125px" /></a>-->
 
-                <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
+            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
         </div>
         <nav>
             <ul id="MenuItems">
                 <li><a href="index.html">Домой</a></li>
-                <li><a href="product.html">Продукты</a></li>
+                <li><a href="/main">Продукты</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Контакты</a></li>
                 <li><a href="account.html">Аккаунт</a></li>
             </ul>
         </nav>
-<!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
-<!--        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />-->
+        <!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
+        <!--        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />-->
     </div>
 </div>
 
@@ -23,73 +23,48 @@
 
 <div class="small-container cart-page">
     <table>
-        <tr>
-            <th>Товар</th>
-            <th>Колличество</th>
-            <th>Цена</th>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="https://i.ibb.co/B3vYjvw/buy-1.jpg" alt="" />
-                    <div>
-                        <p>Red Printed T-Shirt</p>
-                        <small>Price ₹500.00</small>
-                        <br />
-                        <a href="#">Удалить</a>
+        <?php /** @var TYPE_NAME $cartProducts */
+        foreach ($cartProducts as $cartProduct): ?>
+            <tr>
+                <th>Товар</th>
+                <th>Колличество</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="<?php echo $cartProduct['image'] ?>" alt=""/>
+                        <div>
+                            <p></p>
+                            <small><?php echo $cartProduct['name'] ?></small>
+                            <br/>
+                            <a href="#">Удалить</a>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td><input type="number" value="1" /></td>
-            <td>₹500.00</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="https://i.ibb.co/qmSHWx7/buy-2.jpg" alt="" />
-                    <div>
-                        <p>HRX Shoes</p>
-                        <small>Price ₹1500.00</small>
-                        <br />
-                        <a href="#">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1" /></td>
-            <td>₹1500.00</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="https://i.ibb.co/NyYtY31/buy-3.jpg" alt="" />
-                    <div>
-                        <p>Reebok Tracksuit</p>
-                        <small>Price ₹1500.00</small>
-                        <br />
-                        <a href="#">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1" /></td>
-            <td>₹1500.00</td>
-        </tr>
+                </td>
+                <td><input value="<?php echo $cartProduct['quantity'] ?>"/></td>
+                <td><?php echo $cartProduct['price'] ?></td>
+            </tr>
+        <?php endforeach; ?>
     </table>
-
     <div class="total-price">
         <table>
+            <!--            --><?php //foreach ($cartProducts as $cartProduct): ?>
             <tr>
                 <td>Итого</td>
-                <td>₹3500.00</td>
+                <td><?php /** @var TYPE_NAME $sumTotalCart */
+                    echo $sumTotalCart ?></td>
+
             </tr>
-            <tr>
-                <td>Налог</td>
-                <td>₹15.00</td>
-            </tr>
-            <tr>
-                <td>Итого с налогом</td>
-                <td>₹3515.00</td>
-            </tr>
+            <!--            <tr>-->
+            <!--                <td>Налог</td>-->
+            <!--                <td>₹15.00</td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--                <td>Итого с налогом</td>-->
+            <!--                <td>₹3515.00</td>-->
+            <!--            </tr>-->
+            <!--            --><?php //endforeach; ?>
         </table>
     </div>
 </div>
@@ -286,6 +261,7 @@
         line-height: 60px;
         color: #555;
     }
+
     .title::after {
         content: "";
         background: #ff523b;
@@ -449,6 +425,7 @@
     .app-logo {
         margin-top: 20px;
     }
+
     .app-logo img {
         width: 140px;
     }
@@ -482,6 +459,7 @@
             overflow: hidden;
             transition: max-height 0.5s;
         }
+
         nav ul li {
             display: block;
             margin-right: 50px;
@@ -492,6 +470,7 @@
         nav ul li a {
             color: #fff;
         }
+
         .menu-icon {
             display: block;
             cursor: pointer;
@@ -611,6 +590,7 @@
         background: #ff523b;
         font-weight: normal;
     }
+
     td {
         padding: 10px 5px;
     }
@@ -650,6 +630,7 @@
     th:last-child {
         text-align: right;
     }
+
     /* account page */
     .account-page {
         padding: 50px 0;
@@ -736,6 +717,7 @@
         .row {
             text-align: center;
         }
+
         .col-2,
         .col-3,
         .col-4 {
@@ -749,10 +731,12 @@
         .single-product .col-2 {
             padding: 20px 0;
         }
+
         .single-product h1 {
             font-size: 26px;
             line-height: 32px;
         }
+
         .cart-info p {
             display: none;
         }

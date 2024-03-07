@@ -25,7 +25,11 @@ class ProductController
             $productId = $_POST['product_id'];
             $quantity = $_POST['quantity'];
 
-            $this->userProductsModel->addProduct($userId, $productId, $quantity);
+            if($this->userProductsModel->getByUserIdProductId($userId,$productId)){
+                $this->userProductsModel->updateQuantity($userId, $productId, $quantity);
+            }else{
+                $this->userProductsModel->addProduct($userId, $productId, $quantity);
+            }
 
             header('Location: /main');
 

@@ -11,9 +11,8 @@ class Product extends Model
 
     public function getAll(): null|array
     {
-
         $stmt = $this->pdo->query('SELECT * FROM products');
-        return $stmt->fetchAll();
+        return   $stmt->fetchAll();
 
     }
 
