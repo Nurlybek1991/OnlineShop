@@ -38,7 +38,7 @@
                             <p></p>
                             <small><?php echo $cartProduct['name'] ?></small>
                             <br/>
-                            <a href="#">Удалить</a>
+                                <a href="#">Удалить </a>
                         </div>
                     </div>
                 </td>
@@ -52,8 +52,7 @@
             <!--            --><?php //foreach ($cartProducts as $cartProduct): ?>
             <tr>
                 <td>Итого</td>
-                <td><?php /** @var TYPE_NAME $sumTotalCart */
-                    echo $sumTotalCart ?></td>
+                <td><?php if(isset($sumTotalCart)): ?><?php echo $sumTotalCart . ' тенге'?><?php endif; ?></td>
 
             </tr>
             <!--            <tr>-->

@@ -8,23 +8,22 @@ if (empty($products)) {
     <div class="navbar">
         <div class="logo">
 
-<!--                        <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
-            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
+            <!--                        <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
+            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
 
 
         </div>
         <nav>
             <ul id="MenuItems">
-                <li><a href="/login">ДОМ</a></li>
-                <li><a href="/main">ПРОДУКТЫ</a></li>
-                <li><a href="#">О НАС</a></li>
-                <li><a href="#">КОНТАКТЫ</a></li>
                 <li><a href="/registrate">АККАУНТ</a></li>
+                <li><a href="/login">ВЫЙТИ</a><?php $this->logout(); ?></li>
             </ul>
         </nav>
         <a href="/cart"><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
-                    alt="" width="30px" height="30px"/></a>
+                    alt="" width="30px"
+                    height="30px"/> <?php if (isset($totalQuantity)): ?><?php echo $totalQuantity . ' шт' ?><?php endif; ?>
+        </a>
         <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
     </div>
 </div>
@@ -45,16 +44,32 @@ if (empty($products)) {
     <?php /** @var TYPE_NAME $products */
     foreach ($products as $product): ?>
         <div class="col-4">
-            <form id="form" method="POST" action="/main">
                 <img src="<?php echo $product['image'] ?>" alt="Card image"/>
                 <h3><?php echo $product['name'] ?></h3>
                 <label for="product_id"></label>
                 <p><?php echo $product['price'] . ' тенге' ?></p>
-                <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id" hidden="" value="<?php echo $product['id'] ?>">
-                <label for="quantity"></label>
-                <input type="text" id="quantity" class="fadeIn third" name="quantity" placeholder="Количество"<?php if (isset($errors['quantity'])): ?>>
-                <label style="color: red"><?php echo $errors['quantity']; ?> <?php endif; ?></label>
-                <input type="submit" class="fadeIn_fourth" value="Добавить в корзину">
+
+
+            <form id="form" method="POST" action="/main">
+                <div class="quantity">
+                    <input type="hidden" id="quantity" name="quantity" value="1">
+                    <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
+                           hidden="" value="<?php echo $product['id'] ?>">
+                    <button class="plus-btn" type="submit" name="button">
+                        <img src="plus.svg" alt="+"/>
+                    </button>
+                </div>
+            </form>
+
+            <form id="form" method="POST" action="/removeProduct">
+                <div class="quantity">
+                    <input type="hidden" id="quantity" name="quantity" value="1">
+                    <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
+                           hidden="" value="<?php echo $product['id'] ?>">
+                    <button class="minus-btn" type="submit" name="button">
+                        <img src="minus.svg" alt="-"/>
+                    </button>
+                </div>
             </form>
         </div>
         <!--                <div class="card-footer">-->
@@ -66,10 +81,10 @@ if (empty($products)) {
 <!--    <div class="page-btn">-->
 <!--        <span>1</span>-->
 <!--        <span>2</span>-->
-        <!--                    <span>3</span>-->
-        <!--                    <span>4</span>-->
+<!--                    <span>3</span>-->
+<!--                    <span>4</span>-->
 <!--        <span>&#8594;</span>-->
-    </div>
+</div>
 </div>
 <!--         Footer-->
 <!--        <div class="footer">-->
@@ -750,4 +765,40 @@ if (empty($products)) {
         }
     }
 
+    .quantity {
+        padding-top: 20px;
+        margin-right: 60px;
+    }
+
+    .quantity input {
+        -webkit-appearance: none;
+        border: none;
+        text-align: center;
+        width: 32px;
+        font-size: 16px;
+        color: #43484D;
+        font-weight: 300;
+    }
+
+    button[class*=btn] {
+        width: 30px;
+        height: 30px;
+        background-color: #E1E8EE;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .minus-btn img {
+        margin-bottom: 3px;
+    }
+
+    .plus-btn img {
+        margin-top: 2px;
+    }
+
+    button:focus,
+    input:focus {
+        outline: 0;
+    }
 </style>

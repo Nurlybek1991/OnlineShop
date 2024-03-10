@@ -15,7 +15,7 @@ class App
             } elseif ($method === 'POST') {
                 $obj->postRegistrate();
             } else {
-                echo "$method не поддерживается для адреса $uri!";
+                echo "$uri не поддерживается для адреса $method!";
             }
         } elseif ($uri === '/login') {
             $obj = new UserController();
@@ -24,7 +24,7 @@ class App
             } elseif ($method === 'POST') {
                 $obj->postLogin();
             } else {
-                echo "$method не поддерживается для адреса $uri!";
+                echo "$uri не поддерживается для адреса $method!";
             }
         } elseif ($uri === '/main') {
             $obj = new MainController();
@@ -34,14 +34,20 @@ class App
                 $obj = new ProductController();
                 $obj->postAddProduct();
             } else {
-                echo "$method не поддерживается для адреса $uri!";
+                echo "$uri не поддерживается для адреса $method!";
             }
-        } elseif
-        ($uri === '/cart') {
+        } elseif ($uri === '/removeProduct') {
+            $obj = new ProductController();
+            if ($method === 'POST') {
+                $obj->postRemoveProduct();
+            } else {
+                echo "$uri не поддерживается для адреса $method!";
+            }
+        } elseif ($uri === '/cart') {
             $obj = new CartController();
             if ($method === 'GET') {
                 $obj->getCart();
-            } else {
+            }  else {
                 echo "$method не поддерживается для адреса $uri!";
             }
         } else {

@@ -2,21 +2,21 @@
 
 class ProductController
 {
-    private UserProduct $userProductsModel;
+    private UserProduct $userProductModel;
     private Product $productModel;
-    private User $userModel;
 
     public function __construct()
     {
-        $this->userProductsModel = new UserProduct;
+        $this->userProductModel = new UserProduct;
         $this->productModel = new Product;
-        $this->userModel = new User;
     }
 
     public function postAddProduct(): void
     {
-
-        $this->userModel->checkInSession();
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
         $userId = $_SESSION['user_id'];
 
         $errors = $this->validateAddProduct($_POST);
@@ -25,17 +25,17 @@ class ProductController
             $productId = $_POST['product_id'];
             $quantity = $_POST['quantity'];
 
-            if($this->userProductsModel->getByUserIdProductId($userId,$productId)){
-                $this->userProductsModel->updateQuantity($userId, $productId, $quantity);
-            }else{
-                $this->userProductsModel->addProduct($userId, $productId, $quantity);
+            if ($this->userProductModel->getByUserIdProductId($userId, $productId)) {
+                $this->userProductModel->updatePlusQuantity($userId, $productId, $quantity);
+            } else {
+                $this->userProductModel->addProduct($userId, $productId, $quantity);
             }
 
-            header('Location: /main');
 
-        } else {
-            require_once './../View/main.php';
+            header('Location: /main');
         }
+
+        require_once './../View/main.php';
     }
 
     private function validateAddProduct(array $data): array
@@ -65,10 +65,32 @@ class ProductController
             $errors['quantity'] = 'Введите количество в поле.';
         }
 
-
         return $errors;
-
     }
 
+    public function postRemoveProduct(): void
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
+        $userId = $_SESSION['user_id'];
 
+        $errors = $this->validateAddProduct($_POST);
+        if (empty($errors)) {
+
+            $productId = $_POST['product_id'];
+            $quantity = $_POST['quantity'];
+
+            if ($this->userProductModel->getByUserIdProductId($userId, $productId)) {
+                $this->userProductModel->updateMinusQuantity($userId, $productId, $quantity);
+            } else {
+                $this->userProductModel->addProduct($userId, $productId, $quantity);
+            }
+            header('Location: /main');
+
+        }
+
+        require_once './../View/main.php';
+    }
 }

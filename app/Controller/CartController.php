@@ -2,18 +2,27 @@
 
 class CartController
 {
+    private UserProduct $userProductModel;
+
+    public function __construct()
+    {
+        $this->userProductModel = new UserProduct;
+    }
     public function getCart(): void
     {
 
-        $userModel = new User();
-        $userModel->checkInSession();
+        session_start();
+        if (!isset($_SESSION['user_id'] )) {
+            header("Location: /login");
+        }
         $userId = $_SESSION['user_id'];
 
-        $userProductModel = new UserProduct();
-        $cartProducts = $userProductModel->getAll($userId);
+        $cartProducts = $this->userProductModel->getAll($userId);
         if(empty($cartProducts)){
-            header("Location: /main");
+            echo 'Корзина пустая!';
+            require_once './../View/cart.php';
         }
+
         foreach ($cartProducts as $cartProduct) {
             $sumPrice[] = $cartProduct['price'] * $cartProduct['quantity'];
             $sumTotalCart = array_sum($sumPrice);
@@ -21,5 +30,6 @@ class CartController
 
         require_once './../View/cart.php';
     }
+
 
 }

@@ -19,12 +19,4 @@ class User extends Model
     }
 
 
-    public function checkInSession(): void
-    {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
-    }
-
 }
