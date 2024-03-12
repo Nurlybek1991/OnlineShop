@@ -1,5 +1,8 @@
 <?php
 
+namespace Controller;
+
+use Model\User;
 
 class UserController
 {
@@ -9,6 +12,7 @@ class UserController
     {
         $this->userModel = new User;
     }
+
     public function getRegistrate(): void
     {
         require_once './../View/registrate.php';
@@ -29,7 +33,7 @@ class UserController
             $password = password_hash($password, PASSWORD_DEFAULT);
             $passwordRep = $_POST['c_password'];
 
-            $this->userModel->create($name,$surname,$phone,$email,$password);
+            $this->userModel->create($name, $surname, $phone, $email, $password);
 
             $this->userModel->getByEmail($email);
             header('location:/login');
@@ -183,5 +187,5 @@ class UserController
 
         return $errors;
     }
-    
+
 }

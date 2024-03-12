@@ -1,5 +1,10 @@
 <?php
 
+namespace Controller;
+
+use Model\UserProduct;
+use Model\Product;
+
 class ProductController
 {
     private UserProduct $userProductModel;
@@ -68,22 +73,20 @@ class ProductController
         return $errors;
     }
 
-    public function postRemoveProduct(): void
+    public function postRemoveProduct(array $data): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
         $userId = $_SESSION['user_id'];
+        $productId = $data['product_id'];
+        $quantity = $data['quantity'];
 
         $errors = $this->validateAddProduct($_POST);
         if (empty($errors)) {
-
-            $productId = $_POST['product_id'];
-            $quantity = $_POST['quantity'];
-
             if ($this->userProductModel->getByUserIdProductId($userId, $productId)) {
-                $this->userProductModel->updateMinusQuantity($userId, $productId, $quantity);
+               $this->userProductModel->updateMinusQuantity($userId, $productId, $quantity);
             } else {
                 $this->userProductModel->addProduct($userId, $productId, $quantity);
             }
@@ -93,4 +96,6 @@ class ProductController
 
         require_once './../View/main.php';
     }
+
+
 }

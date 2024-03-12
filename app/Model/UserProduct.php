@@ -1,5 +1,5 @@
 <?php
-
+namespace Model;
 class UserProduct extends Model
 {
     public function addProduct(int $userId, int $productId, int $quantity): void
@@ -10,7 +10,7 @@ class UserProduct extends Model
 
     }
 
-    public function getByUserIdProductId(int $userId, int $productId)
+    public function getByUserIdProductId(int $userId, int $productId): array|bool
     {
 
         $stmt = $this->pdo->prepare("SELECT user_id, product_id FROM user_products WHERE (user_id = :user_id AND product_id = :product_id)");

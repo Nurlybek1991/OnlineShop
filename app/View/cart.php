@@ -1,3 +1,9 @@
+<?php
+if(empty($cartProducts)){
+    echo 'Корзина пустая!';
+}
+?>
+
 <div class="container">
     <div class="navbar">
         <div class="logo">
