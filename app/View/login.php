@@ -10,17 +10,23 @@
     <title>Document</title>
 </head>
 <body>
-<!--<header>-->
-<!--    <h2 class="logo">Logo</h2>-->
-<!--    <nav class="navigation">-->
-<!--        <a href="#">Home</a>-->
-<!--        <a href="#">About</a>-->
-<!--        <a href="#">Servieces</a>-->
-<!--        <a href="#">Contact</a>-->
-<!--        <button class="login-btn">login</button>-->
-<!--    </nav>-->
-<!---->
-<!--</header>-->
+<header>
+    <img height="100" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
+
+
+<!--    <h1>-->
+<!--        <span class="name"><span>Panda</span><span></span></span>Logo-->
+<!--    </h1>-->
+    <h2 class="logo">Panda Logo</h2>
+    <nav class="navigation">
+        <a href="/main">Главная страница</a>
+        <a href="#">Инфо</a>
+        <a href="#">Сервисы</a>
+        <a href="#">Обратная связь</a>
+        <button class="login-btn">Логин</button>
+    </nav>
+
+</header>
 
 <div class="container">
     <div class="form-box login">
@@ -42,9 +48,9 @@
                 <input name = "password"  type="password" id="pass" >
                 <label id="p_label">Пароль</label>
             </div>
-            <div class="remember-forget">
-                <label for=""><input type="checkbox">Сохранить</label><a href="#">забыли пароль?</a>
-            </div>
+<!--            <div class="remember-forget">-->
+<!--                <label for=""><input type="checkbox">Сохранить</label><a href="/registrate">забыли пароль?</a>-->
+<!--            </div>-->
             <button type="submit" class="btn">Логин
             </button>
             <div class="login-register">
@@ -158,7 +164,7 @@
         border: 2px solid #274C4A;
         border-radius: 20px;
         backdrop-filter:blur(10px);
-        box-shadow: 0px 0px 10px rgb(199, 196, 196);
+        box-shadow: 0px 0px 10px rgb(192, 196, 192);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -185,8 +191,8 @@
     }
 
     .form-box .input-box label{
-        position: absolute;
-        top:50%;
+        position: relative;
+        top:20%;
         left: 5px;
         transform: translateY(-50%);
         font-weight: 500;
@@ -263,13 +269,13 @@
         font-size: 0.9em;
         color: #ffffff;
         text-align: center;
-        margin: -15px 0px;
+        margin: -17px 0px;
         padding: 5px;
     }
     .login-register p a{
         color: #ffffff;
         text-decoration: none;
-        font: 0.9em;
+        font-size: 1.3em;
     }
     .login-register p a:hover{
         text-decoration: underline;

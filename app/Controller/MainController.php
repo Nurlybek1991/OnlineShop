@@ -18,31 +18,52 @@ class MainController
 
     public function getMain(): void
     {
-
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
+
         $userId = $_SESSION['user_id'];
 
         $products = $this->productModel->getAll();
 
-        $cartProducts = $this->userProductModel->getAll($userId);
-
-
-        foreach ($cartProducts as $cartProduct) {
-            $sumQuantity[] = $cartProduct['quantity'];
-            $totalQuantity = array_sum($sumQuantity);
-        }
-
-        $sumAllProducts = $this->userProductModel->getAll($userId);
-
-        foreach ($sumAllProducts as $sumAllProduct) {
-            $sumPrice[] = $sumAllProduct['price'] * $sumAllProduct['quantity'];
-            $sumTotalCart = array_sum($sumPrice);
-        }
+        $allProducts = $this->userProductModel->getAll($userId);
+        $totalQuantity = $this->getSumQuantity($allProducts);
+        $sumPrice = $this->getSumPrice($allProducts);
 
         require_once './../View/main.php';
+
+    }
+
+    public function getSumPrice(array $price): float|int|string
+    {
+        $sum = 0;
+
+        foreach ($price as $sumPrice) {
+            $sum += $sumPrice['price'] * $sumPrice['quantity'];
+        }
+        if ($sum <= -1) {
+            $sum = 'должна быть больше 0';
+        }
+
+        return $sum;
+
+    }
+
+    public function getSumQuantity(array $sumQuantity)
+    {
+        $totalQuantity = 0;
+
+        foreach ($sumQuantity as $sumTotalQuantity) {
+            $totalQuantity += $sumTotalQuantity['quantity'];
+        }
+
+        if ($totalQuantity <= -1) {
+            $totalQuantity = 'Укажите больше 0';
+        }
+        return $totalQuantity;
+
+
     }
 
     public function logout(): void
@@ -51,6 +72,7 @@ class MainController
             session_destroy();
 
             header("Location: /login");
+
         }
     }
 

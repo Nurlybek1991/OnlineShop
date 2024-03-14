@@ -5,12 +5,18 @@ if (empty($products)) {
 ?>
 
 <div class="container">
+    <!--    container-->
     <div class="navbar">
         <div class="logo">
+            <h1>
+                <span class="name"><span></span><span></span></span>Panda
 
+                <!--                <h1>-->
+                <span class="name"><span></span><span></span></span>Logo
+                <!--                </h1>-->
+            </h1>
             <!--                        <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
-            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
-
+            <img height="124" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
 
         </div>
         <nav>
@@ -22,12 +28,14 @@ if (empty($products)) {
         <a href="/cart"><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
-                    height="30px"/> <?php if (isset($totalQuantity) and isset($sumTotalCart)): ?><?php echo $totalQuantity . ' шт '  . ' Общая сумма: ' .  $sumTotalCart . ' тенге'?><?php endif; ?>
-        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
+                    height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>
+            <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
+
     </div>
 </div>
 
 <div class="small-container">
+
     <div class="row row-2">
         <h2>Продукты</h2>
         <select>
@@ -43,11 +51,10 @@ if (empty($products)) {
     <?php /** @var TYPE_NAME $products */
     foreach ($products as $product): ?>
         <div class="col-4">
-                <img src="<?php echo $product['image'] ?>" alt="Card image"/>
-                <h3><?php echo $product['name'] ?></h3>
-                <label for="product_id"></label>
-                <p><?php echo $product['price'] . ' тенге' ?></p>
-
+            <img src="<?php echo $product['image'] ?>" alt="Card image"/>
+            <h3><?php echo $product['name'] ?></h3>
+            <label for="product_id"></label>
+            <p><?php echo $product['price'] . ' тенге' ?></p>
 
             <form id="form" method="POST" action="/main">
                 <div class="quantity">
@@ -71,12 +78,14 @@ if (empty($products)) {
                 </div>
             </form>
         </div>
-        <!--                <div class="card-footer">-->
-        <!--                            <div class="rating">-->
-        <!--                                <span>14400  тенге</span><P>(Скидка 20%)</p>-->
+<!--                        <div class="card-footer">-->
+<!--                                    <div class="rating">-->
+<!--                                        <span>14400  тенге</span><P>(Скидка 20%)</p>-->
+<!--                                    </div>-->
 
     <?php endforeach; ?>
 </div>
+
 <!--    <div class="page-btn">-->
 <!--        <span>1</span>-->
 <!--        <span>2</span>-->
@@ -154,6 +163,7 @@ if (empty($products)) {
     }
 
     body {
+
         font-family: "Poppins", sans-serif;
     }
 
@@ -192,7 +202,7 @@ if (empty($products)) {
     }
 
     .container {
-        max-width: 1300px;
+        max-width: 1920px;
         margin: auto;
         padding-left: 25px;
         padding-right: 25px;
@@ -201,7 +211,7 @@ if (empty($products)) {
     .row {
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
         justify-content: space-around;
     }
 
@@ -258,10 +268,10 @@ if (empty($products)) {
     }
 
     .small-container {
-        max-width: 1080px;
+        max-width: 400px;
         margin: auto;
-        padding-left: 25px;
-        padding-right: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
     }
 
     .col-4 {
@@ -273,7 +283,7 @@ if (empty($products)) {
     }
 
     .col-4 img {
-        width: 80%;
+        width: 50%;
     }
 
     .title {
@@ -441,7 +451,7 @@ if (empty($products)) {
     }
 
     ul {
-        list-style-type: none;
+            list-style-type: none;
     }
 
     .app-logo {
@@ -464,9 +474,9 @@ if (empty($products)) {
     }
 
     .menu-icon {
-        width: 28px;
-        margin-left: 20px;
-        display: none;
+            width: 28px;
+            margin-left: 20px;
+            display: inline-flex;
     }
 
     /* media query for menu */
@@ -503,7 +513,7 @@ if (empty($products)) {
 
     .row-2 {
         justify-content: space-between;
-        margin: 100px auto 50px;
+        margin: -20px auto 50px;
     }
 
     select {

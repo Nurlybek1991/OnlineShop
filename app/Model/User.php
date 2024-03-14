@@ -19,5 +19,13 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function getById(string $userId): mixed
+    {
+
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
+        $stmt->execute(['id' => $userId]);
+        return $stmt->fetch();
+    }
+
 
 }

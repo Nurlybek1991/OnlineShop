@@ -4,7 +4,6 @@ namespace Controller;
 
 use Model\UserProduct;
 use Model\Product;
-
 class ProductController
 {
     private UserProduct $userProductModel;
@@ -16,62 +15,72 @@ class ProductController
         $this->productModel = new Product;
     }
 
-    public function postAddProduct(): void
+    public function postAddProduct(array $data): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
+
         $userId = $_SESSION['user_id'];
+        $productId = $data['product_id'];
+        $quantity = 1;
 
-        $errors = $this->validateAddProduct($_POST);
-        if (empty($errors)) {
-
-            $productId = $_POST['product_id'];
-            $quantity = $_POST['quantity'];
-
-            if ($this->userProductModel->getByUserIdProductId($userId, $productId)) {
-                $this->userProductModel->updatePlusQuantity($userId, $productId, $quantity);
-            } else {
-                $this->userProductModel->addProduct($userId, $productId, $quantity);
-            }
-
-
-            header('Location: /main');
+        $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
+        if ($product) {
+            $this->userProductModel->updatePlusQuantity($userId, $productId);
+        } else {
+            $this->userProductModel->addProduct($userId, $productId, $quantity);
         }
 
-        require_once './../View/main.php';
+        header("Location: /main");
+
+
     }
 
-    private function validateAddProduct(array $data): array
-    {
-
-        $errors = [];
-
-
-        if (isset($data['product_id'])) {
-            $productId = $data['product_id'];
-            if (empty($this->productModel->getById($productId))) {
-                $errors['product_id'] = 'Такого продукта нет.';
-            }
-        } else {
-            $errors['product_id'] = 'Введите продукты в поле.';
-        }
-
-
-        if (isset($data["quantity"])) {
-            $quantity = $data['quantity'];
-            if (empty($quantity)) {
-                $errors['quantity'] = 'Пустое поле.';
-            } elseif ($quantity <= 0) {
-                $errors['quantity'] = 'Укажите количество больше 0.';
-            }
-        } else {
-            $errors['quantity'] = 'Введите количество в поле.';
-        }
-
-        return $errors;
-    }
+//    public function postRemoveProduct(array $data) :void
+//    {
+//        session_start();
+//        if (!isset($_SESSION['user_id'])) {
+//            header("Location: /login");
+//        }
+//
+//        $userId = $_SESSION['user_id'];
+//        $productId = $data['product_id'];
+//
+//        $errors = $this->validate($userId, $productId);
+//
+//        if (empty($errors)) {
+//            $this->userProductModel->updateMinusQuantity($userId, $productId);
+//
+//            $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
+//            if ($product) {
+//                if ($product['quantity'] === 0) {
+//                    $this->userProductModel->remove($userId, $productId);
+//                }
+//            }
+//            header("Location: /main");
+//        }
+//
+//            require_once './../View/main.php';
+//
+//    }
+//
+//    private function validate($userId, $productId): array
+//    {
+//        $errors = [];
+//
+//        $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
+//
+//        if ($product) {
+//            if ($product['quantity'] <= '0') {
+//
+//                $errors['quantity'] = 'Этого товара уже нет в корзине';
+//
+//            }
+//        }
+//        return $errors;
+//    }
 
     public function postRemoveProduct(array $data): void
     {
@@ -79,22 +88,20 @@ class ProductController
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
+
         $userId = $_SESSION['user_id'];
         $productId = $data['product_id'];
-        $quantity = $data['quantity'];
+        $quantity = 1;
 
-        $errors = $this->validateAddProduct($_POST);
-        if (empty($errors)) {
-            if ($this->userProductModel->getByUserIdProductId($userId, $productId)) {
-               $this->userProductModel->updateMinusQuantity($userId, $productId, $quantity);
-            } else {
-                $this->userProductModel->addProduct($userId, $productId, $quantity);
-            }
-            header('Location: /main');
-
+        $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
+        if ($product) {
+            $this->userProductModel->updateMinusQuantity($userId, $productId);
+        } else {
+            $this->userProductModel->addProduct($userId, $productId, $quantity);
         }
 
-        require_once './../View/main.php';
+        header('Location: /main');
+
     }
 
 

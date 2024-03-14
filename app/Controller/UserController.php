@@ -18,25 +18,23 @@ class UserController
         require_once './../View/registrate.php';
     }
 
-    public function postRegistrate(): void
+    public function postRegistrate(array $data): void
     {
-
-        $errors = $this->validateRegistrate($_POST);
-
+        $errors = $this->validateRegistrate($data);
 
         if (empty($errors)) {
-            $name = $_POST['name'];
-            $surname = $_POST['surname'];
-            $phone = $_POST['phone'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $name = $data['name'];
+            $surname = $data['surname'];
+            $phone = $data['phone'];
+            $email = $data['email'];
+            $password = $data['password'];
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $passwordRep = $_POST['c_password'];
+            $passwordRep = $data['c_password'];
 
             $this->userModel->create($name, $surname, $phone, $email, $password);
 
-            $this->userModel->getByEmail($email);
             header('location:/login');
+
         }
 
         require_once './../View/registrate.php';
@@ -129,15 +127,13 @@ class UserController
         require_once './../View/login.php';
     }
 
-    public function postLogin(): void
+    public function postLogin(array $data): void
     {
-
-        $errors = $this->validateLogin($_POST);
-
+        $errors = $this->validateLogin($data);
 
         if (empty($errors)) {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
+            $login = $data['login'];
+            $password = $data['password'];
 
             $user = $this->userModel->getByEmail($login);
 
@@ -155,15 +151,15 @@ class UserController
             if ($errors) {
                 require_once './../View/login.php';
             }
-
         }
+
         require_once './../View/login.php';
+
     }
 
     private function validateLogin(array $data): array
     {
         $errors = [];
-
 
         if (isset($data['login'])) {
             $login = $data['login'];
@@ -186,6 +182,7 @@ class UserController
         }
 
         return $errors;
+
     }
 
 }

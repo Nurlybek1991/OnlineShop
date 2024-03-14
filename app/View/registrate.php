@@ -15,11 +15,18 @@
     <div class="back"></div>
     <div class="brand">
         <div class="logo">
-            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
+            <abbr>
+            <img height="" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
             <h1>
                 <span class="name"><span>Онлайн</span><span></span></span>магазин
             </h1>
+
+
+            <h1>
+                <span class="name"><span>Panda</span><span></span></span>Logo
+            </h1>
         </div>
+        </abbr>
         <span class="copyright">
         <a href="https://unsplash.com/@filipz" target="_blank" title="Photographer"></a>
 
@@ -134,7 +141,7 @@
         height: 100%;
         margin: auto;
         overflow: hidden;
-        position: relative;
+        /*position: relative;*/
         border-radius: var(--radius);
         display: -webkit-box;
         display: -ms-flexbox;

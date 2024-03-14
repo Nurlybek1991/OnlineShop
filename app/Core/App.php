@@ -4,6 +4,7 @@ namespace Core;
 
 use Controller\CartController;
 use Controller\MainController;
+use Controller\OrderController;
 use Controller\ProductController;
 use Controller\UserController;
 
@@ -53,6 +54,26 @@ class App
                 'method' => 'getCart'
             ]
         ],
+        '/order' => [
+            'GET' => [
+                'class' => OrderController::class,
+                'method' => 'getOrder'
+            ],
+            'POST' => [
+                'class' => OrderController::class,
+                'method' => 'postOrder'
+            ]
+        ],
+        '/orderProduct' => [
+            'GET' => [
+                'class' => OrderController::class,
+                'method' => 'getOrderProduct'
+            ],
+            'POST' => [
+                'class' => OrderController::class,
+                'method' => 'postOrderProduct'
+            ]
+        ]
     ];
 //    private array $routes = [
 //        '/registrate' => [

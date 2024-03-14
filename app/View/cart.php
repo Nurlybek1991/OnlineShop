@@ -1,15 +1,12 @@
-<?php
-if(empty($cartProducts)){
-    echo 'Корзина пустая!';
-}
-?>
 
 <div class="container">
     <div class="navbar">
         <div class="logo">
             <!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="" width="125px" /></a>-->
 
-            <img height="64" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
+    <img height="92" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
+
+
         </div>
         <nav>
             <ul id="MenuItems">
@@ -23,6 +20,7 @@ if(empty($cartProducts)){
         <!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
         <!--        <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()" />-->
     </div>
+
 </div>
 
 <!-- cart items details -->
@@ -31,6 +29,7 @@ if(empty($cartProducts)){
     <table>
         <?php /** @var TYPE_NAME $cartProducts */
         foreach ($cartProducts as $cartProduct): ?>
+        <form id="form" action="/cart" method="POST" >
             <tr>
                 <th>Товар</th>
                 <th>Колличество</th>
@@ -44,20 +43,27 @@ if(empty($cartProducts)){
                             <p></p>
                             <small><?php echo $cartProduct['name'] ?></small>
                             <br/>
-                                <a href="#">Удалить </a>
+                                <a href="/removeProduct">Удалить</a>
+                            <br>
+                            <a href="/orderProduct">Заказать</a>
                         </div>
                     </div>
                 </td>
                 <td><input value="<?php echo $cartProduct['quantity'] ?>"/></td>
                 <td><?php echo $cartProduct['price'] ?></td>
             </tr>
+        </form>
         <?php endforeach; ?>
     </table>
     <div class="total-price">
         <table>
             <!--            --><?php //foreach ($cartProducts as $cartProduct): ?>
             <tr>
-                <td>Итого</td>
+                <td>Итого  <?php
+                    if(empty($cartProducts)){
+                        echo ': Корзина пустая!';
+                    }
+                    ?></td>
                 <td><?php if(isset($sumTotalCart)): ?><?php echo $sumTotalCart . ' тенге'?><?php endif; ?></td>
 
             </tr>
@@ -175,7 +181,7 @@ if(empty($cartProducts)){
     }
 
     .container {
-        max-width: 1300px;
+        max-width: 1650px;
         margin: auto;
         padding-left: 25px;
         padding-right: 25px;
