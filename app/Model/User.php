@@ -1,5 +1,7 @@
 <?php
 namespace Model;
+use Entity\UserEntity;
+
 class User extends Model
 {
 
@@ -11,21 +13,19 @@ class User extends Model
 
     }
 
-    public function getByEmail(string $email): mixed
+    public function getByEmail(string $email): UserEntity| null
     {
 
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email");
         $stmt->execute(['email' => $email]);
-        return $stmt->fetch();
+        $user = $stmt->fetch();
+
+        if(empty($user)){
+            return null;
+        }
+
+        return new UserEntity($user['id'], $user['name'], $user['surname'], $user['phone'], $user['email'], $user['password']);
+
     }
-
-    public function getById(string $userId): mixed
-    {
-
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id=:id");
-        $stmt->execute(['id' => $userId]);
-        return $stmt->fetch();
-    }
-
 
 }

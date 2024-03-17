@@ -140,9 +140,9 @@ class UserController
             if (empty($user)) {
                 $errors['login'] = 'Логин введен неверно';
             } else {
-                if (password_verify($password, $user['password'])) {
+                if (password_verify($password, $user->getPassword())) {
                     session_start();
-                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['user_id'] = $user->getId();
                     header('location:/main');
                 } else {
                     $errors['login'] = 'Логин или пароль введен неверно';

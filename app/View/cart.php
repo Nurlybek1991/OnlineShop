@@ -38,19 +38,19 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="<?php echo $cartProduct['image'] ?>" alt=""/>
+                        <img src="<?php echo $cartProduct->getImage() ?>" alt=""/>
                         <div>
                             <p></p>
-                            <small><?php echo $cartProduct['name'] ?></small>
+                            <small><?php echo $cartProduct->getName() ?></small>
                             <br/>
                                 <a href="/removeProduct">Удалить</a>
                             <br>
-                            <a href="/orderProduct">Заказать</a>
+                            <a href="/order">Заказать</a>
                         </div>
                     </div>
                 </td>
-                <td><input value="<?php echo $cartProduct['quantity'] ?>"/></td>
-                <td><?php echo $cartProduct['price'] ?></td>
+                <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
+                <td><?php echo $cartProduct->getPrice() ?></td>
             </tr>
         </form>
         <?php endforeach; ?>

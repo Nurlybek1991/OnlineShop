@@ -51,16 +51,16 @@ if (empty($products)) {
     <?php /** @var TYPE_NAME $products */
     foreach ($products as $product): ?>
         <div class="col-4">
-            <img src="<?php echo $product['image'] ?>" alt="Card image"/>
-            <h3><?php echo $product['name'] ?></h3>
+            <img src="<?php echo $product->getImage() ?>" alt="Card image"/>
+            <h3><?php echo $product->getName() ?></h3>
             <label for="product_id"></label>
-            <p><?php echo $product['price'] . ' тенге' ?></p>
+            <p><?php echo $product->getPrice() . ' тенге' ?></p>
 
             <form id="form" method="POST" action="/main">
                 <div class="quantity">
                     <input type="hidden" id="quantity" name="quantity" value="1">
                     <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
-                           hidden="" value="<?php echo $product['id'] ?>">
+                           hidden="" value="<?php echo $product->getId() ?>">
                     <button class="plus-btn" type="submit" name="button">
                         <img src="plus.svg" alt="+"/>
                     </button>
@@ -71,7 +71,7 @@ if (empty($products)) {
                 <div class="quantity">
                     <input type="hidden" id="quantity" name="quantity" value="1">
                     <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
-                           hidden="" value="<?php echo $product['id'] ?>">
+                           hidden="" value="<?php echo $product->getId() ?>">
                     <button class="minus-btn" type="submit" name="button">
                         <img src="minus.svg" alt="-"/>
                     </button>

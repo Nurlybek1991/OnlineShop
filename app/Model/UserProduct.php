@@ -1,5 +1,7 @@
 <?php
 namespace Model;
+use Entity\UserProductEntity;
+
 class UserProduct extends Model
 {
     public function addProduct(int $userId, int $productId, int $quantity): void
@@ -10,12 +12,19 @@ class UserProduct extends Model
 
     }
 
-    public function getByUserIdProductId(int $userId, int $productId): array|bool
+    public function getByUserIdProductId(int $userId, int $productId): UserProductEntity|null
     {
 
         $stmt = $this->pdo->prepare("SELECT user_id, product_id FROM user_products WHERE (user_id = :user_id AND product_id = :product_id)");
         $stmt->execute(['user_id' => $userId, 'product_id' => $productId]);
-        return $stmt->fetch();
+        $userIdAndProductId =  $stmt->fetch();
+
+        if(empty($userIdAndProductId)){
+            return null;
+        }
+
+        return new UserProductEntity($userIdAndProductId['id'],$userIdAndProductId['user_id'],$userIdAndProductId['product_id'],$userIdAndProductId['quantity']);
+
     }
 
     public function updatePlusQuantity(int $userId, int $productId): void
@@ -37,6 +46,12 @@ class UserProduct extends Model
         $stmt = $this->pdo->prepare("SELECT name, image, price, user_products.quantity FROM products INNER JOIN user_products ON (products.id = user_products.product_id) WHERE (user_id =:user_id)");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
+    }
+
+    public function getAllProduct()
+    {
+        $stmt = $this->pdo->query('SELECT * FROM user_products');
+        return   $stmt->fetchAll();
     }
 
     public function remove(int $userId,int $productId)

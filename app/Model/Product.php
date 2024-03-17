@@ -1,19 +1,25 @@
 <?php
 namespace Model;
 
+use Entity\ProductEntity;
+
 class Product extends Model
 {
-    public function getById($id)
-    {
-        $statement = $this->pdo->prepare("SELECT * FROM products WHERE id = :id");
-        $statement->execute(['id' => $id]);
-        return $statement->fetch();
-    }
-
-    public function getAll(): null|array
+    public function getAll(): array|null
     {
         $stmt = $this->pdo->query('SELECT * FROM products');
-        return   $stmt->fetchAll();
+        $products = $stmt->fetchAll();
+
+        if(empty($products)){
+            return null;
+        }
+
+        $arr = [];
+        foreach ($products as $product) {
+            $arr[] = new ProductEntity($product['id'],$product['name'],$product['price'],$product['image']);
+        }
+
+        return $arr;
 
     }
 

@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Order;
+use Model\OrderProduct;
 use Model\User;
 use Model\UserProduct;
 
@@ -11,36 +12,33 @@ class OrderController
     private Order $orderModel;
     private User $userModel;
     private UserProduct $userProductModel;
+    private OrderProduct $orderProductModel;
 
     public function __construct()
     {
         $this->orderModel = new Order;
         $this->userProductModel = new UserProduct;
         $this->userModel = new User;
+        $this->orderProductModel = new OrderProduct;
 
     }
+
     public function getOrder(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
         require_once './../View/order.php';
     }
 
     public function postOrder($data): void
     {
-
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
 
-
         $errors = $this->validateOrder($data);
 
         if (empty($errors)) {
-            $userId =  $_SESSION['user_id'];
+            $userId = $_SESSION['user_id'];
 
             $firstname = $data['firstname'];
             $lastname = $data['lastname'];
@@ -52,8 +50,23 @@ class OrderController
             $postcode = $data['postcode'];
 
 
-            $this->orderModel->create($firstname, $lastname, $phoneOrder, $email, $postcode, $country, $city, $address);
-            $cartProducts = $this->userProductModel->getAll($userId);
+            $this->orderModel->create($userId, $firstname, $lastname, $phoneOrder, $email, $postcode, $country, $city, $address);
+
+            $cartProducts = $this->userProductModel->getAllProduct();
+
+//            var_dump($cartProducts);die;
+
+            foreach ($cartProducts as $product) {
+                $productId = $product['product_id'];
+                $quantity = $product['quantity'];
+                $userIdByProduct = $product['user_id'];
+                if($userIdByProduct !== $userId){
+
+                }
+                $order = $this->orderModel->getByUserId($userId);
+                $this->orderProductModel->create((int)$productId, (int)$quantity, (int)$order);
+            }
+
 
             header('location:/orderProduct');
 
@@ -111,12 +124,13 @@ class OrderController
                 $user = $this->orderModel->getByEmail($email);
                 if ($user) {
                     $errors['email'] = "Такая почта уже существует!";
-                }elseif (true) {
-                    $user = $this->userModel->getByEmail($email);
-                    if (!$user) {
-                        $errors['email'] = "Такой почты нету в Panda Logo!";
-                    }
                 }
+//                elseif (true) {
+//                    $user = $this->userModel->getByEmail($email);
+//                    if (!$user) {
+//                        $errors['email'] = "Такой почты нету в Panda Logo!";
+//                    }
+//                }
             }
         } else {
             $errors['email'] = 'Укажите почту.';
@@ -180,4 +194,5 @@ class OrderController
     {
 
     }
+
 }
