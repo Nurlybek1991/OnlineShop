@@ -1,9 +1,9 @@
 <?php
-namespace Model;
+namespace Repository;
 
-use Entity\ProductEntity;
+use Entity\Product;
 
-class Product extends Model
+class ProductRepository extends Repository
 {
     public function getAll(): array|null
     {
@@ -16,11 +16,17 @@ class Product extends Model
 
         $arr = [];
         foreach ($products as $product) {
-            $arr[] = new ProductEntity($product['id'],$product['name'],$product['price'],$product['image']);
+            $arr[] = $this->hydrate($product);
         }
 
         return $arr;
 
     }
+
+    public function hydrate(array $data): Product
+    {
+        return new Product($data['id'],$data['name'],$data['price'],$data['image']);
+    }
+
 
 }

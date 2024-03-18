@@ -1,9 +1,9 @@
 <?php
-namespace Model;
+namespace Repository;
 
 use PDO;
 
-class Model
+class Repository
 {
     protected PDO $pdo;
     public function __construct()

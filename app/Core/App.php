@@ -7,6 +7,11 @@ use Controller\MainController;
 use Controller\OrderController;
 use Controller\ProductController;
 use Controller\UserController;
+use Request\AddProductRequest;
+use Request\LoginRequest;
+use Request\OrderRequest;
+use Request\RegistrateRequest;
+use Request\Request;
 
 
 class App
@@ -20,7 +25,8 @@ class App
             'POST' => [
                 'class' => UserController::class,
                 'method' => 'postRegistrate',
-            ]
+                'request' => RegistrateRequest::class
+             ]
         ],
         '/login' => [
             'GET' => [
@@ -30,6 +36,7 @@ class App
             'POST' => [
                 'class' => UserController::class,
                 'method' => 'postLogin',
+                'request' => LoginRequest::class
             ]
         ],
         '/main' => [
@@ -40,6 +47,7 @@ class App
             'POST' => [
                 'class' => ProductController::class,
                 'method' => 'postAddProduct',
+                'request' => AddProductRequest::class
             ]
         ],
         '/removeProduct' => [
@@ -61,7 +69,8 @@ class App
             ],
             'POST' => [
                 'class' => OrderController::class,
-                'method' => 'postOrder'
+                'method' => 'postOrder',
+                'request' => OrderRequest::class
             ]
         ],
         '/orderProduct' => [
@@ -75,50 +84,6 @@ class App
             ]
         ]
     ];
-//    private array $routes = [
-//        '/registrate' => [
-//            'GET' => [
-//                'class' => 'UserController',
-//                'method' => 'getRegistrate',
-//            ],
-//            'POST' => [
-//                'class' => 'UserController',
-//                'method' => 'postRegistrate',
-//            ]
-//        ],
-//        '/login' => [
-//            'GET' => [
-//                'class' => 'UserController',
-//                'method' => 'getLogin',
-//            ],
-//            'POST' => [
-//                'class' => 'UserController',
-//                'method' => 'postLogin',
-//            ]
-//        ],
-//        '/main' => [
-//            'GET' => [
-//                'class' => 'MainController',
-//                'method' => 'getMain',
-//            ],
-//            'POST' => [
-//                'class' => 'ProductController',
-//                'method' => 'postAddProduct',
-//            ]
-//        ],
-//        '/removeProduct' => [
-//            'POST' => [
-//                'class' => 'ProductController',
-//                'method' => 'postRemoveProduct',
-//            ]
-//        ],
-//        '/cart' => [
-//            'GET' => [
-//                'class' => 'CartController',
-//                'method' => 'getCart',
-//            ]
-//        ],
-//    ];
 
     public function run(): void
     {
@@ -132,8 +97,15 @@ class App
                 $class = $handler['class'];
                 $method = $handler['method'];
 
+                if (isset($handler['request'])) {
+                    $requestClass = $handler['request'];
+                    $request = new $requestClass($routeMethod, $_POST);
+                } else {
+                    $request = new Request($routeMethod, $_POST);
+                }
+
                 $obj = new $class;
-                $obj->$method($_POST);
+                $obj->$method($request);
             } else {
                 echo "$routeMethod не поддерживается для адреса $uri!";
             }

@@ -2,24 +2,25 @@
 
 namespace Controller;
 
-use Model\Order;
-use Model\OrderProduct;
-use Model\User;
-use Model\UserProduct;
+use Repository\OrderRepository;
+use Repository\OrderProductRepository;
+use Repository\UserRepository;
+use Repository\UserProductRepository;
+use Request\OrderRequest;
 
 class OrderController
 {
-    private Order $orderModel;
-    private User $userModel;
-    private UserProduct $userProductModel;
-    private OrderProduct $orderProductModel;
+    private OrderRepository $orderModel;
+    private UserRepository $userModel;
+    private UserProductRepository $userProductModel;
+    private OrderProductRepository $orderProductModel;
 
     public function __construct()
     {
-        $this->orderModel = new Order;
-        $this->userProductModel = new UserProduct;
-        $this->userModel = new User;
-        $this->orderProductModel = new OrderProduct;
+        $this->orderModel = new OrderRepository;
+        $this->userProductModel = new UserProductRepository;
+        $this->userModel = new UserRepository;
+        $this->orderProductModel = new OrderProductRepository;
 
     }
 
@@ -28,18 +29,18 @@ class OrderController
         require_once './../View/order.php';
     }
 
-    public function postOrder($data): void
+    public function postOrder(OrderRequest $request): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
 
-        $errors = $this->validateOrder($data);
+        $errors = $request->validate();
 
         if (empty($errors)) {
             $userId = $_SESSION['user_id'];
-
+            $data = $request->getBody();
             $firstname = $data['firstname'];
             $lastname = $data['lastname'];
             $phoneOrder = $data['phoneOrder'];
@@ -51,7 +52,7 @@ class OrderController
 
 
             $this->orderModel->create($userId, $firstname, $lastname, $phoneOrder, $email, $postcode, $country, $city, $address);
-
+            $order = $this->orderModel->getByUserId($userId);
             $cartProducts = $this->userProductModel->getAllProduct();
 
 //            var_dump($cartProducts);die;
@@ -59,14 +60,8 @@ class OrderController
             foreach ($cartProducts as $product) {
                 $productId = $product['product_id'];
                 $quantity = $product['quantity'];
-                $userIdByProduct = $product['user_id'];
-                if($userIdByProduct !== $userId){
-
-                }
-                $order = $this->orderModel->getByUserId($userId);
-                $this->orderProductModel->create((int)$productId, (int)$quantity, (int)$order);
+                $this->orderProductModel->create((int)$order, (int)$productId, (int)$quantity);
             }
-
 
             header('location:/orderProduct');
 
@@ -75,115 +70,8 @@ class OrderController
         require_once './../View/order.php';
     }
 
-    private function validateOrder(array $data): array
-    {
-        $errors = [];
 
-        if (isset($data['firstname'])) {
-            $firstname = $data['firstname'];
-            if (empty($firstname)) {
-                $errors['firstname'] = 'Укажите имя.';
-            } elseif (strlen($firstname) < 2) {
-                $errors['firstname'] = 'Имя должно содержать более 2 символов.';
-            }
-        } else {
-            $errors['firstname'] = 'Укажите имя.';
-        }
-
-        if (isset($data['lastname'])) {
-            $lastname = $data['lastname'];
-            if (empty($lastname)) {
-                $errors['lastname'] = 'Укажите фамилию.';
-            } elseif (strlen($lastname) < 2) {
-                $errors['lastname'] = 'Фамилия должна содержать более 2 символов.';
-            }
-        } else {
-            $errors['lastname'] = 'Укажите фамилию.';
-        }
-
-        if (isset($data['phoneOrder'])) {
-            $phoneOrder = $data['phoneOrder'];
-            if (empty($phoneOrder)) {
-                $errors['phoneOrder'] = 'Введите Номер Телефона.';
-            } elseif (strlen($phoneOrder) < 6) {
-                $errors['phoneOrder'] = 'Номер Телефона должен содержать более 6 символов.';
-            }
-        } else {
-            $errors['phoneOrder'] = 'Введите Номер Телефона.';
-        }
-
-        if (isset($data['email'])) {
-            $email = $data['email'];
-            if (empty($email)) {
-                $errors['email'] = 'Укажите почту.';
-            } elseif (strlen($email) < 5) {
-                $errors['email'] = 'Имя почты должно быть длиной от 5 символов.';
-            } elseif (!strpos($email, '@')) {
-                $errors['email'] = 'Введено некорректное имя почты, нет символа @.';
-            } elseif (true) {
-                $user = $this->orderModel->getByEmail($email);
-                if ($user) {
-                    $errors['email'] = "Такая почта уже существует!";
-                }
-//                elseif (true) {
-//                    $user = $this->userModel->getByEmail($email);
-//                    if (!$user) {
-//                        $errors['email'] = "Такой почты нету в Panda Logo!";
-//                    }
-//                }
-            }
-        } else {
-            $errors['email'] = 'Укажите почту.';
-        }
-
-        if (isset($data['postcode'])) {
-            $postcode = $data['postcode'];
-            if (empty($postcode)) {
-                $errors['postcode'] = 'Введите Индекса почты.';
-            } elseif (strlen($postcode) < 6) {
-                $errors['postcode'] = 'Номер Индекса почты должена содержать более 6 символов.';
-            }
-        } else {
-            $errors['postcode'] = 'Введите Индекса почты.';
-        }
-
-        if (isset($data['country'])) {
-            $country = $data['country'];
-            if (empty($country)) {
-                $errors['country'] = 'Укажите страну.';
-            } elseif (strlen($country) < 2) {
-                $errors['country'] = 'Название страны должно содержать более 2 символов.';
-            }
-        } else {
-            $errors['country'] = 'Укажите страну.';
-        }
-
-        if (isset($data['address'])) {
-            $address = $data['address'];
-            if (empty($address)) {
-                $errors['address'] = 'Укажите адрес.';
-            } elseif (strlen($address) < 2) {
-                $errors['address'] = 'Название адреса должно содержать более 2 символов.';
-            }
-        } else {
-            $errors['address'] = 'Укажите адрес.';
-        }
-
-        if (isset($data['city'])) {
-            $city = $data['city'];
-            if (empty($city)) {
-                $errors['city'] = 'Укажите город.';
-            } elseif (strlen($city) < 2) {
-                $errors['city'] = 'Название города должно содержать более 2 символов.';
-            }
-        } else {
-            $errors['city'] = 'Укажите город.';
-        }
-
-        return $errors;
-    }
-
-    public function getOrderProduct(array $data)
+    public function getOrderProduct()
     {
 
 

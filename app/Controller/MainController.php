@@ -2,18 +2,18 @@
 
 namespace Controller;
 
-use Model\Product;
-use Model\UserProduct;
+use Repository\ProductRepository;
+use Repository\UserProductRepository;
 
 class MainController
 {
-    private Product $productModel;
-    private UserProduct $userProductModel;
+    private ProductRepository $productModel;
+    private UserProductRepository $userProductModel;
 
     public function __construct()
     {
-        $this->userProductModel = new UserProduct;
-        $this->productModel = new Product;
+        $this->userProductModel = new UserProductRepository;
+        $this->productModel = new ProductRepository;
     }
 
     public function getMain(): void

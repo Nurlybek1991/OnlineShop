@@ -38,10 +38,10 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="<?php echo $cartProduct->getImage() ?>" alt=""/>
+                        <img src="<?php echo $cartProduct['image'] ?>" alt=""/>
                         <div>
                             <p></p>
-                            <small><?php echo $cartProduct->getName() ?></small>
+                            <small><?php echo $cartProduct['name'] ?></small>
                             <br/>
                                 <a href="/removeProduct">Удалить</a>
                             <br>
@@ -49,8 +49,8 @@
                         </div>
                     </div>
                 </td>
-                <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
-                <td><?php echo $cartProduct->getPrice() ?></td>
+                <td><input value="<?php echo $cartProduct['quantity'] ?>"/></td>
+                <td><?php echo $cartProduct['price'] ?></td>
             </tr>
         </form>
         <?php endforeach; ?>

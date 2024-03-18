@@ -2,15 +2,15 @@
 
 namespace Controller;
 
-use Model\UserProduct;
+use Repository\UserProductRepository;
 
 class CartController
 {
-    private UserProduct $userProductModel;
+    private UserProductRepository $userProductModel;
 
     public function __construct()
     {
-        $this->userProductModel = new UserProduct;
+        $this->userProductModel = new UserProductRepository;
     }
 
     public function getCart(): void

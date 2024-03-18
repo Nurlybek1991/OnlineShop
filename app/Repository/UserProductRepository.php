@@ -1,8 +1,9 @@
 <?php
-namespace Model;
-use Entity\UserProductEntity;
+namespace Repository;
 
-class UserProduct extends Model
+use Entity\UserProduct;
+
+class UserProductRepository extends Repository
 {
     public function addProduct(int $userId, int $productId, int $quantity): void
     {
@@ -12,7 +13,7 @@ class UserProduct extends Model
 
     }
 
-    public function getByUserIdProductId(int $userId, int $productId): UserProductEntity|null
+    public function getByUserIdProductId(int $userId, int $productId): UserProduct|null
     {
 
         $stmt = $this->pdo->prepare("SELECT user_id, product_id FROM user_products WHERE (user_id = :user_id AND product_id = :product_id)");
@@ -23,9 +24,15 @@ class UserProduct extends Model
             return null;
         }
 
-        return new UserProductEntity($userIdAndProductId['id'],$userIdAndProductId['user_id'],$userIdAndProductId['product_id'],$userIdAndProductId['quantity']);
+        return $this->hydrate($userIdAndProductId);
 
     }
+
+    public function hydrate(array $data): UserProduct
+    {
+        return new UserProduct($data['id'],$data['user_id'],$data['product_id'],$data['quantity']);
+    }
+
 
     public function updatePlusQuantity(int $userId, int $productId): void
     {
@@ -48,10 +55,10 @@ class UserProduct extends Model
         return $stmt->fetchAll();
     }
 
-    public function getAllProduct()
+    public function getAllProduct(): false|array
     {
         $stmt = $this->pdo->query('SELECT * FROM user_products');
-        return   $stmt->fetchAll();
+        return  $stmt->fetchAll();
     }
 
     public function remove(int $userId,int $productId)
