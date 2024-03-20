@@ -54,6 +54,7 @@ class App
             'POST' => [
                 'class' => ProductController::class,
                 'method' => 'postRemoveProduct',
+                'request' => AddProductRequest::class
             ]
         ],
         '/cart' => [

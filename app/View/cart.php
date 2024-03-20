@@ -10,11 +10,11 @@
         </div>
         <nav>
             <ul id="MenuItems">
-                <li><a href="index.html">Домой</a></li>
+<!--                <li><a href="index.html">Домой</a></li>-->
                 <li><a href="/main">Продукты</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Контакты</a></li>
-                <li><a href="account.html">Аккаунт</a></li>
+                <li><a href="/registrate">Аккаунт</a><?php print_r(" Корзина: " . $userShow['name'] . " "  . $userShow['surname'])?></li>
             </ul>
         </nav>
         <!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
@@ -27,10 +27,12 @@
 
 <div class="small-container cart-page">
     <table>
+
         <?php /** @var TYPE_NAME $cartProducts */
         foreach ($cartProducts as $cartProduct): ?>
         <form id="form" action="/cart" method="POST" >
             <tr>
+
                 <th>Товар</th>
                 <th>Колличество</th>
                 <th>Цена</th>
@@ -38,10 +40,10 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <img src="<?php echo $cartProduct['image'] ?>" alt=""/>
+                        <img src="<?php echo $cartProduct->getProduct()->getImage() ?>" alt=""/>
                         <div>
                             <p></p>
-                            <small><?php echo $cartProduct['name'] ?></small>
+                            <small><?php echo $cartProduct->getProduct()->getName() ?></small>
                             <br/>
                                 <a href="/removeProduct">Удалить</a>
                             <br>
@@ -49,15 +51,15 @@
                         </div>
                     </div>
                 </td>
-                <td><input value="<?php echo $cartProduct['quantity'] ?>"/></td>
-                <td><?php echo $cartProduct['price'] ?></td>
+                <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
+                <td><?php echo $cartProduct->getProduct()->getPrice() . ' тенге' ?></td>
             </tr>
         </form>
         <?php endforeach; ?>
     </table>
     <div class="total-price">
         <table>
-            <!--            --><?php //foreach ($cartProducts as $cartProduct): ?>
+<!--                        --><?php //foreach ($cartProducts as $cartProduct): ?>
             <tr>
                 <td>Итого  <?php
                     if(empty($cartProducts)){
@@ -75,7 +77,7 @@
             <!--                <td>Итого с налогом</td>-->
             <!--                <td>₹3515.00</td>-->
             <!--            </tr>-->
-            <!--            --><?php //endforeach; ?>
+<!--                        --><?php //endforeach; ?>
         </table>
     </div>
 </div>

@@ -2,15 +2,19 @@
 
 namespace Controller;
 
+
 use Repository\UserProductRepository;
+use Repository\UserRepository;
 
 class CartController
 {
     private UserProductRepository $userProductModel;
+    private UserRepository $userModel;
 
     public function __construct()
     {
         $this->userProductModel = new UserProductRepository;
+        $this->userModel = new UserRepository();
     }
 
     public function getCart(): void
@@ -21,6 +25,7 @@ class CartController
         }
 
         $userId = $_SESSION['user_id'];
+        $userShow = $this->userModel->getUserName($userId);
 
         $cartProducts = $this->userProductModel->getAll($userId);
         $sumTotalCart = $this->getSumPrice($cartProducts);
@@ -28,34 +33,19 @@ class CartController
         require_once './../View/cart.php';
     }
 
-    public function getSumPrice(array $price): float|int|string
+    public function getSumPrice(array $price): int|string
     {
         $sum = 0;
         foreach ($price as $sumPrice) {
-            $sum += $sumPrice['price'] * $sumPrice['quantity'];
+            $sum += $sumPrice->getProduct()->getPrice() * $sumPrice->getQuantity();
         }
 
-        if($sum < -1){
+        if($sum < -1 ){
             $sum = 'Сумма некорректна';
         }
         return $sum;
 
     }
 
-    public function deleteItem(array $data)
-    {
-
-
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
-
-        $userId = $_SESSION['user_id'];
-        $productId = $data['product_id'];
-
-        $this->userProductModel->getByUserIdProductId($userId, $productId);
-        $this->userProductModel->remove($userId, $productId);
-    }
 
 }

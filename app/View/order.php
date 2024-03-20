@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title">
-        <h2>Product Order Form</h2>
+<!--        <h2>Форма заказа: --><?php //print_r(" " .$userShow['name']   ." ". $userShow['surname'])  ?><!--</h2>-->
     </div>
     <div class="d-flex">
         <form id="form" method="POST" action="/order">

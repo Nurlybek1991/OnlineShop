@@ -2,19 +2,24 @@
 
 namespace Controller;
 
+use Entity\User;
 use Repository\ProductRepository;
 use Repository\UserProductRepository;
+use Repository\UserRepository;
 
 class MainController
 {
     private ProductRepository $productModel;
     private UserProductRepository $userProductModel;
+    private UserRepository $userModel;
 
     public function __construct()
     {
         $this->userProductModel = new UserProductRepository;
         $this->productModel = new ProductRepository;
+        $this->userModel = new UserRepository();
     }
+
 
     public function getMain(): void
     {
@@ -24,6 +29,7 @@ class MainController
         }
 
         $userId = $_SESSION['user_id'];
+        $userShow = $this->userModel->getUserName($userId);
 
         $products = $this->productModel->getAll();
 
@@ -40,9 +46,9 @@ class MainController
         $sum = 0;
 
         foreach ($price as $sumPrice) {
-            $sum += $sumPrice['price'] * $sumPrice['quantity'];
+            $sum += $sumPrice->getProduct()->getPrice() * $sumPrice->getQuantity();
         }
-        if ($sum <= -1) {
+        if ($sum <= 0 ) {
             $sum = 'должна быть больше 0';
         }
 
@@ -50,15 +56,15 @@ class MainController
 
     }
 
-    public function getSumQuantity(array $sumQuantity)
+    public function getSumQuantity(array $sumQuantity): int|string
     {
         $totalQuantity = 0;
 
         foreach ($sumQuantity as $sumTotalQuantity) {
-            $totalQuantity += $sumTotalQuantity['quantity'];
+            $totalQuantity += $sumTotalQuantity->getQuantity();
         }
 
-        if ($totalQuantity <= -1) {
+        if ($totalQuantity <= -1 ) {
             $totalQuantity = 'Укажите больше 0';
         }
         return $totalQuantity;

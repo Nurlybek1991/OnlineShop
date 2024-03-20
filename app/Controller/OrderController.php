@@ -26,6 +26,12 @@ class OrderController
 
     public function getOrder(): void
     {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
+        $userId = $_SESSION['user_id'];
+        $userShow = $this->userModel->getUserName($userId);
         require_once './../View/order.php';
     }
 
@@ -52,16 +58,9 @@ class OrderController
 
 
             $this->orderModel->create($userId, $firstname, $lastname, $phoneOrder, $email, $postcode, $country, $city, $address);
-            $order = $this->orderModel->getByUserId($userId);
-            $cartProducts = $this->userProductModel->getAllProduct();
-
-//            var_dump($cartProducts);die;
-
-            foreach ($cartProducts as $product) {
-                $productId = $product['product_id'];
-                $quantity = $product['quantity'];
-                $this->orderProductModel->create((int)$order, (int)$productId, (int)$quantity);
-            }
+            $orderId = $this->orderModel->getOrderId();
+            $this->orderProductModel->create($userId, $orderId);
+            $this->userProductModel->removeAllProducts($userId);
 
             header('location:/orderProduct');
 
@@ -70,17 +69,19 @@ class OrderController
         require_once './../View/order.php';
     }
 
-
-    public function getOrderProduct()
+    public function getOrderProduct(): void
     {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: /login");
+        }
 
-
+        $userId = $_SESSION['user_id'];
+        $orderInfos = $this->orderModel->getAll($userId);
+        $orderProducts = $this->orderProductModel->getAll($userId);
+//        var_dump($orderInfos);die;
         require_once './../View/orderProduct.php';
     }
 
-    public function postOrderProduct(array $data)
-    {
-
-    }
 
 }

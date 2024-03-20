@@ -6,18 +6,18 @@ class OrderProduct
 {
     private int $id;
 
-    private int $orderId;
+    private Order $order;
 
-    private int $productId;
+    private Product $userProduct;
 
     private int $quantity;
 
 
-    public function __construct(int $id, int $orderId, int $productId, int $quantity)
+    public function __construct(int $id, Order $order, Product $userProduct, int $quantity)
     {
         $this->id = $id;
-        $this->orderId = $orderId;
-        $this->productId = $productId;
+        $this->order = $order;
+        $this->userProduct = $userProduct;
         $this->quantity = $quantity;
     }
 
@@ -26,14 +26,14 @@ class OrderProduct
         return $this->id;
     }
 
-    public function getOrderId(): int
+    public function getOrder(): Order
     {
-        return $this->orderId;
+        return $this->order;
     }
 
-    public function getProductId(): int
+    public function getProduct(): Product
     {
-        return $this->productId;
+        return $this->userProduct;
     }
 
     public function getQuantity(): int

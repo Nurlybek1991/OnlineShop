@@ -11,21 +11,21 @@ if (empty($products)) {
             <h1>
                 <span class="name"><span></span><span></span></span>Panda
 
-                <!--                <h1>-->
                 <span class="name"><span></span><span></span></span>Logo
                 <!--                </h1>-->
             </h1>
             <!--                        <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
             <img height="124" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
-
         </div>
         <nav>
             <ul id="MenuItems">
-                <li><a href="/registrate">АККАУНТ</a></li>
+                <li><a href="/cart"><?php print_r($userShow['name'] . " " . $userShow['surname'])  ?></a></li>
                 <li><a href="/login">ВЫЙТИ</a><?php $this->logout(); ?></li>
+                <li><a href="/registrate">АККАУНТ</a><br><?php print_r(" " . $userShow['email'])?></li>
+
             </ul>
         </nav>
-        <a href="/cart"><img
+        <a href="/cart"><br><br><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
                     height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>

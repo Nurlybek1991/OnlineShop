@@ -2,6 +2,10 @@
 
 namespace Repository;
 
+use Entity\Order;
+use Entity\User;
+
+
 class OrderRepository extends Repository
 {
 
@@ -13,12 +17,31 @@ class OrderRepository extends Repository
 
     }
 
-    public function getByUserId(string $userId): mixed
+    public function getAll(string $userId): array|null
     {
 
-        $stmt = $this->pdo->prepare("SELECT * FROM orders WHERE user_id=:user_id");
+        $stmt = $this->pdo->prepare("SELECT firstname,lastname FROM orders 
+         JOIN users ON users.id =orders.user_id
+         WHERE user_id=:user_id");
         $stmt->execute(['user_id' => $userId]);
-        return $stmt->fetch();
+        $orderProducts =  $stmt->fetch();
+
+        if (!$orderProducts){
+            return null;
+        }
+
+        $arr = [];
+        foreach ($orderProducts as $orderProduct){
+            $arr[] = $this->hydrate((array) $orderProduct);
+        }
+        return $arr;
+    }
+    public function hydrate(array $data): Order
+    {
+        return new Order($data['id'],
+           new User($data['id'], $data['name'], $data['surname'], $data['phone'], $data['email'],
+               $data['password']),$data['firstname'],$data['lastname'],$data['country'],$data['address'],
+            $data['city'],$data['postcode'],$data['phone'],$data['email']);
     }
 
     public function getByEmail(string $email): mixed
@@ -29,9 +52,10 @@ class OrderRepository extends Repository
         return $stmt->fetch();
     }
 
-    public function getOrderId(): string
+    public function getOrderId(): false|string
     {
         return $this->pdo->lastInsertId();
     }
+
 
 }

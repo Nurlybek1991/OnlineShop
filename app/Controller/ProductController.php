@@ -28,7 +28,7 @@ class ProductController
         }
 
         $errors = $request->validate();
-        if(empty($errors)){
+        if (empty($errors)) {
             $data = $request->getBody();
             $userId = $_SESSION['user_id'];
             $productId = $data['product_id'];
@@ -45,24 +45,27 @@ class ProductController
 
     }
 
-    public function postRemoveProduct(array $data): void
+    public function postRemoveProduct(AddProductRequest $request): void
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
         }
+        $errors = $request->validate();
+        if (empty($errors)) {
+            $data = $request->getBody();
+            $userId = $_SESSION['user_id'];
+            $productId = $data['product_id'];
+            $quantity = 1;
 
-        $userId = $_SESSION['user_id'];
-        $productId = $data['product_id'];
-        $quantity = 1;
-
-        $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
-        if ($product) {
-            $this->userProductModel->updateMinusQuantity($userId, $productId);
-        } else {
-            $this->userProductModel->addProduct($userId, $productId, $quantity);
+            $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
+            var_dump($product);die;
+            if ($produc ){
+                $this->userProductModel->updateMinusQuantity($userId, $productId);
+            } else {
+                $this->userProductModel->addProduct($userId, $productId, $quantity);
+            }
         }
-
         header('Location: /main');
 
     }

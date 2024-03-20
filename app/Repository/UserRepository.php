@@ -29,9 +29,16 @@ class UserRepository extends Repository
 
     }
 
+    public function getUserName($userId): array|false
+    {
+        $stmt = $this->pdo->prepare("SELECT name,surname,email FROM users WHERE id=:id");
+        $stmt->execute(['id' => $userId]);
+        return $stmt->fetch();
+
+    }
+
     public function hydrate(array $data): User
     {
         return new User($data['id'], $data['name'], $data['surname'], $data['phone'], $data['email'], $data['password']);
     }
-
 }
