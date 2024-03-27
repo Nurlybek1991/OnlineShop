@@ -12,6 +12,8 @@ use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\RegistrateRequest;
 use Request\Request;
+use Service\AuthenticationService\AuthenticationCookieService;
+use Service\AuthenticationService\AuthenticationSessionService;
 
 
 class App
@@ -37,7 +39,10 @@ class App
                     $request = new Request($routeMethod, $_POST);
                 }
 
-                $obj = new $class;
+                $authService = new AuthenticationSessionService();
+//                $authService = new AuthenticationCookieService();
+
+                $obj = new $class($authService);
                 $obj->$method($request);
             } else {
                 echo "$routeMethod не поддерживается для адреса $uri!";
@@ -48,7 +53,7 @@ class App
 
     }
 
-    public function get($routeName, $className, $method, $request = null)
+    public function get($routeName, $className, $method, $request = null): void
     {
         $this->routes[$routeName]['GET'] = [
             'class' => $className,
@@ -57,7 +62,7 @@ class App
         ];
     }
 
-    public function post($routeName, $className, $method,$request = null)
+    public function post($routeName, $className, $method,$request = null): void
     {
         $this->routes[$routeName]['POST'] = [
             'class' => $className,

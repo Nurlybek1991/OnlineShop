@@ -3,7 +3,7 @@
 namespace Core;
 class Autoloader
 {
-    public function registrate(string $dir): void
+    public static function registrate(string $dir): void
     {
         $autoloader = function (string $className) use ($dir) {
             $path = str_replace('\\',  "/", $className);

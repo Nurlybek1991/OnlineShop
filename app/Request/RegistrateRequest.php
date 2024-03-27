@@ -15,13 +15,39 @@ class RegistrateRequest extends Request
         $this->userModel = new UserRepository();
     }
 
+    public function getName()
+    {
+        return $this->getBody()['name'];
+    }
+
+    public function getSurname()
+    {
+        return $this->getBody()['surname'];
+    }
+
+    public function getPhone()
+    {
+        return $this->getBody()['phone'];
+    }
+
+    public function getEmail()
+    {
+        return $this->getBody()['email'];
+    }
+
+    public function getPassword()
+    {
+        return $this->getBody()['password'];
+    }
+
+
     function validate(): array
     {
 
         $errors = [];
 
         if (isset($this->body['name'])) {
-            $name = $this->body['name'];
+            $name = $this->getName();
             if (empty($name)) {
                 $errors['name'] = 'Укажите имя.';
             } elseif (strlen($name) < 2) {
@@ -32,7 +58,7 @@ class RegistrateRequest extends Request
         }
 
         if (isset($this->body['surname'])) {
-            $surname = $this->body['surname'];
+            $surname = $this->getSurname();
             if (empty($surname)) {
                 $errors['surname'] = 'Укажите фамилию.';
             } elseif (strlen($surname) < 2) {
@@ -43,7 +69,7 @@ class RegistrateRequest extends Request
         }
 
         if (isset($this->body['phone'])) {
-            $phone = $this->body['phone'];
+            $phone = $this->getPhone();
             if (empty($phone)) {
                 $errors['phone'] = 'Введите Номер Телефона.';
             } elseif (strlen($phone) < 6) {
@@ -54,7 +80,7 @@ class RegistrateRequest extends Request
         }
 
         if (isset($this->body['email'])) {
-            $email = $this->body['email'];
+            $email = $this->getEmail();
             if (empty($email)) {
                 $errors['email'] = 'Укажите почту.';
             } elseif (strlen($email) < 5) {
@@ -72,7 +98,7 @@ class RegistrateRequest extends Request
         }
 
         if (isset($this->body['password'])) {
-            $password = $this->body['password'];
+            $password = $this->getPassword();
             if (empty($password)) {
                 $errors['password'] = 'Укажите пароль.';
             } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{4,30}$/', $password)) {

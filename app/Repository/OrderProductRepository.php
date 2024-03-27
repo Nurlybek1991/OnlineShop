@@ -11,7 +11,7 @@ class OrderProductRepository extends Repository
     public function create(int $userId, int $orderId): void
     {
 
-        $stmt = $this->pdo->prepare("INSERT INTO order_product (order_id, product_id)
+        $stmt = self::getPdo()->prepare("INSERT INTO order_product (order_id, product_id)
             SELECT :order_id, product_id
             FROM user_products
             WHERE user_id = :user_id
@@ -23,7 +23,7 @@ class OrderProductRepository extends Repository
 
     public function getAll(string $userId): mixed
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM order_product 
+        $stmt = self::getPdo()->prepare("SELECT * FROM order_product 
          JOIN orders ON orders.id = order_product.order_id
          WHERE user_id = :user_id");
         $stmt->execute(['user_id' => $userId]);

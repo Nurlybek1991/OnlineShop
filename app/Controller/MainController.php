@@ -2,34 +2,32 @@
 
 namespace Controller;
 
-use Entity\User;
+
 use Repository\ProductRepository;
-use Repository\UserProductRepository;
-use Repository\UserRepository;
+use Service\AuthenticationService\AuthenticationServiceInterface;
+use Service\CartService;
 
 class MainController
 {
     private ProductRepository $productModel;
-    private UserProductRepository $userProductModel;
-    private UserRepository $userModel;
+    private CartService $cartService;
+    private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
-        $this->userProductModel = new UserProductRepository;
-        $this->productModel = new ProductRepository;
-        $this->userModel = new UserRepository();
+        $this->cartService = new CartService();
+        $this->productModel = new ProductRepository();
+        $this->authenticationService = $authenticationService;
     }
-
 
     public function getMain(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $userId = $_SESSION['user_id'];
-        $userShow = $this->userModel->getUserName($userId);
+        $user= $this->authenticationService->getCurrentUser();
+        $userId = $user->getId();
 
         $products = $this->productModel->getAll();
 

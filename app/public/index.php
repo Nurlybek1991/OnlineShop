@@ -14,9 +14,7 @@ use Request\RegistrateRequest;
 
 require_once './../Core/Autoloader.php';
 
-//Autoloader::registrate(dirname(__DIR__));
-$autoloader = new Autoloader();
-$autoloader->registrate(dirname(__DIR__));
+Autoloader::registrate(dirname(__DIR__));
 
 $app = new App();
 
@@ -37,9 +35,11 @@ $app->get('/order',OrderController::class,'getOrder');
 $app->post('/order',OrderController::class, 'postOrder',OrderRequest::class);
 
 $app->get('/orderProduct',OrderController::class,'getOrderProduct');
-$app->post('/orderProduct',OrderController::class, 'postOrderProduct');
+
 
 $app->run();
+
+
 
 
 

@@ -2,71 +2,67 @@
 
 namespace Controller;
 
+
 use Repository\UserProductRepository;
-use Repository\ProductRepository;
 use Request\AddProductRequest;
-use Request\Request;
+use Service\AuthenticationService\AuthenticationServiceInterface;
+use Service\CartService;
 
 class ProductController
 {
+    private AuthenticationServiceInterface $authenticationService;
+    private CartService $cartService;
     private UserProductRepository $userProductModel;
-    private ProductRepository $productModel;
 
 
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
-        $this->userProductModel = new UserProductRepository;
-        $this->productModel = new ProductRepository;
+
+        $this->userProductModel = new UserProductRepository();
+        $this->cartService = new CartService();
+        $this->authenticationService = $authenticationService;
 
     }
 
     public function postAddProduct(AddProductRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $errors = $request->validate();
-        if (empty($errors)) {
-            $data = $request->getBody();
-            $userId = $_SESSION['user_id'];
-            $productId = $data['product_id'];
-            $quantity = 1;
+        $user = $this->authenticationService->getCurrentUser();
+        $userId = $user->getId();
 
-            $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
-            if ($product) {
-                $this->userProductModel->updatePlusQuantity($userId, $productId);
-            } else {
-                $this->userProductModel->addProduct($userId, $productId, $quantity);
-            }
+        $errors = $request->validate($userId);
+
+        if (empty($errors)) {
+            $productId = $request->getProductId();
+            $this->cartService->addProduct($productId);
+
+            header("Location: /main");
+
         }
-        header("Location: /main");
+
+        require_once './../View/main.php';
 
     }
 
     public function postRemoveProduct(AddProductRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
-        $errors = $request->validate();
-        if (empty($errors)) {
-            $data = $request->getBody();
-            $userId = $_SESSION['user_id'];
-            $productId = $data['product_id'];
-            $quantity = 1;
+        $user = $this->authenticationService->getCurrentUser();
+        $userId = $user->getId();
 
-            $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
-            var_dump($product);die;
-            if ($produc ){
-                $this->userProductModel->updateMinusQuantity($userId, $productId);
-            } else {
-                $this->userProductModel->addProduct($userId, $productId, $quantity);
-            }
+        $errors = $request->validate($userId);
+        if (empty($errors)) {
+            $productId = $request->getProductId();
+
+            $this->cartService->removeProduct($productId);
+            header("Location: /main");
         }
-        header('Location: /main');
+        require_once './../View/main.php';
 
     }
 

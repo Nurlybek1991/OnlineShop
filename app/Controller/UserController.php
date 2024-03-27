@@ -5,14 +5,17 @@ namespace Controller;
 use Repository\UserRepository;
 use Request\LoginRequest;
 use Request\RegistrateRequest;
+use Service\AuthenticationService\AuthenticationServiceInterface;
 
 class UserController
 {
     private UserRepository $userModel;
+    private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct()
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
-        $this->userModel = new UserRepository;
+        $this->userModel = new UserRepository();
+        $this->authenticationService = $authenticationService;
     }
 
     public function getRegistrate(): void
@@ -25,14 +28,14 @@ class UserController
         $errors = $request->validate();
 
         if (empty($errors)) {
-            $data = $request->getBody();
-            $name = $data ['name'];
-            $surname = $data['surname'];
-            $phone = $data['phone'];
-            $email = $data['email'];
-            $password = $data['password'];
+            $password = $request->getPassword();
+            $name = $request->getName();
+            $surname = $request->getSurname();
+            $phone = $request->getPhone();
+            $email = $request->getEmail();
+
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $passwordRep = $data['c_password'];
+
 
             $this->userModel->create($name, $surname, $phone, $email, $password);
 
@@ -54,26 +57,15 @@ class UserController
         $errors = $request->validate();
 
         if (empty($errors)) {
-            $data = $request->getBody();
-            $login = $data['login'];
-            $password = $data['password'];
+            $login = $request->getLogin();
+            $password = $request->getPassword();
 
-            $user = $this->userModel->getByEmail($login);
-
-            if (empty($user)) {
-                $errors['login'] = 'Логин введен неверно';
+            if ($this->authenticationService->login($login, $password)) {
+                header("Location: /main");
             } else {
-                if (password_verify($password, $user->getPassword())) {
-                    session_start();
-                    $_SESSION['user_id'] = $user->getId();
-                    header('location:/main');
-                } else {
-                    $errors['login'] = 'Логин или пароль введен неверно';
-                }
+                $errors['login'] = 'Логин или пароль введен неверно';
             }
-            if ($errors) {
-                require_once './../View/login.php';
-            }
+
         }
 
         require_once './../View/login.php';

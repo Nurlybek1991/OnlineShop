@@ -3,58 +3,62 @@
 namespace Repository;
 
 use Entity\Order;
-use Entity\User;
 
 
 class OrderRepository extends Repository
 {
 
-    public function create(int $userId, string $firstname, string $lastname, int $phoneOrder, string $email, int $postcode, string $city, string $address, string $country): void
+    public function create(int $userId, string $firstname, string $lastname, string $country, string $address, string $city, int $postcode, int $phoneOrder, string $email): void
     {
 
-        $stmt = $this->pdo->prepare("INSERT INTO orders (user_id ,firstname, lastname, phoneOrder, email, postcode, city, address, country) VALUES (:user_id, :firstname, :lastname, :phoneOrder, :email,  :postcode, :city, :address, :country)");
-        $stmt->execute(['user_id' => $userId, 'firstname' => $firstname, 'lastname' => $lastname, 'phoneOrder' => $phoneOrder, 'email' => $email, 'postcode' => $postcode, 'city' => $city, 'address' => $address, 'country' => $country]);
+        $stmt = self::getPdo()->prepare("INSERT INTO orders (user_id ,firstname, lastname,country, address,  city, postcode,  phoneOrder, email) VALUES (:user_id, :firstname, :lastname,  :country, :address, :city,  :postcode, :phoneOrder, :email)");
+        $stmt->execute(['user_id' => $userId, 'firstname' => $firstname, 'lastname' => $lastname, 'country' => $country, 'address' => $address, 'city' => $city, 'postcode' => $postcode, 'phoneOrder' => $phoneOrder, 'email' => $email]);
 
     }
 
-    public function getAll(string $userId): array|null
+    public function getByEmail(string $email): array|null
     {
 
-        $stmt = $this->pdo->prepare("SELECT firstname,lastname FROM orders 
-         JOIN users ON users.id =orders.user_id
-         WHERE user_id=:user_id");
-        $stmt->execute(['user_id' => $userId]);
-        $orderProducts =  $stmt->fetch();
+        $stmt = self::getPdo()->prepare("SELECT * FROM orders WHERE email=:email");
+        $stmt->execute(['email' => $email]);
+        $orders =  $stmt->fetch();
 
-        if (!$orderProducts){
+        if(empty($orders)){
+            return null;
+        }
+        $arr = [];
+        foreach ($orders as $order) {
+            $arr[] = $this->hydrate($order);
+        }
+
+        return $arr;
+
+    }
+
+    public function getById(string $orderId): Order|null
+    {
+
+        $stmt = self::getPdo()->prepare("SELECT * FROM orders WHERE id=:id");
+        $stmt->execute(['id' => $orderId]);
+        $order = $stmt->fetch();
+
+        if (empty($order)) {
             return null;
         }
 
-        $arr = [];
-        foreach ($orderProducts as $orderProduct){
-            $arr[] = $this->hydrate((array) $orderProduct);
-        }
-        return $arr;
-    }
-    public function hydrate(array $data): Order
-    {
-        return new Order($data['id'],
-           new User($data['id'], $data['name'], $data['surname'], $data['phone'], $data['email'],
-               $data['password']),$data['firstname'],$data['lastname'],$data['country'],$data['address'],
-            $data['city'],$data['postcode'],$data['phone'],$data['email']);
-    }
+        return $this->hydrate($order);
 
-    public function getByEmail(string $email): mixed
-    {
 
-        $stmt = $this->pdo->prepare("SELECT * FROM orders WHERE email=:email");
-        $stmt->execute(['email' => $email]);
-        return $stmt->fetch();
     }
 
     public function getOrderId(): false|string
     {
-        return $this->pdo->lastInsertId();
+        return self::getPdo()->lastInsertId();
+    }
+
+    private function hydrate(array $data): Order
+    {
+        return new Order($data['id'], $data['user_id'], $data['firstname'], $data['lastname'], $data['country'], $data['address'], $data['city'], $data['postcode'], $data['phoneOrder'], $data['email']);
     }
 
 

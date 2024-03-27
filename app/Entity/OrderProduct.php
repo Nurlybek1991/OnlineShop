@@ -8,12 +8,12 @@ class OrderProduct
 
     private Order $order;
 
-    private Product $userProduct;
+    private UserProduct $userProduct;
 
     private int $quantity;
 
 
-    public function __construct(int $id, Order $order, Product $userProduct, int $quantity)
+    public function __construct(int $id, Order $order, UserProduct $userProduct, int $quantity)
     {
         $this->id = $id;
         $this->order = $order;
@@ -31,7 +31,7 @@ class OrderProduct
         return $this->order;
     }
 
-    public function getProduct(): Product
+    public function getProduct(): UserProduct
     {
         return $this->userProduct;
     }

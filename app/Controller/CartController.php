@@ -2,50 +2,36 @@
 
 namespace Controller;
 
-
-use Repository\UserProductRepository;
-use Repository\UserRepository;
+use Request\AddProductRequest;
+use Service\AuthenticationService\AuthenticationServiceInterface;
+use Service\CartService;
 
 class CartController
 {
-    private UserProductRepository $userProductModel;
-    private UserRepository $userModel;
+    private CartService $cartService;
 
-    public function __construct()
+    private AuthenticationServiceInterface $authenticationService;
+
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
-        $this->userProductModel = new UserProductRepository;
-        $this->userModel = new UserRepository();
+        $this->cartService = new CartService();
+        $this->authenticationService = $authenticationService;
     }
 
     public function getCart(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
-        $userId = $_SESSION['user_id'];
-        $userShow = $this->userModel->getUserName($userId);
+        $user = $this->authenticationService->getCurrentUser();
+        $userId = $user->getId();
 
-        $cartProducts = $this->userProductModel->getAll($userId);
-        $sumTotalCart = $this->getSumPrice($cartProducts);
+        $cartProducts = $this->cartService->getProducts($userId);
+        $sumTotalCart = $this->cartService->getSumPrice($cartProducts);
 
         require_once './../View/cart.php';
     }
-
-    public function getSumPrice(array $price): int|string
-    {
-        $sum = 0;
-        foreach ($price as $sumPrice) {
-            $sum += $sumPrice->getProduct()->getPrice() * $sumPrice->getQuantity();
-        }
-
-        if($sum < -1 ){
-            $sum = 'Сумма некорректна';
-        }
-        return $sum;
-
-    }
-
 
 }

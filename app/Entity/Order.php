@@ -6,7 +6,7 @@ namespace Entity;
 class Order
 {
     private int $id;
-    private User $user;
+    private int $userId;
     private string $firstname;
     private string $lastname;
     private string $country;
@@ -16,10 +16,10 @@ class Order
     private int $phoneOrder;
     private string $email;
 
-    public function __construct(int $id, User $user, string $firstname, string $lastname, string $country, string $address, string $city, int $postcode, int $phoneOrder, string $email)
+    public function __construct(int $id, int $userId, string $firstname, string $lastname, string $country, string $address, string $city, int $postcode, int $phoneOrder, string $email)
     {
         $this->id = $id;
-        $this->user = $user;
+        $this->userId = $userId;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->country = $country;
@@ -35,9 +35,9 @@ class Order
         return $this->id;
     }
 
-    public function getUser(): User
+    public function getUser(): int
     {
-        return $this->user;
+        return $this->userId;
     }
 
     public function getFirstname(): string

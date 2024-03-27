@@ -2,65 +2,63 @@
 
 namespace Controller;
 
-use Repository\OrderRepository;
-use Repository\OrderProductRepository;
-use Repository\UserRepository;
 use Repository\UserProductRepository;
 use Request\OrderRequest;
+use Service\AuthenticationService\AuthenticationService;
+use Service\AuthenticationService\AuthenticationServiceInterface;
+use Service\CartService;
+use Service\OrderService;
 
 class OrderController
 {
-    private OrderRepository $orderModel;
-    private UserRepository $userModel;
     private UserProductRepository $userProductModel;
-    private OrderProductRepository $orderProductModel;
+    private OrderService $orderService;
+    private CartService $cartService;
+    private  AuthenticationServiceInterface $authenticationService;
 
-    public function __construct()
+
+    public function __construct(AuthenticationServiceInterface $authenticationService)
     {
-        $this->orderModel = new OrderRepository;
-        $this->userProductModel = new UserProductRepository;
-        $this->userModel = new UserRepository;
-        $this->orderProductModel = new OrderProductRepository;
+        $this->cartService = new CartService();
+        $this->userProductModel = new UserProductRepository();
+        $this->orderService = new OrderService();
+        $this->authenticationService = $authenticationService;
+
 
     }
 
     public function getOrder(): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
-        $userId = $_SESSION['user_id'];
-        $userShow = $this->userModel->getUserName($userId);
+        $userId = $this->authenticationService->getCurrentUser()->getId();
+
         require_once './../View/order.php';
     }
 
     public function postOrder(OrderRequest $request): void
     {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
+        if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
+
+        $userId = $this->authenticationService->getCurrentUser()->getId();
 
         $errors = $request->validate();
 
         if (empty($errors)) {
-            $userId = $_SESSION['user_id'];
-            $data = $request->getBody();
-            $firstname = $data['firstname'];
-            $lastname = $data['lastname'];
-            $phoneOrder = $data['phoneOrder'];
-            $email = $data['email'];
+
+            $firstname = $request->getFirstname();
+            $lastname = $request->getLastname();
             $country = $data['country'];
             $address = $data['address'];
             $city = $data['city'];
             $postcode = $data['postcode'];
+            $phoneOrder = $data['phoneOrder'];
+            $email = $data['email'];
 
-
-            $this->orderModel->create($userId, $firstname, $lastname, $phoneOrder, $email, $postcode, $country, $city, $address);
-            $orderId = $this->orderModel->getOrderId();
-            $this->orderProductModel->create($userId, $orderId);
-            $this->userProductModel->removeAllProducts($userId);
+             $this->orderService->create($userId, $firstname, $lastname, $country, $address, $city, $postcode ,$phoneOrder, $email);
 
             header('location:/orderProduct');
 
@@ -68,20 +66,5 @@ class OrderController
 
         require_once './../View/order.php';
     }
-
-    public function getOrderProduct(): void
-    {
-        session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header("Location: /login");
-        }
-
-        $userId = $_SESSION['user_id'];
-        $orderInfos = $this->orderModel->getAll($userId);
-        $orderProducts = $this->orderProductModel->getAll($userId);
-//        var_dump($orderInfos);die;
-        require_once './../View/orderProduct.php';
-    }
-
 
 }

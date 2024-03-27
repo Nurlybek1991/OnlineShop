@@ -2,8 +2,31 @@
 
 namespace Request;
 
+use Repository\UserRepository;
+
 class LoginRequest extends Request
 {
+
+    private UserRepository $userModel;
+    public function __construct(string $method, array $body = [], array $headers = [])
+    {
+        parent::__construct($method, $headers, $body);
+
+        $this->userModel = new UserRepository();
+
+    }
+
+    public function getLogin()
+    {
+        return $this->body['login'];
+
+    }
+
+    public function getPassword()
+    {
+        return $this->body['password'];
+
+    }
     function validate(): array
     {
         $errors = [];

@@ -16,10 +16,6 @@ class Request
         $this->headers = $headers;
     }
 
-    public function setBody(array $body): void
-    {
-        $this->body = $body;
-    }
 
     public function getMethod(): string
     {

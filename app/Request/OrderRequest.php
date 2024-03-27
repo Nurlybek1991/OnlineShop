@@ -19,6 +19,8 @@ class OrderRequest extends Request
         $this->orderModel = new OrderRepository();
         $this->userModel = new UserRepository();
     }
+
+
     function validate(): array
     {
         $errors = [];

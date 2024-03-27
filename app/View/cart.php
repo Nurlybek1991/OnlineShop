@@ -14,7 +14,7 @@
                 <li><a href="/main">Продукты</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Контакты</a></li>
-                <li><a href="/registrate">Аккаунт</a><?php print_r(" Корзина: " . $userShow['name'] . " "  . $userShow['surname'])?></li>
+<!--                <li><a href="/registrate">Аккаунт</a>--><?php //print_r(" Корзина: " . $userShow->getName() . " "  . $userShow->getSurname())?><!--</li>-->
             </ul>
         </nav>
         <!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
