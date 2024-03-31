@@ -2,19 +2,8 @@
 
 namespace Request;
 
-use Repository\UserRepository;
-
 class LoginRequest extends Request
 {
-
-    private UserRepository $userModel;
-    public function __construct(string $method, array $body = [], array $headers = [])
-    {
-        parent::__construct($method, $headers, $body);
-
-        $this->userModel = new UserRepository();
-
-    }
 
     public function getLogin()
     {
@@ -27,12 +16,13 @@ class LoginRequest extends Request
         return $this->body['password'];
 
     }
+
     function validate(): array
     {
         $errors = [];
 
         if (isset($this->body['login'])) {
-            $login = $this->body['login'];
+            $login = $this->getLogin();
             if (empty($login)) {
                 $errors['login'] = 'Логин должен содержать более 4 символов';
             } elseif (!strpos($login, '@')) {
@@ -43,7 +33,7 @@ class LoginRequest extends Request
         }
 
         if (isset($this->body['password'])) {
-            $password = $this->body['password'];
+            $password = $this->getPassword();
             if (empty($password)) {
                 $errors['password'] = 'Поле пустое';
             }

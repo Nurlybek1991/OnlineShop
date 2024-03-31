@@ -2,11 +2,11 @@
 
 namespace Service;
 
-
-use Entity\Order;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
+use Repository\Repository;
 use Repository\UserProductRepository;
+
 
 class OrderService
 {
@@ -22,16 +22,28 @@ class OrderService
         $this->orderProductModel = new OrderProductRepository();
     }
 
-    public function create(int $userId, string $firstname, string $lastname, string $country, string $city, string $address, int $postcode, int $phoneOrder, string $email): array|Order|null
+    /**
+     * @throws Throwable
+     */
+    public function create(int $userId, string $firstname, string $lastname, string $country, string $city, string $address, int $postcode, int $phoneOrder, string $email)
     {
-        $this->orderModel->create($userId, $firstname, $lastname, $country, $city, $address, $postcode, $phoneOrder, $email);
-        $orderId = $this->orderModel->getOrderId();
-        $this->orderProductModel->create($userId, $orderId);
-        $this->userProductModel->removeAllProducts($userId);
-        $orderId = $this->orderModel->getOrderId();
+        $pdo = Repository::getPdo();
+        $pdo->beginTransaction();
 
-        return $this->orderModel->getById($orderId);
+        try {
+            $this->orderModel->create($userId, $firstname, $lastname, $country, $city, $address, $postcode, $phoneOrder, $email);
+            $orderId = $this->orderModel->getOrderId();
+            $orderProducts = $this->orderProductModel->create($userId, $orderId);
+            $this->userProductModel->removeAllProducts($userId);
+
+            return $orderProducts;
+
+        } catch (\Throwable $exception) {
+            echo $exception->getMessage();
+            $pdo->rollBack();
+        }
+
+        $pdo->commit();
+
     }
-
-
 }

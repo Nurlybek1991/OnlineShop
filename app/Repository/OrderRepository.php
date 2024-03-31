@@ -23,12 +23,13 @@ class OrderRepository extends Repository
         $stmt->execute(['email' => $email]);
         $orders =  $stmt->fetch();
 
-        if(empty($orders)){
+        if(empty(!$orders)){
             return null;
         }
         $arr = [];
         foreach ($orders as $order) {
             $arr[] = $this->hydrate($order);
+
         }
 
         return $arr;

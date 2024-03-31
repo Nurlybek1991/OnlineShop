@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-
-use Repository\UserProductRepository;
 use Request\AddProductRequest;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\CartService;
@@ -12,16 +10,11 @@ class ProductController
 {
     private AuthenticationServiceInterface $authenticationService;
     private CartService $cartService;
-    private UserProductRepository $userProductModel;
 
-
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, CartService $cartService)
     {
-
-        $this->userProductModel = new UserProductRepository();
-        $this->cartService = new CartService();
         $this->authenticationService = $authenticationService;
-
+        $this->cartService = $cartService;
     }
 
     public function postAddProduct(AddProductRequest $request): void
@@ -30,13 +23,14 @@ class ProductController
             header("Location: /login");
         }
 
-        $user = $this->authenticationService->getCurrentUser();
-        $userId = $user->getId();
+        $userId = $this->authenticationService->getCurrentUser()->getId();
+
 
         $errors = $request->validate($userId);
 
         if (empty($errors)) {
             $productId = $request->getProductId();
+
             $this->cartService->addProduct($productId);
 
             header("Location: /main");
@@ -60,6 +54,7 @@ class ProductController
             $productId = $request->getProductId();
 
             $this->cartService->removeProduct($productId);
+
             header("Location: /main");
         }
         require_once './../View/main.php';

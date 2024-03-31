@@ -19,9 +19,9 @@ if (empty($products)) {
         </div>
         <nav>
             <ul id="MenuItems">
-                <li><a href="/cart"><?php print_r($userShow->getName(). " " . $userShow->getSurname())  ?></a></li>
-                <li><a href="/login">ВЫЙТИ</a><?php $this->logout(); ?></li>
-                <li><a href="/registrate">АККАУНТ</a><br><?php print_r(" " . $userShow->getEmail())?></li>
+<!--                <li><a href="/cart">--><?php //print_r($userShow->getName(). " " . $userShow->getSurname())  ?><!--</a></li>-->
+<!--                <li><a href="/login">ВЫЙТИ</a>--><?php //$this->logout(); ?><!--</li>-->
+<!--                <li><a href="/registrate">АККАУНТ</a><br>--><?php //print_r(" " . $userShow->getEmail())?><!--</li>-->
 
             </ul>
         </nav>

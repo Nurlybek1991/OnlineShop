@@ -5,7 +5,6 @@ namespace Request;
 use Repository\OrderRepository;
 use Repository\UserRepository;
 
-
 class OrderRequest extends Request
 {
 
@@ -20,6 +19,45 @@ class OrderRequest extends Request
         $this->userModel = new UserRepository();
     }
 
+    public function getFirstname()
+    {
+        return $this->getBody()['firstname'];
+    }
+
+    public function getLastname()
+    {
+        return $this->getBody()['lastname'];
+    }
+
+    public function getPhoneOrder()
+    {
+        return $this->getBody()['phoneOrder'];
+    }
+
+    public function getEmail()
+    {
+        return $this->getBody()['email'];
+    }
+
+    public function getCountry()
+    {
+        return $this->getBody()['country'];
+    }
+
+    public function getAddress()
+    {
+        return $this->getBody()['address'];
+    }
+
+    public function getCity()
+    {
+        return $this->getBody()['city'];
+    }
+
+    public function getPostcode()
+    {
+        return $this->getBody()['postcode'];
+    }
 
     function validate(): array
     {

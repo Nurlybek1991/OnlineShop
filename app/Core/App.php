@@ -2,23 +2,17 @@
 
 namespace Core;
 
-use Controller\CartController;
-use Controller\MainController;
-use Controller\OrderController;
-use Controller\ProductController;
-use Controller\UserController;
-use Request\AddProductRequest;
-use Request\LoginRequest;
-use Request\OrderRequest;
-use Request\RegistrateRequest;
 use Request\Request;
-use Service\AuthenticationService\AuthenticationCookieService;
-use Service\AuthenticationService\AuthenticationSessionService;
-
 
 class App
 {
+    private Container $container;
     private array $routes = [];
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
 
     public function run(): void
     {
@@ -39,10 +33,7 @@ class App
                     $request = new Request($routeMethod, $_POST);
                 }
 
-                $authService = new AuthenticationSessionService();
-//                $authService = new AuthenticationCookieService();
-
-                $obj = new $class($authService);
+                $obj = $this->container->get($class);
                 $obj->$method($request);
             } else {
                 echo "$routeMethod не поддерживается для адреса $uri!";
@@ -62,7 +53,7 @@ class App
         ];
     }
 
-    public function post($routeName, $className, $method,$request = null): void
+    public function post($routeName, $className, $method, $request = null): void
     {
         $this->routes[$routeName]['POST'] = [
             'class' => $className,

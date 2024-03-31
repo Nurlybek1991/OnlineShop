@@ -12,9 +12,9 @@ class UserController
     private UserRepository $userModel;
     private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserRepository $userModel)
     {
-        $this->userModel = new UserRepository();
+        $this->userModel = $userModel;
         $this->authenticationService = $authenticationService;
     }
 
@@ -71,5 +71,6 @@ class UserController
         require_once './../View/login.php';
 
     }
+
 
 }

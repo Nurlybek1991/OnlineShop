@@ -30,7 +30,7 @@ class UserProductRepository extends Repository
         $stmt->execute(['user_id' => $userId]);
         $userProducts = $stmt->fetchAll();
 
-        if (empty(!$userProducts)) {
+        if (empty($userProducts)) {
             return null;
         }
 
@@ -61,7 +61,7 @@ class UserProductRepository extends Repository
         );
         $stmt->execute(['user_id' => $userId, 'product_id' => $productId]);
         $userProduct = $stmt->fetch();
-//        var_dump($userProduct);die;
+//        var_dump(!$userProduct);die;
         if (empty($userProduct)) {
             return null;
         }

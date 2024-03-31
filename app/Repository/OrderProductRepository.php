@@ -2,10 +2,6 @@
 
 namespace Repository;
 
-use Entity\OrderProduct;
-use Entity\UserProduct;
-use Entity\User;
-
 class OrderProductRepository extends Repository
 {
     public function create(int $userId, int $orderId): void
@@ -18,16 +14,6 @@ class OrderProductRepository extends Repository
           ");
 
         $stmt->execute(['user_id' => $userId, 'order_id' => $orderId]);
-
-    }
-
-    public function getAll(string $userId): mixed
-    {
-        $stmt = self::getPdo()->prepare("SELECT * FROM order_product 
-         JOIN orders ON orders.id = order_product.order_id
-         WHERE user_id = :user_id");
-        $stmt->execute(['user_id' => $userId]);
-        return $stmt->fetch();
 
     }
 

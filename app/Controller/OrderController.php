@@ -2,28 +2,24 @@
 
 namespace Controller;
 
-use Repository\UserProductRepository;
 use Request\OrderRequest;
-use Service\AuthenticationService\AuthenticationService;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\CartService;
 use Service\OrderService;
 
 class OrderController
 {
-    private UserProductRepository $userProductModel;
+
     private OrderService $orderService;
     private CartService $cartService;
-    private  AuthenticationServiceInterface $authenticationService;
+    private AuthenticationServiceInterface $authenticationService;
 
 
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService, CartService $cartService, OrderService $orderService)
     {
-        $this->cartService = new CartService();
-        $this->userProductModel = new UserProductRepository();
-        $this->orderService = new OrderService();
         $this->authenticationService = $authenticationService;
-
+        $this->cartService = $cartService;
+        $this->orderService = $orderService;
 
     }
 
@@ -51,14 +47,14 @@ class OrderController
 
             $firstname = $request->getFirstname();
             $lastname = $request->getLastname();
-            $country = $data['country'];
-            $address = $data['address'];
-            $city = $data['city'];
-            $postcode = $data['postcode'];
-            $phoneOrder = $data['phoneOrder'];
-            $email = $data['email'];
+            $country = $request->getCountry();
+            $address = $request->getAddress();
+            $city = $request->getCity();
+            $postcode = $request->getPostcode();
+            $phoneOrder = $request->getPhoneOrder();
+            $email = $request->getEmail();
 
-             $this->orderService->create($userId, $firstname, $lastname, $country, $address, $city, $postcode ,$phoneOrder, $email);
+            $this->orderService->create($userId, $firstname, $lastname, $country, $address, $city, $postcode, $phoneOrder, $email);
 
             header('location:/orderProduct');
 

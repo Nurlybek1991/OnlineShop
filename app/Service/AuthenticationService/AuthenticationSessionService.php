@@ -34,9 +34,9 @@ class AuthenticationSessionService implements AuthenticationServiceInterface
         return null;
     }
 
-    public function login(string $email, string $password): bool
+    public function login(string $login, string $password): bool
     {
-        $user = $this->userModel->getByEmail($email);
+        $user = $this->userModel->getByEmail($login);
 
         if (!$user instanceof User) {
             return false;
