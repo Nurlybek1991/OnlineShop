@@ -4,7 +4,7 @@ namespace Core;
 
 class Container
 {
-    private array $services = [];
+    private array $services;
 
     public function __construct(array $services){
         $this->services = $services;

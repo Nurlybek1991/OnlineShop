@@ -3,15 +3,18 @@
 namespace Core;
 
 use Request\Request;
+use Service\LoggerService;
 
 class App
 {
     private Container $container;
+    private LoggerService $loggerService;
     private array $routes = [];
 
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->loggerService = $this->container->get(LoggerService::class);
     }
 
     public function run(): void
@@ -34,7 +37,15 @@ class App
                 }
 
                 $obj = $this->container->get($class);
-                $obj->$method($request);
+
+                try {
+                    $obj->$method($request);
+                } catch (\Throwable $exception) {
+
+                    $this->loggerService->error($exception);
+
+                    require_once './../View/500.html';
+                }
             } else {
                 echo "$routeMethod не поддерживается для адреса $uri!";
             }

@@ -9,9 +9,9 @@ class AuthenticationSessionService implements AuthenticationServiceInterface
 {
     private UserRepository $userModel;
 
-    public function __construct()
+    public function __construct(UserRepository $userModel)
     {
-        $this->userModel = new UserRepository();
+        $this->userModel = $userModel;
     }
 
     public function check(): bool

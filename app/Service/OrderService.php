@@ -15,16 +15,14 @@ class OrderService
     private OrderProductRepository $orderProductModel;
     private UserProductRepository $userProductModel;
 
-    public function __construct()
+    public function __construct(UserProductRepository $userProductModel, OrderRepository $orderModel, OrderProductRepository $orderProductModel)
     {
-        $this->userProductModel = new UserProductRepository();
-        $this->orderModel = new OrderRepository();
-        $this->orderProductModel = new OrderProductRepository();
+        $this->userProductModel = $userProductModel;
+        $this->orderModel = $orderModel;
+        $this->orderProductModel = $orderProductModel;
     }
 
-    /**
-     * @throws Throwable
-     */
+
     public function create(int $userId, string $firstname, string $lastname, string $country, string $city, string $address, int $postcode, int $phoneOrder, string $email)
     {
         $pdo = Repository::getPdo();
@@ -36,14 +34,15 @@ class OrderService
             $orderProducts = $this->orderProductModel->create($userId, $orderId);
             $this->userProductModel->removeAllProducts($userId);
 
+            $pdo->commit();
+
             return $orderProducts;
 
         } catch (\Throwable $exception) {
-            echo $exception->getMessage();
-            $pdo->rollBack();
+            $pdo->rollback();
+            $exception->getMessage();
         }
 
-        $pdo->commit();
 
     }
 }

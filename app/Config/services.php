@@ -8,12 +8,16 @@ use Controller\UserController;
 
 use Core\Container;
 
+use Repository\OrderProductRepository;
+use Repository\OrderRepository;
 use Repository\ProductRepository;
+use Repository\UserProductRepository;
 use Repository\UserRepository;
 
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\AuthenticationService\AuthenticationSessionService;
 use Service\CartService;
+use Service\OrderService;
 
 return [
 
@@ -54,8 +58,26 @@ return [
         return new OrderController($authenticationService, $cartService, $orderService);
     },
 
-    AuthenticationServiceInterface::class => function () {
-        return new AuthenticationSessionService();
+    CartService::class => function (Container $container) {
+        $authenticationService = $container->get(AuthenticationServiceInterface::class);
+        $userProductModel = $container->get(UserProductRepository::class);
+
+        return new CartService($authenticationService, $userProductModel);
+    },
+
+    OrderService::class => function (Container $container) {
+        $cartService = $container->get(CartService::class);
+        $orderModel = $container->get(OrderRepository::class);
+        $orderProductModel = $container->get(OrderProductRepository::class);
+
+        return new OrderService($cartService, $orderModel, $orderProductModel);
+    },
+
+    AuthenticationServiceInterface::class => function (Container $container) {
+        $userModel = $container->get(UserRepository::class);
+
+        return new AuthenticationSessionService($userModel);
+
     }
 
 ];

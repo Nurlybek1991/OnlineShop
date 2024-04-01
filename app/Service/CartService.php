@@ -11,10 +11,10 @@ class CartService
     private UserProductRepository $userProductModel;
     private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService)
+    public function __construct(AuthenticationServiceInterface $authenticationService,UserProductRepository $userProductModel)
     {
         $this->authenticationService = $authenticationService;
-        $this->userProductModel = new UserProductRepository();
+        $this->userProductModel = $userProductModel;
     }
 
     public function getProducts(int $userId): array
