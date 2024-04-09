@@ -23,7 +23,7 @@ class OrderRepository extends Repository
         $stmt->execute(['email' => $email]);
         $orders =  $stmt->fetch();
 
-        if(empty(!$orders)){
+        if(empty($orders)){
             return null;
         }
         $arr = [];
@@ -43,7 +43,7 @@ class OrderRepository extends Repository
         $stmt->execute(['id' => $orderId]);
         $order = $stmt->fetch();
 
-        if (empty($order)) {
+        if (empty(!$order)) {
             return null;
         }
 

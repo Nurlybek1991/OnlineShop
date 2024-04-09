@@ -28,7 +28,7 @@ if (empty($products)) {
         <a href="/cart"><br><br><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
-                    height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>
+                   height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>
             <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
 
     </div>

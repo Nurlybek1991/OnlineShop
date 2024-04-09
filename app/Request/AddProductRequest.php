@@ -29,10 +29,10 @@ class AddProductRequest extends Request
 
         $productId = $this->getProductId();
         $product = $this->userProductRepository->getByUserIdProductId($userId,$productId);
-//var_dump($product);die;
-        if ($this->body['quantity'] <= '0') {
 
-            $errors['quantity'] = 'Продукта нет ';
+        if ($this->getQuantity() <= '0') {
+
+            $errors['quantity'] = 'Продукта нет такого';
 
         }
 

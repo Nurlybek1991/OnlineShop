@@ -23,7 +23,7 @@ class OrderService
     }
 
 
-    public function create(int $userId, string $firstname, string $lastname, string $country, string $city, string $address, int $postcode, int $phoneOrder, string $email)
+    public function create(int $userId, string $firstname, string $lastname, string $country, string $city, string $address, int $postcode, int $phoneOrder, string $email): void
     {
         $pdo = Repository::getPdo();
         $pdo->beginTransaction();
@@ -31,12 +31,11 @@ class OrderService
         try {
             $this->orderModel->create($userId, $firstname, $lastname, $country, $city, $address, $postcode, $phoneOrder, $email);
             $orderId = $this->orderModel->getOrderId();
-            $orderProducts = $this->orderProductModel->create($userId, $orderId);
+            $this->orderProductModel->create($userId, $orderId);
             $this->userProductModel->removeAllProducts($userId);
 
             $pdo->commit();
 
-            return $orderProducts;
 
         } catch (\Throwable $exception) {
             $pdo->rollback();

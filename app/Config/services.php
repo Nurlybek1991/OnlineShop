@@ -46,14 +46,15 @@ return [
     CartController::class => function (Container $container) {
         $authenticationService = $container->get(AuthenticationServiceInterface::class);
         $cartService = $container->get(CartService::class);
+        $userProductModel = $container->get(UserProductRepository::class);
 
-        return new CartController($authenticationService, $cartService);
+        return new CartController($authenticationService, $cartService, $userProductModel);
     },
 
     OrderController::class => function (Container $container) {
         $authenticationService = $container->get(AuthenticationServiceInterface::class);
         $cartService = $container->get(CartService::class);
-        $orderService = $container->get(OrderController::class);
+        $orderService = $container->get(OrderService::class);
 
         return new OrderController($authenticationService, $cartService, $orderService);
     },
@@ -66,11 +67,11 @@ return [
     },
 
     OrderService::class => function (Container $container) {
-        $cartService = $container->get(CartService::class);
+        $userProductModel = new UserProductRepository();
         $orderModel = $container->get(OrderRepository::class);
         $orderProductModel = $container->get(OrderProductRepository::class);
 
-        return new OrderService($cartService, $orderModel, $orderProductModel);
+        return new OrderService($userProductModel, $orderModel, $orderProductModel);
     },
 
     AuthenticationServiceInterface::class => function (Container $container) {

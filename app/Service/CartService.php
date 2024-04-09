@@ -11,7 +11,7 @@ class CartService
     private UserProductRepository $userProductModel;
     private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService,UserProductRepository $userProductModel)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserProductRepository $userProductModel)
     {
         $this->authenticationService = $authenticationService;
         $this->userProductModel = $userProductModel;
@@ -45,12 +45,13 @@ class CartService
             return;
         }
         $userId = $user->getId();
+        $this->userProductModel->updateMinusQuantity($userId, $productId);
 
         $product = $this->userProductModel->getByUserIdProductId($userId, $productId);
         if ($product) {
-            $this->userProductModel->updateMinusQuantity($userId, $productId);
-        } else {
-            $this->userProductModel->addProduct($userId, $productId, 1);
+            if ($product->getQuantity() === 0) {
+                $this->userProductModel->removeProduct($userId, $productId);
+            }
         }
     }
 
@@ -62,7 +63,7 @@ class CartService
             $sum += $sumPrice->getProduct()->getPrice() * $sumPrice->getQuantity();
         }
         if ($sum <= 0) {
-            $sum = 'должна быть больше 0';
+            $sum = 'Сумма должна быть больше 0';
         }
 
         return $sum;

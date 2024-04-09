@@ -33,9 +33,11 @@ $app->post('/login', UserController::class, 'postLogin', LoginRequest::class);
 $app->get('/main', MainController::class, 'getMain');
 $app->post('/main', ProductController::class, 'postAddProduct', AddProductRequest::class);
 
-$app->post('/removeProduct', ProductController::class, 'postRemoveProduct', AddProductRequest::class);
+$app->post('/removeProduct', ProductController::class, 'postRemoveProduct',AddProductRequest::class);
 
 $app->get('/cart', CartController::class, 'getCart');
+$app->get('/remove', CartController::class, 'clearProduct');
+
 
 $app->get('/order', OrderController::class, 'getOrder');
 $app->post('/order', OrderController::class, 'postOrder', OrderRequest::class);

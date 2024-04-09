@@ -1,34 +1,18 @@
 <div class="container">
-    <h2>Заказы</h2>
+    <h2>Ваш заказ успешно создан</h2>
     <h2 class="card-deck">
-<!--        <a href="/main" > <h3 class="cart"> назад на главную страницу </h3> </a>-->
-        <?php foreach ($orderInfos as $orderInfo ): ?>
-        <?php echo 'Имя и фамилия заказчика: ' . $orderInfo->getFirstname() .  " " . $orderInfo->getLastName() ."<br>" ?>
-<!--        --><?php //echo 'Тел: ' . $orderInfo['postcode'] . "<br>"?>
-<!--        --><?php //echo "Город:  {$orderInfo['city']}  Адрес: {$orderInfo['address']}";echo "<br>";?>
-        <?php endforeach; ?>
-<!--        --><?php //foreach ($orderProducts as $orderProduct): ?>
-<!--            --><?php //foreach ($orderItems as $orderItem): ?>
-<!--                --><?php //if ($orderItem->getProductId() === $product->getId()): ?>
-                    <form action="/order-items" method="get">
+                    <form action="/orderProduct" method="get">
                         <div class="card text-center">
                             <a href="#">
                                 <div class="card-header">
-                                    .
+
                                 </div>
                                 <div class="card-body">
-<!--                                    <a href="#"><h3 class="card-title">--><?php //echo $orderProducts['order_id']  ?><!--</h3></a>-->
-<!--                                    <a href="#"><h3 class="card-title">--><?php //'заказ №' . $orderProduct->getOrder()->getId()?><!--</h3></a>-->
-<!--                                    <a href="#"><h3 class="card-title">--><?php //echo 'количество ' . $orderItem->getQuantity() . ' шт.' ?><!--</h3></a>-->
-<!--                                    <a href="#"><h4 class="card-title">--><?php //echo $orderItem->getPrice() . ' р.'?><!--</h4></a>-->
                                 </div>
                             </a>
                         </div>
                     </form>
-<!--                --><?php //endif; ?>
-<!--            --><?php //endforeach; ?>
-<!--        --><?php //endforeach; ?>
-<!--        --><?php //echo 'Итого к оплате ' . $sumTotalCart . ' р.'; ?>
+
 </div>
 <style>
     body {

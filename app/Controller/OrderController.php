@@ -30,6 +30,9 @@ class OrderController
         }
         $userId = $this->authenticationService->getCurrentUser()->getId();
 
+        $orderProducts = $this->cartService->getProducts($userId);
+        $totalPrice = $this->cartService->getSumPrice($orderProducts);
+
         require_once './../View/order.php';
     }
 
@@ -56,11 +59,15 @@ class OrderController
 
             $this->orderService->create($userId, $firstname, $lastname, $country, $address, $city, $postcode, $phoneOrder, $email);
 
-            header('location:/orderProduct');
+            header("location:/orderProduct");
 
         }
 
         require_once './../View/order.php';
     }
 
+    public function getOrderProduct()
+    {
+        require_once './../View/orderProduct.php';
+    }
 }

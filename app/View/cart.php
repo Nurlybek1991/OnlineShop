@@ -38,6 +38,7 @@
                 <th>Цена</th>
             </tr>
             <tr>
+
                 <td>
                     <div class="cart-info">
                         <img src="<?php echo $cartProduct->getProduct()->getImage() ?>" alt=""/>
@@ -45,8 +46,9 @@
                             <p></p>
                             <small><?php echo $cartProduct->getProduct()->getName() ?></small>
                             <br/>
-                                <a href="/removeProduct">Удалить</a>
+<!--                             <a href="/remove">Удалить</a>-->
                             <br>
+
                             <a href="/order">Заказать</a>
                         </div>
                     </div>
@@ -54,8 +56,9 @@
                 <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
                 <td><?php echo $cartProduct->getProduct()->getPrice() . ' тенге' ?></td>
             </tr>
-        </form>
+
         <?php endforeach; ?>
+        </form>
     </table>
     <div class="total-price">
         <table>
