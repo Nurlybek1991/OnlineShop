@@ -7,6 +7,8 @@ use Controller\ProductController;
 use Controller\UserController;
 
 use Core\Container;
+use Core\Logger;
+use Core\LoggerInterface;
 
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
@@ -79,6 +81,11 @@ return [
 
         return new AuthenticationSessionService($userModel);
 
-    }
+    },
+
+    LoggerInterface::class => function () {
+
+        return new Logger();
+    },
 
 ];

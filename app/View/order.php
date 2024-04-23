@@ -360,8 +360,9 @@
             as $orderProduct): ?>
             <div>
                 <p class="prod-description inline"><?php echo $orderProduct->getProduct()->getName(); ?>
+                <p class="prod-description inline"><?php echo $orderProduct->getPostcode(); ?>
                 <div class="cart-info">
-                    <img src="<?php echo $orderProduct->getProduct()->getImage() ?>" alt=""/>
+                   <img src="<?php echo $orderProduct->getProduct()->getImage() ?>" alt=""/>
                     <div class="qty inline"><span class="smalltxt">x</span> <?php echo $orderProduct->getQuantity() . " шт "; ?>
                     </div>
                     <div class="qty inline"><span
@@ -458,6 +459,12 @@
         border: 1px solid #dadada;
         color: #888;
     }
+    .small-container {
+        max-width: 1080px;
+        margin: auto;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
 
     select {
         width: 72%;
@@ -526,7 +533,7 @@
     }
 
     .smalltxt {
-        font-size: 9px;
+        font-size: 15px;
         vertical-align: middle;
     }
     .qty {

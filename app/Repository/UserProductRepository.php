@@ -30,7 +30,7 @@ class UserProductRepository extends Repository
         $stmt->execute(['user_id' => $userId]);
         $userProducts = $stmt->fetchAll();
 
-//        if (empty($userProducts))  {
+//        if (empty(!$userProducts))  {
 //            return null;
 //        }
 
@@ -43,7 +43,6 @@ class UserProductRepository extends Repository
         return $arr;
 
     }
-
 
     public function getByUserIdProductId(int $userId, int $productId): UserProduct|null
     {
@@ -67,7 +66,6 @@ class UserProductRepository extends Repository
         return $this->hydrate($userProduct);
 
     }
-
 
     public function updatePlusQuantity(int $userId, int $productId): void
     {

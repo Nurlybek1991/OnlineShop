@@ -1,0 +1,12 @@
+The server cannot process the request: 
+date: 2024/04/23 18:39:29
+message: Service\CartService::getProducts(): Return value must be of type array, null returned
+file: /var/www/html/app/Service/CartService.php
+line: 22
+
+The server cannot process the request: 
+date: 2024/04/23 18:39:57
+message: Service\CartService::getProducts(): Return value must be of type array, null returned
+file: /var/www/html/app/Service/CartService.php
+line: 22
+
