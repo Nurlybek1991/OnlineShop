@@ -10,3 +10,477 @@ message: Service\CartService::getProducts(): Return value must be of type array,
 file: /var/www/html/app/Service/CartService.php
 line: 22
 
+The server cannot process the request: 
+date: 2024/04/30 12:05:40
+message: Class "SelectedController" not found
+file: /var/www/html/app/Core/Container.php
+line: 25
+
+The server cannot process the request: 
+date: 2024/04/30 12:11:28
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 22
+
+The server cannot process the request: 
+date: 2024/04/30 12:11:49
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/04/30 12:11:54
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/04/30 12:12:17
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/04/30 13:04:19
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:04:25
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:05:09
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:05:31
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:05:39
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:06:02
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:06:05
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:06:23
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:06:24
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:07:29
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:21:09
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:21:57
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:23:19
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:23:33
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:24:38
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:24:39
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:25:52
+message: Too few arguments to function Controller\SelectedController::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 3 expected
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/04/30 13:29:55
+message: Too few arguments to function Service\SelectedService::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 2 expected
+file: /var/www/html/app/Service/SelectedService.php
+line: 14
+
+The server cannot process the request: 
+date: 2024/04/30 13:29:58
+message: Too few arguments to function Service\SelectedService::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 2 expected
+file: /var/www/html/app/Service/SelectedService.php
+line: 14
+
+The server cannot process the request: 
+date: 2024/04/30 13:33:07
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:33:08
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:33:10
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:35:51
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:35:54
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:36:08
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:49:22
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:51:54
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:51:56
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:53:20
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 23
+
+The server cannot process the request: 
+date: 2024/04/30 13:54:13
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "fv"
+LINE 3:         JOIN users u ON fv.user_id = u.id
+                                ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 25
+
+The server cannot process the request: 
+date: 2024/04/30 13:55:54
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:56:17
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:56:18
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:56:35
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:57:57
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:58:01
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 13:58:47
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 14:02:02
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 14:04:01
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 14:04:13
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 14:05:19
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/04/30 14:09:49
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:38:57
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:40:14
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "up"
+LINE 5:                  JOIN users u ON up.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:45:08
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_id does not exist
+LINE 6: ...              JOIN products p ON sel.product_id = p.product_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "sel.product_id".
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:45:12
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_id does not exist
+LINE 6: ...              JOIN products p ON sel.product_id = p.product_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "sel.product_id".
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:45:19
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_id does not exist
+LINE 6: ...              JOIN products p ON sel.product_id = p.product_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "sel.product_id".
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 12:59:36
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_id does not exist
+LINE 6: ...              JOIN products p ON sel.product_id = p.product_...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "sel.product_id".
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:02:15
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...              u.phone,u.email,u.password,p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:02:18
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...              u.phone,u.email,u.password,p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:03:40
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...            u.phone,u.email,u.password,p.product_id AS p.id,
+                                                                   ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:07:42
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...           u.phone, u.email, u.password, p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:07:49
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...           u.phone, u.email, u.password, p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:10:56
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...           u.phone, u.email, u.password, p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:17:12
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...           u.phone, u.email, u.password, p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:17:14
+message: SQLSTATE[42601]: Syntax error: 7 ERROR:  syntax error at or near "."
+LINE 2: ...           u.phone, u.email, u.password, p.id AS p.product_i...
+                                                             ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/16 13:19:15
+message: Call to undefined method Entity\Selected::getImage()
+file: /var/www/html/app/View/selected.php
+line: 6
+
+The server cannot process the request: 
+date: 2024/05/16 13:29:33
+message: Call to undefined method Entity\Selected::getPrice()
+file: /var/www/html/app/View/selected.php
+line: 8
+
+The server cannot process the request: 
+date: 2024/05/16 13:32:46
+message: Call to a member function getUser() on null
+file: /var/www/html/app/View/selected.php
+line: 3
+
+The server cannot process the request: 
+date: 2024/05/16 13:33:53
+message: Call to undefined function getUser()
+file: /var/www/html/app/View/selected.php
+line: 3
+
+The server cannot process the request: 
+date: 2024/05/16 13:34:31
+message: Call to undefined method Controller\SelectedController::getUser()
+file: /var/www/html/app/View/selected.php
+line: 3
+

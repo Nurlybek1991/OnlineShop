@@ -4,6 +4,7 @@ use Controller\CartController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\ProductController;
+use Controller\SelectedController;
 use Controller\UserController;
 
 use Core\Container;
@@ -13,6 +14,7 @@ use Core\LoggerInterface;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\ProductRepository;
+use Repository\SelectedRepository;
 use Repository\UserProductRepository;
 use Repository\UserRepository;
 
@@ -20,6 +22,7 @@ use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\AuthenticationService\AuthenticationSessionService;
 use Service\CartService;
 use Service\OrderService;
+use Service\SelectedService;
 
 return [
 
@@ -61,6 +64,14 @@ return [
         return new OrderController($authenticationService, $cartService, $orderService);
     },
 
+    SelectedController::class => function (Container $container) {
+        $authenticationService = $container->get(AuthenticationServiceInterface::class);
+        $selectedService = $container->get(SelectedService::class);
+        $selectedModel = $container->get(SelectedRepository::class);
+
+        return new SelectedController($authenticationService, $selectedService, $selectedModel);
+    },
+
     CartService::class => function (Container $container) {
         $authenticationService = $container->get(AuthenticationServiceInterface::class);
         $userProductModel = $container->get(UserProductRepository::class);
@@ -74,6 +85,13 @@ return [
         $orderProductModel = $container->get(OrderProductRepository::class);
 
         return new OrderService($userProductModel, $orderModel, $orderProductModel);
+    },
+
+    SelectedService::class => function (Container $container) {
+        $authenticationService = $container->get(AuthenticationServiceInterface::class);
+        $selectedModel = new SelectedRepository();
+
+        return new SelectedService($authenticationService, $selectedModel);
     },
 
     AuthenticationServiceInterface::class => function (Container $container) {

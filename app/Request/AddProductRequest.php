@@ -28,7 +28,7 @@ class AddProductRequest extends Request
         $errors = [];
 
         $productId = $this->getProductId();
-        $product = $this->userProductRepository->getByUserIdProductId($userId,$productId);
+        $this->userProductRepository->getByUserIdProductId($userId,$productId);
 
         if ($this->getQuantity() <= '0') {
 

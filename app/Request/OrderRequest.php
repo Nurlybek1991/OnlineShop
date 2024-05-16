@@ -9,14 +9,12 @@ class OrderRequest extends Request
 {
 
     private OrderRepository $orderModel;
-    private UserRepository $userModel;
+
 
     public function __construct(string $method, array $body = [], array $headers = [])
     {
         parent::__construct($method, $body, $headers);
-
         $this->orderModel = new OrderRepository();
-        $this->userModel = new UserRepository();
     }
 
     public function getFirstname()

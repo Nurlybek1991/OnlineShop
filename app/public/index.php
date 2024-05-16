@@ -3,6 +3,7 @@ use Controller\CartController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\ProductController;
+use Controller\SelectedController;
 use Controller\UserController;
 
 use Core\App;
@@ -13,6 +14,7 @@ use Request\AddProductRequest;
 use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\RegistrateRequest;
+use Request\SelectedRequest;
 
 require_once './../Core/Autoloader.php';
 
@@ -44,6 +46,9 @@ $app->post('/order', OrderController::class, 'postOrder', OrderRequest::class);
 
 $app->get('/orderProduct', OrderController::class, 'getOrderProduct');
 
+$app->get('/selected', SelectedController::class, 'getSelected');
+$app->post('/selected', SelectedController::class, 'addSelected', SelectedRequest::class);
+$app->post('/removeSelected', SelectedController::class, 'deleteSelected', SelectedRequest::class);
 
 $app->run();
 

@@ -3,7 +3,7 @@
 namespace Core;
 
 use Request\Request;
-use Service\LoggerService;
+
 
 class App
 {
@@ -60,7 +60,6 @@ class App
             require_once '../View/500.html';
         }
     }
-
 
 
     public function get($routeName, $className, $method, $request = null): void

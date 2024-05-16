@@ -19,32 +19,42 @@ if (empty($products)) {
         </div>
         <nav>
             <ul id="MenuItems">
-<!--                <li><a href="/cart">--><?php //print_r($userShow->getName(). " " . $userShow->getSurname())  ?><!--</a></li>-->
-<!--                <li><a href="/login">ВЫЙТИ</a>--><?php //$this->logout(); ?><!--</li>-->
-<!--                <li><a href="/registrate">АККАУНТ</a><br>--><?php //print_r(" " . $userShow->getEmail())?><!--</li>-->
+                <!--                <li><a href="/cart">-->
+                <?php //print_r($userShow->getName(). " " . $userShow->getSurname())  ?><!--</a></li>-->
+                <!--                <li><a href="/login">ВЫЙТИ</a>--><?php //$this->logout(); ?><!--</li>-->
+                <!--                <li><a href="/registrate">АККАУНТ</a><br>-->
+                <?php //print_r(" " . $userShow->getEmail())?><!--</li>-->
 
-            </ul>
+                <!--            </ul>-->
         </nav>
+        <a href="/selected"><br><br><img
+                    src="https://pngicon.ru/file/uploads/izbrannoye.png"
+                    alt="" width="35px"
+                    height="35px"/>
+        </a>
+
         <a href="/cart"><br><br><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
-                   height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>
+                    height="30px"/> <?php if (isset($totalQuantity) and isset($sumPrice)): ?><?php echo $totalQuantity . ' шт ' . ' Общая сумма: ' . $sumPrice . ' тенге' ?><?php endif; ?>
             <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
-
+        </a>
     </div>
+
 </div>
 
 <div class="small-container">
 
     <div class="row row-2">
         <h2>Продукты</h2>
-        <select>
-            <option value="">Сортировка</option>
-            <option value="">По цене</option>
-            <option value="">По популярности</option>
-            <option value="">В топе</option>
-            <option value="">По скидке</option>
-        </select>
+        <!--        <select>-->
+        <!--            <option value="">Сортировка</option>-->
+        <!--            <option value="">По цене</option>-->
+        <!--            <option value="">По популярности</option>-->
+        <!--            <option value="">В топе</option>-->
+        <!--            <option value="">По скидке</option>-->
+        <!--        </select>-->
+
     </div>
 </div>
 <div class="row">
@@ -77,11 +87,41 @@ if (empty($products)) {
                     </button>
                 </div>
             </form>
+
+            <h3>Добавить в избранное</h3>
+
+            <!--            <label class="add-fav">-->
+            <!--                <input type="checkbox" />-->
+            <!--                <i class="icon-heart">-->
+            <!--                    <i class="icon-plus-sign"></i>-->
+            <!--                </i>-->
+            <!--            </label>-->
+
+
+            <form action="/selected" method="POST">
+                <div class="quantity">
+                    <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                    <button class="button_favoritesDelete">
+                        <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="Favorites Button">
+                    </button>
+                </div>
+            </form>
+
+            <form action="/removeSelected" method="POST">
+                <div class="quantity">
+                    <input type="hidden" name="product_id" value="
+            <?php echo $product->getId(); ?>">
+                    <button class="button_favoritesDelete">
+                        <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="Favorites Button">
+                    </button>
+                </div>
+            </form>
         </div>
-<!--                        <div class="card-footer">-->
-<!--                                    <div class="rating">-->
-<!--                                        <span>14400  тенге</span><P>(Скидка 20%)</p>-->
-<!--                                    </div>-->
+
+        <!--                        <div class="card-footer">-->
+        <!--                                    <div class="rating">-->
+        <!--                                        <span>14400  тенге</span><P>(Скидка 20%)</p>-->
+        <!--                                    </div>-->
 
     <?php endforeach; ?>
 </div>
@@ -270,8 +310,8 @@ if (empty($products)) {
     .small-container {
         max-width: 400px;
         margin: auto;
-            padding-left: 25px;
-            padding-right: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
     .col-4 {
@@ -451,7 +491,7 @@ if (empty($products)) {
     }
 
     ul {
-            list-style-type: none;
+        list-style-type: none;
     }
 
     .app-logo {
@@ -474,9 +514,9 @@ if (empty($products)) {
     }
 
     .menu-icon {
-            width: 28px;
-            margin-left: 20px;
-            display: inline-flex;
+        width: 28px;
+        margin-left: 20px;
+        display: inline-flex;
     }
 
     /* media query for menu */
@@ -809,5 +849,59 @@ if (empty($products)) {
     button:focus,
     input:focus {
         outline: 0;
+    }
+
+    .add-fav {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background: -webkit-linear-gradient(top, #fff, #ddd) #ddd;
+        position: relative;
+        transition: all .5s ease;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 1px #eee;
+
+        &:hover {
+            background: -webkit-linear-gradient(top, #fff, #ccc) #ddd;
+        }
+
+        .icon-heart {
+            font-size: 24px;
+            color: #666;
+            position: relative;
+            transition: all .5s ease-in-out;
+        }
+
+        .icon-plus-sign {
+            font-size: 10px;
+            color: #333;
+            background: #fff;
+            border-radius: 100%;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            height: 11px;
+            width: 11px;
+            line-height: 11px;
+            text-align: center;
+            transition: all 1s ease-in-out;
+        }
+    }
+
+    }
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+
+        &:checked + .icon-heart {
+            color: orange;
+
+            .icon-plus-sign {
+                display: none;
+            }
+        }
+    }
+
     }
 </style>
