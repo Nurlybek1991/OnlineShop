@@ -1,9 +1,15 @@
 
+<?php
+if (empty($products)) {
+
+    echo '<h1 style="color: red">Продуктов нет!</h1>';
+}
+?>
 <div class="container">
     <div class="area-a">
         <?php /** @var TYPE_NAME $products */
         foreach ($products as $product): ?>
-        <div><img src="<?php echo $product->getProduct()->getImage() ?>" width="400px">
+        <div> <img src="<?php echo $product->getProduct()->getImage() ?>" width="200px">
             <h3><?php echo $product->getProduct()->getName() ?></h3>
             <p><?php echo $product->getProduct()->getPrice() . ' тенге' ?></p>
         </div>

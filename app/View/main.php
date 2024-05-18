@@ -101,18 +101,17 @@ if (empty($products)) {
             <form action="/selected" method="POST">
                 <div class="quantity">
                     <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                    <button class="button_favoritesDelete">
-                        <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="Favorites Button">
+                    <button class="delete">
+                        <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="" width="20px">
                     </button>
                 </div>
             </form>
 
             <form action="/removeSelected" method="POST">
                 <div class="quantity">
-                    <input type="hidden" name="product_id" value="
-            <?php echo $product->getId(); ?>">
-                    <button class="button_favoritesDelete">
-                        <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="Favorites Button">
+                    <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                    <button class="">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s" width="20px">
                     </button>
                 </div>
             </form>
