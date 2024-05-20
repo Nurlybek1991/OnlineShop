@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Request\AddProductRequest;
+use Request\SelectedRequest;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\CartService;
 
@@ -17,6 +18,17 @@ class ProductController
         $this->cartService = $cartService;
     }
 
+    public function getProduct(AddProductRequest $request): void
+    {
+
+        $productId = $request->getProductId();
+
+        $products = $this->cartService->getProduct($productId);
+
+        require_once './../View/productInfo.php';
+
+
+    }
     public function postAddProduct(AddProductRequest $request): void
     {
         if (!$this->authenticationService->check()) {

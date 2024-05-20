@@ -3,23 +3,31 @@
 namespace Service;
 
 use Entity\User;
+use Repository\ProductRepository;
 use Repository\UserProductRepository;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 
 class CartService
 {
     private UserProductRepository $userProductModel;
+    private ProductRepository $productModel;
     private AuthenticationServiceInterface $authenticationService;
 
-    public function __construct(AuthenticationServiceInterface $authenticationService, UserProductRepository $userProductModel)
+    public function __construct(AuthenticationServiceInterface $authenticationService, UserProductRepository $userProductModel, ProductRepository $productModel)
     {
         $this->authenticationService = $authenticationService;
         $this->userProductModel = $userProductModel;
+        $this->productModel = $productModel;
     }
 
     public function getProducts(int $userId): array
     {
         return $this->userProductModel->getAll($userId);
+    }
+
+    public function getProduct(int $id)
+    {
+        return $this->productModel->getOneById($id);
     }
 
     public function addProduct(int $productId): void

@@ -1,6 +1,7 @@
 <?php
 
 use Controller\CartController;
+use Controller\CommentController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\ProductController;
@@ -11,6 +12,7 @@ use Core\Container;
 use Core\Logger;
 use Core\LoggerInterface;
 
+use Repository\CommentRepository;
 use Repository\OrderProductRepository;
 use Repository\OrderRepository;
 use Repository\ProductRepository;
@@ -21,6 +23,7 @@ use Repository\UserRepository;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\AuthenticationService\AuthenticationSessionService;
 use Service\CartService;
+use Service\CommentService;
 use Service\OrderService;
 use Service\SelectedService;
 
@@ -72,11 +75,20 @@ return [
         return new SelectedController($authenticationService, $selectedService, $selectedModel);
     },
 
+    CommentController::class => function (Container $container) {
+        $authenticationService = $container->get(AuthenticationServiceInterface::class);
+        $commentService = $container->get(CommentService::class);
+        $commentModel = $container->get(CommentRepository::class);
+
+        return new CommentController($authenticationService, $commentService, $commentModel);
+    },
+
     CartService::class => function (Container $container) {
         $authenticationService = $container->get(AuthenticationServiceInterface::class);
         $userProductModel = $container->get(UserProductRepository::class);
+        $productModel = new ProductRepository();
 
-        return new CartService($authenticationService, $userProductModel);
+        return new CartService($authenticationService, $userProductModel,$productModel);
     },
 
     OrderService::class => function (Container $container) {
@@ -92,6 +104,13 @@ return [
         $selectedModel = new SelectedRepository();
 
         return new SelectedService($authenticationService, $selectedModel);
+    },
+
+    CommentService::class => function (Container $container) {
+        $authenticationService = $container->get(AuthenticationServiceInterface::class);
+        $commentModel = new CommentRepository();
+
+        return new CommentService($authenticationService, $commentModel);
     },
 
     AuthenticationServiceInterface::class => function (Container $container) {

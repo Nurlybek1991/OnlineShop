@@ -33,6 +33,12 @@ if (empty($products)) {
                     height="35px"/>
         </a>
 
+        <a href="/comment"><br><br><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s"
+                    alt="" width="35px"
+                    height="35px"/>
+        </a>
+
         <a href="/cart"><br><br><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
@@ -65,6 +71,13 @@ if (empty($products)) {
             <h3><?php echo $product->getName() ?></h3>
             <label for="product_id"></label>
             <p><?php echo $product->getPrice() . ' тенге' ?></p>
+
+            <form action="/openProduct" method="post">
+                <div class="quantity">
+                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                <button class="openProduct"> открыть продукт </button>
+                </div>
+            </form>
 
             <form id="form" method="POST" action="/main">
                 <div class="quantity">
@@ -101,7 +114,7 @@ if (empty($products)) {
             <form action="/selected" method="POST">
                 <div class="quantity">
                     <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                    <button class="delete">
+                    <button class="quantity">
                         <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="" width="20px">
                     </button>
                 </div>
@@ -110,11 +123,21 @@ if (empty($products)) {
             <form action="/removeSelected" method="POST">
                 <div class="quantity">
                     <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                    <button class="">
+                    <button class="quantity">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s" width="20px">
                     </button>
                 </div>
             </form>
+
+<!--            <form action="/comment" method="GET">-->
+<!--                <div class="quantity">-->
+<!--                    <input type="hidden" name="product_id" value="--><?php //echo $product->getId(); ?><!--">-->
+<!--                    <button class="quantity">-->
+<!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s" width="20px">-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </form>-->
+
         </div>
 
         <!--                        <div class="card-footer">-->
@@ -814,8 +837,8 @@ if (empty($products)) {
     }
 
     .quantity {
-        padding-top: 20px;
-        margin-right: 60px;
+        padding-top: 2px;
+        margin-right: 103px;
     }
 
     .quantity input {

@@ -1,5 +1,6 @@
 <?php
 use Controller\CartController;
+use Controller\CommentController;
 use Controller\MainController;
 use Controller\OrderController;
 use Controller\ProductController;
@@ -49,6 +50,9 @@ $app->get('/orderProduct', OrderController::class, 'getOrderProduct');
 $app->get('/selected', SelectedController::class, 'getSelected');
 $app->post('/selected', SelectedController::class, 'addSelected', SelectedRequest::class);
 $app->post('/removeSelected', SelectedController::class, 'deleteSelected', SelectedRequest::class);
+
+$app->get('/comment', CommentController::class, 'getComment');
+$app->post('/openProduct', ProductController::class, 'getProduct', AddProductRequest::class);
 
 $app->run();
 

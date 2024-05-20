@@ -14,6 +14,16 @@ if (empty($products)) {
             <p><?php echo $product->getProduct()->getPrice() . ' тенге' ?></p>
         </div>
             <div class="area-c">ПОЛНОЕ ОПИСАНИЕ ТОВАРА</div>
+
+                        <form action="/comment" method="POST">
+                            <div class="quantity">
+                                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                                <button class="quantity">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s" width="20px">
+                                </button>
+                            </div>
+                        </form>
+
         <?php endforeach; ?>
     </div>
 </div>

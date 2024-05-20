@@ -34,3 +34,51 @@ message: SQLSTATE[22P02]: Invalid text representation: 7 ERROR:  invalid input s
 file: /var/www/html/app/Repository/SelectedRepository.php
 line: 20
 
+The server cannot process the request: 
+date: 2024/05/20 01:54:47
+message: Controller\SelectedController::__construct(): Argument #2 ($selectedService) must be of type Service\SelectedService, Service\CommentService given, called in /var/www/html/app/Config/services.php on line 83
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/05/20 01:55:38
+message: Controller\SelectedController::__construct(): Argument #2 ($selectedService) must be of type Service\SelectedService, Service\CommentService given, called in /var/www/html/app/Config/services.php on line 83
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/05/20 01:56:25
+message: Controller\SelectedController::__construct(): Argument #2 ($selectedService) must be of type Service\SelectedService, Service\CommentService given, called in /var/www/html/app/Config/services.php on line 83
+file: /var/www/html/app/Controller/SelectedController.php
+line: 16
+
+The server cannot process the request: 
+date: 2024/05/20 02:35:05
+message: Controller\ProductController::getProduct(): Argument #1 ($request) must be of type Request\SelectedRequest, Request\AddProductRequest given, called in /var/www/html/app/Core/App.php on line 41
+file: /var/www/html/app/Controller/ProductController.php
+line: 21
+
+The server cannot process the request: 
+date: 2024/05/20 02:35:52
+message: Controller\ProductController::getProduct(): Argument #1 ($request) must be of type Request\SelectedRequest, Request\AddProductRequest given, called in /var/www/html/app/Core/App.php on line 41
+file: /var/www/html/app/Controller/ProductController.php
+line: 21
+
+The server cannot process the request: 
+date: 2024/05/20 02:36:15
+message: Controller\ProductController::getProduct(): Argument #1 ($request) must be of type Request\SelectedRequest, Request\AddProductRequest given, called in /var/www/html/app/Core/App.php on line 41
+file: /var/www/html/app/Controller/ProductController.php
+line: 21
+
+The server cannot process the request: 
+date: 2024/05/20 02:49:15
+message: Call to a member function getImage() on int
+file: /var/www/html/app/View/productInfo.php
+line: 19
+
+The server cannot process the request: 
+date: 2024/05/20 02:49:30
+message: Call to a member function getId() on int
+file: /var/www/html/app/View/productInfo.php
+line: 19
+
