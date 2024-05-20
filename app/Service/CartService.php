@@ -27,7 +27,7 @@ class CartService
 
     public function getProduct(int $id)
     {
-        return $this->productModel->getOneById($id);
+        return $this->productModel->getById($id);
     }
 
     public function addProduct(int $productId): void

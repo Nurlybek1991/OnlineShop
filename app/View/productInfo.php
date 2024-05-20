@@ -1,392 +1,461 @@
 
 
-<div class="uk-container">
-    <div uk-grid>
-        <?php /** @var TYPE_NAME $products */
-        foreach ($products as $product): ?>
-        <div class="uk-width-1-2">
-<!--            <div class='uk-width-1-1@s'>-->
-<!--                <h2 class="uk-text-center">Main image</h2>-->
-<!--                <div id="media-uploader1" name="media-uploader1" class="" style="">-->
-<!--                    <div class="dz-message" style="color:'.get_option('taxCrt-setting-font').';">-->
-<!--                        <span><i class="fa fa-file"></i></span>Drag and drop an image here or click to upload.-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <input type="hidden" id="txtMainImgID" name="txtMainImgID">-->
-<!--            </div>-->
-            <div class='uk-width-1-1@s'>
-                <h2 class="uk-text-center">Galery Images</h2>
-                <div id="media-uploader1" name="media-uploader1" class="" style="">
-                    <div class="dz-message" style="color:'.get_option('taxCrt-setting-font').';">
-                        <span><i class="fa fa-file"></i></span>Drag and drop an image here or click to upload.
-                    </div>
-                </div>
-                <input type="hidden" id="txtMainImgID" name="txtMainImgID">
-            </div>
-        </div>
-        <div class="uk-width-1-2">
-            <div class='uk-width-1-1@s'>
-                <h2 class="uk-text-center">Product Details</h2>
-                <hr />
-<!--                <div class="uk-width-1-1@s">-->
-<!--                    <label class="uk-form-label" for="txtModel">Model</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtModel" type="text" placeholder="P40 Warhawk">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtBrand">Brand</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtBrand" type="text" placeholder="Curtiss">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtYear">Year</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtYear" type="text" placeholder="1938">-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="txtPrice">Price</label>
-                    <div class="uk-form-controls">
-                        <input class="uk-input" id="txtPrice" type="text" placeholder="2,000,000">
-                    </div>
-                </div>
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtRegistration">Registration</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtRegistration" type="text" placeholder="1938">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtSerialNumber">Serial Number</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtSerialNumber" type="text" placeholder="1938">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtLocation">Location</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <input class="uk-input" id="txtLocation" type="text" placeholder="1938">-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="txtDescription">Description</label>
-                    <div class="uk-form-controls">
-                        <textarea class="uk-textarea" id="txtDescription"></textarea>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="txtEquipment">Comment</label>
-                    <div class="uk-form-controls">
-                        <textarea class="uk-textarea" id="txtEquipment"></textarea>
-                    </div>
-                </div>
-<!--                <div class="uk-margin">-->
-<!--                    <label class="uk-form-label" for="txtAirframe">Airframe</label>-->
-<!--                    <div class="uk-form-controls">-->
-<!--                        <textarea class="uk-textarea" id="txtAirframe"></textarea>-->
-<!--                    </div>-->
-<!--                </div>-->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous">
+</head>
+<body id="home" class="container-fluid">
+
+<header class="container-fluid">
+
+    <nav class="navbar navbar-expand-sm  fixed-top">
+        <a class="navbar-brand logo"><img  src="https://silvercrest-blender.netlify.app/img/shopsmart%20white.png"></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-label="Toggle  navigation" aria-controls="navbar" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a class="nav-link"  href="#home">Home</a></li>
+                <li><a class="nav-link" href="#video">How it works</a> </li>
+                <li><a class="nav-link" href="#features">Features</a></li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<div class="row">
+
+    <div class="col-lg-6">
+        <img src="<?php echo $products->getImage();?>">
+    </div>
+
+    <div class="col-lg-6">
+        <div class="product-description">
+            <h1 class="fade-in"><?php echo $products->getName() ?></h1>
+            <span>SC-1589</span>
+            <ul class="fade-in">
+                <li>3000 watts high capacity motor</li>
+                <li>Strong Blades</li>
+                <li>High speed grinding</li>
+                <li>Stainless steel cutting blades </li>
+                <li>polycarbonate jar</li>
+                <li>Great for blending coffee beans and spices</li>
+                <li>Over current/temperature protection system </li>
+                <br>
+            </ul>
+        </div>
+        <div class="product-price">
+            <span><?php echo $products->getPrice() . ' тенге' ?></span>
+            <a href="/cart" class="cart-btn">Buy Now</a>
+        </div>
+
+
+        <div class="comments">
+<!--            <ul>-->
+<!--                <li is="app-comment" v-for="comment in comments" :key="comment" :comment="comment">-->
+<!--                </li>-->
+<!--            </ul>-->
+            <div class="contribute">
+                <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>
+                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submitComment"></input>
             </div>
         </div>
-        <?php endforeach; ?>
+    </div>
+
+</div>
+<!--*****************videos**********************-->
+<div id="video" class=" iframe container-fluid">
+    <div  class="row">
+        <h3 style="color: firebrick;">How It Works</h3>
+
+        <iframe class="col-lg-4" src="https://www.youtube.com/embed/XqGnVPRT7bQ"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+          gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+        <iframe class="col-lg-4"   src="https://www.youtube.com/embed/P8FMET_4wys"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+          gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+        <iframe class="col-lg-4"  src="https://www.youtube.com/embed/g-KZ9OIiqp0"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+           gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
 
+<div id="features"  class="container-fluid">
+    <div style="padding: 0 20px 0 20px;" class="row">
+        <div class=" col-lg-8 features">
+            <h3 style="color: firebrick;">Product Details</h3>
+            <p class="fade-in">
+                <b>Multi-Functional</b> - The new vision blender comes with speed and preset program,
+                different speed allows you process food of various hardness.you can personally make delicious smoothie,
+                your homemade baby food,hot soup,even pulverize nuts into butter.
+            </p><br>
+            <p class="fade-in">
+                <b>High grinding speed</b> - The food can be completely mashed in seconds and its cell wall rupture
+                rate is as high or more, which can maximizes the extraction of nutrients and vitamins from foods.
+            </p><br>
+            <p class="fade-in">
+                <b>Easy To Use & Clean</b> - The clear control panel make it easy for you to choose the mode you need.
+                Tritan jars and blades are removable for easy cleaning, with a drop of dish soap and warm water,
+                the blender could clean itself in a minute
+            </p><br>
+        </div>
+        <section class="photo-container col-lg-4">
+            <img  src="https://silvercrest-blender.netlify.app/img/blender%20juice%20splash.jpg">
+        </section>
+    </div>
+</div>
+
+<footer style="padding: 30px 0;" class="footer container-fluid">
+
+    <form id="form">
+        <input type="email" class="email" id="email" placeholder="Enter your Email To Recieve offers and discounts"></br>
+        <input type="Submit" class="button" id="submit" onclick="show()" name="Submit">
+    </form>
+
+    <div>
+        <a href="https://facebook.com/shopsmart.ngg/" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/shop_smart_ng/" class="fa fa-twitter"></a>
+        <a href="https://www.instagram.com/shop_smart_ng/" class="fa fa-instagram"></a>
+    </div>
+
+    <div class="footer-address">
+        <p>Lekki, Lagos Nigeria <br>
+            <a href="tel:+2348086036016">+2348086036016</a><br>
+            <a href="mailto:herroyalpianist@gmail.com">herroyalpianist@gmail.com</a>
+        </p>
+    </div>
+
+
+    <div class="copyright">
+        <p> Copyright  &copy;<script>document.write(new Date().getFullYear());</script>.
+            Designed by <a href="morenike.netlify.app">-Morenike-</a>.
+            All rights reserved</p>
+    </div>
+
+</footer>
+
+<!--====== Javascripts & Jquery ======-->
+<script src="script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    function show(){
+        alert ("Thank you for submitting. Your message has been recieved and a reply would be sent shortly.");
+    }
+
+    const faders = document.querySelectorAll(".fade-in");
+    const sliders = document.querySelectorAll(".slide-in");
+
+    const appearOptions = {
+        threshold: 0,
+        rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries,appearOnScroll){
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return
+            } else {
+                entry.target.classList.add("appear");
+                appearOnScroll.unobserve(entry.target);
+            }
+        })
+
+    },appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    })
+
+    sliders.forEach(slider => {
+        appearOnScroll.observe(slider);
+        // console.log(slider)
+    })
+
+
+
+
+    const slides = document.querySelectorAll(".slides");
+    const dots = document.querySelectorAll(".dot");
+    // setting the index for the slides
+    let slideIndex = 0;
+
+    const showSlides = () => {
+        slides.forEach(slide => {
+            slide.style.display = "none";
+        })
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        dots.forEach(dot => {
+            dot.className = dot.className.replace("active", "");
+        })
+
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 3000);
+    }
+    showSlides()
+</script>
+
 <style>
-    #media-uploader1 .dz-message {
-        font-size: 25px;
-        display: table-cell;
-        vertical-align: middle;
-        color: #a0a5aa;
+    html{
+        background-color: white;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        max-width: 100vw;
+        width: 100vw;
+        overflow-x: hidden;
     }
-    /* ********************************************* */
-    #media-uploader1 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        min-height: 150px;
-        height: 200px;
-        border: 2px solid rgba(0, 0, 0, 0.3);
-        background: white;
-        display: table;
-        padding: 20px 20px;
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        border:0;
     }
-    #media-uploader1.dz-clickable {
-        cursor: pointer;
+    img{
+        width: 100%;
     }
-    #media-uploader1.dz-clickable * {
-        cursor: default;
+    body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem; /* 18px */
+        font-weight: 400;
+        line-height: 1.4;
+        color: #202020;
+        background-color: #ffffff;
     }
-    #media-uploader1.dz-clickable .dz-message,
-    #media-uploader1.dz-clickable .dz-message * {
-        cursor: pointer;
-    }
-    #media-uploader1.dz-started .dz-message {
-        display: none;
-    }
-    #media-uploader1.dz-drag-hover {
-        border-style: solid;
-    }
-    #media-uploader1.dz-drag-hover .dz-message {
-        opacity: 0.5;
-    }
-    #media-uploader1 .dz-message {
+
+    h1,
+    h2,
+    h3{
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
         text-align: center;
-        margin: auto 0 !important;
+        padding: 10px;
     }
-    #media-uploader1 .dz-preview {
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        margin: 16px;
-        min-height: 100px;
+
+    h1 {
+        font-size: 3.5rem;
     }
-    #media-uploader1 .dz-preview:hover {
-        z-index: 1000;
+
+    h2 {
+        font-size: 3rem;
     }
-    #media-uploader1 .dz-preview:hover .dz-details {
-        opacity: 1;
+    h3{
+        font-size: 2rem;
     }
-    #media-uploader1 .dz-preview.dz-file-preview .dz-image {
-        border-radius: 20px;
-        background: #999;
-        background: linear-gradient(to bottom, #eee, #ddd);
+    p{
+        font-size: 18px;
+        padding: 10px;
     }
-    #media-uploader1 .dz-preview.dz-file-preview .dz-details {
-        opacity: 1;
+
+
+    .row{
+        padding: 30px;
     }
-    #media-uploader1 .dz-preview.dz-image-preview {
-        background: white;
-        border: 1px #333 dashed;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=0, Direction=124, Color=#7A7A7A)"; /*IE 8*/
-        -moz-box-shadow: 4px 6px 0 rgba(122, 122, 122, 0.7); /*FF 3.5+*/
-        -webkit-box-shadow: 4px 6px 0 rgba(122, 122, 122, 0.7); /*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
-        box-shadow: 4px 6px 0 rgba(122, 122, 122, 0.7); /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
-        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=0, Direction=135, Color=#7A7A7A); /*IE 5.5-7*/
-    }
-    #media-uploader1 .dz-preview.dz-image-preview .dz-details {
-        -webkit-transition: opacity 0.2s linear;
-        -moz-transition: opacity 0.2s linear;
-        -ms-transition: opacity 0.2s linear;
-        -o-transition: opacity 0.2s linear;
-        transition: opacity 0.2s linear;
-    }
-    #media-uploader1 .dz-preview .dz-remove {
-        font-size: 14px;
-        text-align: center;
-        display: block;
-        cursor: pointer;
-        border: none;
-    }
-    #media-uploader1 .dz-preview .dz-remove:hover {
-        text-decoration: underline;
-    }
-    #media-uploader1 .dz-preview:hover .dz-details {
-        opacity: 1;
-    }
-    #media-uploader1 .dz-preview .dz-details {
-        z-index: 20;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        font-size: 13px;
-        min-width: 100%;
-        max-width: 100%;
-        padding: 2em 1em;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.9);
-        line-height: 150%;
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-size {
-        margin-bottom: 1em;
-        font-size: 16px;
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-filename {
-        white-space: nowrap;
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-filename:hover span {
-        border: 1px solid rgba(200, 200, 200, 0.8);
-        background-color: rgba(255, 255, 255, 0.8);
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-filename:not(:hover) {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-filename:not(:hover) span {
-        border: 1px solid transparent;
-    }
-    #media-uploader1 .dz-preview .dz-details .dz-filename span,
-    #media-uploader1 .dz-preview .dz-details .dz-size span {
-        background-color: rgba(255, 255, 255, 0.4);
-        padding: 0 0.4em;
-        border-radius: 3px;
-    }
-    #media-uploader1 .dz-preview:hover .dz-image img {
-        -webkit-transform: scale(1.05, 1.05);
-        -moz-transform: scale(1.05, 1.05);
-        -ms-transform: scale(1.05, 1.05);
-        -o-transform: scale(1.05, 1.05);
-        transform: scale(1.05, 1.05);
-        -webkit-filter: blur(8px);
-        filter: blur(8px);
-    }
-    #media-uploader1 .dz-preview .dz-image {
-        border-radius: 12px;
-        overflow: hidden;
-        width: 120px;
-        height: 120px;
-        position: relative;
-        display: block;
-        z-index: 10;
-    }
-    #media-uploader1 .dz-preview .dz-image img {
-        display: block;
-    }
-    #media-uploader1 .dz-preview.dz-success .dz-success-mark {
-        -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -moz-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -ms-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -o-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
-        animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-    #media-uploader1 .dz-preview.dz-error .dz-error-mark {
-        opacity: 1;
-        -webkit-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -moz-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -ms-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
-        -o-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
-        animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-    #media-uploader1 .dz-preview .dz-success-mark,
-    #media-uploader1 .dz-preview .dz-error-mark {
-        pointer-events: none;
-        opacity: 0;
-        z-index: 500;
-        position: absolute;
-        display: block;
-        top: 50%;
-        left: 50%;
-        margin-left: -27px;
-        margin-top: -27px;
-    }
-    #media-uploader1 .dz-preview .dz-success-mark svg,
-    #media-uploader1 .dz-preview .dz-error-mark svg {
-        display: block;
-        width: 54px;
-        height: 54px;
-    }
-    #media-uploader1 .dz-preview.dz-processing .dz-progress {
-        opacity: 1;
-        -webkit-transition: all 0.2s linear;
-        -moz-transition: all 0.2s linear;
-        -ms-transition: all 0.2s linear;
-        -o-transition: all 0.2s linear;
-        transition: all 0.2s linear;
-    }
-    #media-uploader1 .dz-preview.dz-complete .dz-progress {
-        opacity: 0;
-        -webkit-transition: opacity 0.4s ease-in;
-        -moz-transition: opacity 0.4s ease-in;
-        -ms-transition: opacity 0.4s ease-in;
-        -o-transition: opacity 0.4s ease-in;
-        transition: opacity 0.4s ease-in;
-    }
-    #media-uploader1 .dz-preview:not(.dz-processing) .dz-progress {
-        -webkit-animation: pulse 6s ease infinite;
-        -moz-animation: pulse 6s ease infinite;
-        -ms-animation: pulse 6s ease infinite;
-        -o-animation: pulse 6s ease infinite;
-        animation: pulse 6s ease infinite;
-    }
-    #media-uploader1 .dz-preview .dz-progress {
-        opacity: 1;
-        z-index: 1000;
-        pointer-events: none;
-        position: absolute;
-        height: 16px;
-        left: 50%;
-        top: 50%;
-        margin-top: -8px;
-        width: 80px;
-        margin-left: -40px;
-        background: rgba(255, 255, 255, 0.9);
-        -webkit-transform: scale(1);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    #media-uploader1 .dz-preview .dz-progress .dz-upload {
-        background: #333;
-        background: -webkit-linear-gradient(#666, #444);
-        background: -o-linear-gradient(#666, #444);
-        background: linear-gradient(#666, #444);
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        -webkit-transition: width 300ms ease-in-out;
-        -moz-transition: width 300ms ease-in-out;
-        -ms-transition: width 300ms ease-in-out;
-        -o-transition: width 300ms ease-in-out;
-        transition: width 300ms ease-in-out;
-    }
-    #media-uploader1 .dz-preview.dz-error .dz-error-message {
-        display: block;
-    }
-    #media-uploader1 .dz-preview.dz-error:hover .dz-error-message {
-        opacity: 1;
-        pointer-events: auto;
-    }
-    #media-uploader1 .dz-preview .dz-error-message {
-        pointer-events: none;
-        z-index: 1000;
-        position: absolute;
-        display: block;
-        display: none;
-        opacity: 0;
-        -webkit-transition: opacity 0.3s ease;
-        -moz-transition: opacity 0.3s ease;
-        -ms-transition: opacity 0.3s ease;
-        -o-transition: opacity 0.3s ease;
-        transition: opacity 0.3s ease;
-        border-radius: 8px;
-        font-size: 13px;
-        top: 130px;
-        left: -10px;
-        width: 140px;
-        background: #be2626;
-        background: linear-gradient(to bottom, #be2626, #a92222);
-        padding: 0.5em 1.2em;
-        color: white;
-    }
-    #media-uploader1 .dz-preview .dz-error-message:after {
-        content: "";
-        position: absolute;
-        top: -6px;
-        left: 64px;
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 6px solid #be2626;
-    }
-    /* ********************************************* */
-    #media-uploader1 .dz-preview .dz-image-preview {
+    .logo{
+        width: 200px;
+        padding: 20px;
+        float: left;
         background-color: transparent;
     }
-    /* estilos de dropzone 2  */
-    #media-uploader2 {
-        border: 4px dashed rgb(0, 115, 170);
-        background: none;
-        height: 200px;
+    .navbar{
+        background-color: #202020;
     }
 
-    #media-uploader2 .dz-message {
-        font-size: 25px;
-        color: #a0a5aa;
+
+    .nav-link{
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffffff;
+        font-weight: 300;
+        padding: 15px;
     }
 
+    .nav-link:hover{
+        color: firebrick;
+    }
+
+    .slider-container {
+        width: 100%;
+        height: auto;
+        padding-top: 20px;
+    }
+    .slider-container img{
+        width: 100%;
+    }
+    .fade-in {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-out ;
+    }
+    .fade-in.appear {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+
+    .features{
+        color: #111111;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .container-fluid{
+        padding: 50px 0 0 20px;
+    }
+
+    /* Product Description */
+    .product-description {
+        border-bottom: 1px solid #E1E8EE;
+        margin-bottom: 20px;
+        display: block;
+    }
+    .product-description span {
+        font-size: 12px;
+        color: firebrick;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    .product-description h1 {
+        font-weight: 300;
+        font-size: 50px;
+        color: rgb(51, 51, 51);
+        letter-spacing: 1px;
+    }
+    .product-description li {
+        font-size: 16px;
+        font-weight: 300;
+        color: #86939E;
+        line-height: 24px;
+    }
+    .product-description h3{
+        color: #a7a7a7;
+    }
+
+    /* Product Price */
+    .product-price {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-price span {
+        font-size: 26px;
+        font-weight: 300;
+        color: #43474D;
+        margin-right: 20px;
+    }
+
+    .cart-btn {
+        display: inline-block;
+        background-color: #434343;
+        border-radius: 6px;
+        font-size: 16px;
+        color: #FFFFFF;
+        text-decoration: none;
+        padding: 12px 30px;
+        transition: all .5s;
+    }
+    .cart-btn:hover {
+        background-color: firebrick;
+    }
+
+
+
+    .photo-container img:hover{
+        transform: scale(1.1);
+    }
+
+    .iframe{
+        background-color: #0f0f0f;
+        padding: 40px 0 40px 0;
+    }
+    iframe{
+        height: 350px;
+    }
+
+    .footer{
+        background-color: #202020;
+        height: 350px;
+        color: #717171;
+        display: block;
+        text-align: center;
+        letter-spacing: 2px;
+        word-spacing: 1px;
+    }
+
+
+    .footer-address a, p{
+        text-decoration: none;
+        color: #717171;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    #form{
+        margin: 10px;
+        color: white;
+        border: none;
+    }
+    #form input {
+        background: #353535;
+        width: 30%;
+        padding: 20px;
+        border-top:20px;
+        margin:7px;
+    }
+    .button{
+        text-align: center;
+        background-color: firebrick;
+        color: #ffffff;
+        font-size: 1rem;
+        padding: 10px;
+        position: center;
+        animation-fill-mode: all;
+        align-self: center;
+    }
+
+    .button:hover{
+        background-color:floralwhite;
+        color: firebrick;
+    }
+    .fa {
+        padding: 7px;
+        font-size: 15px;
+        background: #717171;
+        color: firebrick;
+        width: 35px;
+        height: 35px;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .fa:hover {
+        transform: scale(1.3);
+    }
+
+    .copyright {
+        border: none;
+        background-color: #0f0f0f;
+        color: #434343;
+        font-weight: 300;
+        font-size: 12px;
+    }
+
+    .copyright a{
+        text-decoration: none;
+        color: #f1f1f1;
+    }
 </style>

@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Request\AddProductRequest;
-use Request\SelectedRequest;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\CartService;
 

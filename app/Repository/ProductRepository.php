@@ -25,9 +25,23 @@ class ProductRepository extends Repository
 
     public function getOneById(int $id): array
     {
-        $statement = self::getPdo()->prepare("SELECT * FROM products WHERE id = :id");
-        $statement->execute(['id' => $id]);
-        return  $statement->fetch();
+        $stmt = self::getPdo()->prepare("SELECT * FROM products WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return  $stmt->fetch();
+
+    }
+
+    public function getById(int $id): Product
+    {
+        $stmt = self::getPdo()->prepare("SELECT * FROM products WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $product =   $stmt->fetch();
+
+//        if(empty($product)) {
+//            return null;
+//        }
+
+        return $this->hydrate($product);
 
     }
 
