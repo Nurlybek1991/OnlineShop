@@ -31,15 +31,15 @@ class ProductRepository extends Repository
 
     }
 
-    public function getById(int $id): Product
+    public function getById(int $id): Product|null
     {
         $stmt = self::getPdo()->prepare("SELECT * FROM products WHERE id = :id");
         $stmt->execute(['id' => $id]);
         $product =   $stmt->fetch();
 
-//        if(empty($product)) {
-//            return null;
-//        }
+        if(empty($product)) {
+            return null;
+        }
 
         return $this->hydrate($product);
 

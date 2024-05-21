@@ -19,13 +19,15 @@ if (empty($products)) {
         </div>
         <nav>
             <ul id="MenuItems">
-                <!--                <li><a href="/cart">-->
-                <?php //print_r($userShow->getName(). " " . $userShow->getSurname())  ?><!--</a></li>-->
-                <!--                <li><a href="/login">ВЫЙТИ</a>--><?php //$this->logout(); ?><!--</li>-->
-                <!--                <li><a href="/registrate">АККАУНТ</a><br>-->
-                <?php //print_r(" " . $userShow->getEmail())?><!--</li>-->
+                <li><a href="/cart">
 
-                <!--            </ul>-->
+                        <?php print_r($user->getName(). " " . $user->getSurname())  ?></a></li>
+                                                        <li><a href="/login">ВЫЙТИ</a>
+<!--                        --><?php //$this->logout(); ?><!--</li>-->
+                                                        <li><a href="/registrate">АККАУНТ</a><br>
+                                        <?php print_r(" " . $user->getEmail())?></li>
+
+            </ul>
         </nav>
         <a href="/selected"><br><br><img
                     src="https://pngicon.ru/file/uploads/izbrannoye.png"
@@ -74,8 +76,8 @@ if (empty($products)) {
 
             <form action="/openProduct" method="post">
                 <div class="quantity">
-                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                <button class="openProduct"> открыть продукт </button>
+                    <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                    <button class="openProduct"> открыть продукт</button>
                 </div>
             </form>
 
@@ -124,19 +126,21 @@ if (empty($products)) {
                 <div class="quantity">
                     <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
                     <button class="quantity">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s" width="20px">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"
+                             width="20px">
                     </button>
                 </div>
             </form>
 
-<!--            <form action="/comment" method="GET">-->
-<!--                <div class="quantity">-->
-<!--                    <input type="hidden" name="product_id" value="--><?php //echo $product->getId(); ?><!--">-->
-<!--                    <button class="quantity">-->
-<!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s" width="20px">-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--            </form>-->
+            <!--            <form action="/comment" method="GET">-->
+            <!--                <div class="quantity">-->
+            <!--                    <input type="hidden" name="product_id" value="-->
+            <?php //echo $product->getId(); ?><!--">-->
+            <!--                    <button class="quantity">-->
+            <!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s" width="20px">-->
+            <!--                    </button>-->
+            <!--                </div>-->
+            <!--            </form>-->
 
         </div>
 

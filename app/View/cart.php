@@ -14,7 +14,7 @@
                 <li><a href="/main">Продукты</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Контакты</a></li>
-<!--                <li><a href="/registrate">Аккаунт</a>--><?php //print_r(" Корзина: " . $userShow->getName() . " "  . $userShow->getSurname())?><!--</li>-->
+                <li><a href="/registrate">Аккаунт</a><?php print_r(" Корзина: " . $user->getName() . " "  . $user->getSurname())?></li>
             </ul>
         </nav>
         <!--        <a href="cart.html"><img src="https://i.ibb.co/PNjjx3y/cart.png" alt="" width="30px" height="30px" /></a>-->
@@ -46,7 +46,11 @@
                             <p></p>
                             <small><?php echo $cartProduct->getProduct()->getName() ?></small>
                             <br/>
-<!--                             <a href="/remove">Удалить</a>-->
+                            <form id="form" action="/remove" method="POST" >
+                                <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
+                                       hidden="" value="<?php echo $cartProduct->getId() ?>">
+                             <a href="">Удалить</a>
+                            </form>
                             <br>
 
                             <a href="/order">Заказать</a>

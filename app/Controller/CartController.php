@@ -52,6 +52,23 @@ class CartController
             $this->userProductModel->removeProduct($userId, $productId);
         }
 
+    }
+
+    public function removeProduct(AddProductRequest $request): void
+    {
+        if (!$this->authenticationService->check()) {
+            header("Location: /login");
+        }
+
+        $userId = $this->authenticationService->getCurrentUser()->getId();
+        $productId = $request->getProductId();
+
+        $errors = $request->validate($userId);
+
+        if(empty($errors)){
+
+            $this->userProductModel->removeProduct($userId, $productId);
+        }
 
     }
 
