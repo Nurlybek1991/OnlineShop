@@ -31,14 +31,8 @@ if (empty($products)) {
         </nav>
         <a href="/selected"><br><br><img
                     src="https://pngicon.ru/file/uploads/izbrannoye.png"
-                    alt="" width="35px"
-                    height="35px"/>
-        </a>
-
-        <a href="/comment"><br><br><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s"
-                    alt="" width="35px"
-                    height="35px"/>
+                    alt="" width="30px"
+                    height="30px"/>
         </a>
 
         <a href="/cart"><br><br><img

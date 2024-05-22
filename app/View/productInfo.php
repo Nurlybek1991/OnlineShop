@@ -1,6 +1,6 @@
 
 
-
+<head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS only -->
@@ -32,7 +32,8 @@
 <div class="row">
 
     <div class="col-lg-6">
-        <img src="<?php echo $products->getImage();?>">
+        <img src="<?php /** @var TYPE_NAME $products */
+        echo $products->getImage();?>">
     </div>
 
     <div class="col-lg-6">
@@ -41,13 +42,6 @@
             <span><?php echo $products->getName() ?></span>
             <ul class="fade-in">
                 <li><?php echo $products->getInfo() ?></li>
-<!--                <li>Strong Blades</li>-->
-<!--                <li>High speed grinding</li>-->
-<!--                <li>Stainless steel cutting blades </li>-->
-<!--                <li>polycarbonate jar</li>-->
-<!--                <li>Great for blending coffee beans and spices</li>-->
-<!--                <li>Over current/temperature protection system </li>-->
-                <br>
             </ul>
         </div>
         <div class="product-price">
@@ -57,88 +51,84 @@
 
 
         <div class="comments">
-<!--            <ul>-->
-<!--                <li is="app-comment" v-for="comment in comments" :key="comment" :comment="comment">-->
-<!--                </li>-->
-<!--            </ul>-->
             <div class="contribute">
                 <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>
-                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submitComment"></input>
+                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">
             </div>
         </div>
     </div>
 
 </div>
-<!--*****************videos**********************-->
-<div id="video" class=" iframe container-fluid">
-    <div  class="row">
-        <h3 style="color: firebrick;">How It Works</h3>
 
-        <iframe class="col-lg-4" src="https://www.youtube.com/embed/XqGnVPRT7bQ"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-          gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-        <iframe class="col-lg-4"   src="https://www.youtube.com/embed/P8FMET_4wys"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-          gyroscope; picture-in-picture" allowfullscreen></iframe><br>
-        <iframe class="col-lg-4"  src="https://www.youtube.com/embed/g-KZ9OIiqp0"
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-           gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-</div>
+<!--<div id="video" class=" iframe container-fluid">-->
+<!--    <div  class="row">-->
+<!--        <h3 style="color: firebrick;">How It Works</h3>-->
+<!---->
+<!--        <iframe class="col-lg-4" src="https://www.youtube.com/embed/XqGnVPRT7bQ"-->
+<!--                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;-->
+<!--          gyroscope; picture-in-picture" allowfullscreen></iframe><br>-->
+<!--        <iframe class="col-lg-4"   src="https://www.youtube.com/embed/P8FMET_4wys"-->
+<!--                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;-->
+<!--          gyroscope; picture-in-picture" allowfullscreen></iframe><br>-->
+<!--        <iframe class="col-lg-4"  src="https://www.youtube.com/embed/g-KZ9OIiqp0"-->
+<!--                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;-->
+<!--           gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--    </div>-->
+<!--</div>-->
 
-<div id="features"  class="container-fluid">
-    <div style="padding: 0 20px 0 20px;" class="row">
-        <div class=" col-lg-8 features">
-            <h3 style="color: firebrick;">Product Details</h3>
-            <p class="fade-in">
-                <b>Multi-Functional</b> - The new vision blender comes with speed and preset program,
-                different speed allows you process food of various hardness.you can personally make delicious smoothie,
-                your homemade baby food,hot soup,even pulverize nuts into butter.
-            </p><br>
-            <p class="fade-in">
-                <b>High grinding speed</b> - The food can be completely mashed in seconds and its cell wall rupture
-                rate is as high or more, which can maximizes the extraction of nutrients and vitamins from foods.
-            </p><br>
-            <p class="fade-in">
-                <b>Easy To Use & Clean</b> - The clear control panel make it easy for you to choose the mode you need.
-                Tritan jars and blades are removable for easy cleaning, with a drop of dish soap and warm water,
-                the blender could clean itself in a minute
-            </p><br>
-        </div>
-        <section class="photo-container col-lg-4">
-            <img  src="https://silvercrest-blender.netlify.app/img/blender%20juice%20splash.jpg">
-        </section>
-    </div>
-</div>
+<!--<div id="features"  class="container-fluid">-->
+<!--    <div style="padding: 0 20px 0 20px;" class="row">-->
+<!--        <div class=" col-lg-8 features">-->
+<!--            <h3 style="color: firebrick;">Product Details</h3>-->
+<!--            <p class="fade-in">-->
+<!--                <b>Multi-Functional</b> - The new vision blender comes with speed and preset program,-->
+<!--                different speed allows you process food of various hardness.you can personally make delicious smoothie,-->
+<!--                your homemade baby food,hot soup,even pulverize nuts into butter.-->
+<!--            </p><br>-->
+<!--            <p class="fade-in">-->
+<!--                <b>High grinding speed</b> - The food can be completely mashed in seconds and its cell wall rupture-->
+<!--                rate is as high or more, which can maximizes the extraction of nutrients and vitamins from foods.-->
+<!--            </p><br>-->
+<!--            <p class="fade-in">-->
+<!--                <b>Easy To Use & Clean</b> - The clear control panel make it easy for you to choose the mode you need.-->
+<!--                Tritan jars and blades are removable for easy cleaning, with a drop of dish soap and warm water,-->
+<!--                the blender could clean itself in a minute-->
+<!--            </p><br>-->
+<!--        </div>-->
+<!--        <section class="photo-container col-lg-4">-->
+<!--            <img  src="https://silvercrest-blender.netlify.app/img/blender%20juice%20splash.jpg">-->
+<!--        </section>-->
+<!--    </div>-->
+<!--</div>-->
 
-<footer style="padding: 30px 0;" class="footer container-fluid">
-
-    <form id="form">
-        <input type="email" class="email" id="email" placeholder="Enter your Email To Recieve offers and discounts"></br>
-        <input type="Submit" class="button" id="submit" onclick="show()" name="Submit">
-    </form>
-
-    <div>
-        <a href="https://facebook.com/shopsmart.ngg/" class="fa fa-facebook"></a>
-        <a href="https://twitter.com/shop_smart_ng/" class="fa fa-twitter"></a>
-        <a href="https://www.instagram.com/shop_smart_ng/" class="fa fa-instagram"></a>
-    </div>
-
-    <div class="footer-address">
-        <p>Lekki, Lagos Nigeria <br>
-            <a href="tel:+2348086036016">+2348086036016</a><br>
-            <a href="mailto:herroyalpianist@gmail.com">herroyalpianist@gmail.com</a>
-        </p>
-    </div>
-
-
-    <div class="copyright">
-        <p> Copyright  &copy;<script>document.write(new Date().getFullYear());</script>.
-            Designed by <a href="morenike.netlify.app">-Morenike-</a>.
-            All rights reserved</p>
-    </div>
-
-</footer>
+<!--<footer style="padding: 30px 0;" class="footer container-fluid">-->
+<!---->
+<!--    <form id="form">-->
+<!--        <input type="email" class="email" id="email" placeholder="Enter your Email To Recieve offers and discounts"></br>-->
+<!--        <input type="Submit" class="button" id="submit" onclick="show()" name="Submit">-->
+<!--    </form>-->
+<!---->
+<!--    <div>-->
+<!--        <a href="https://facebook.com/shopsmart.ngg/" class="fa fa-facebook"></a>-->
+<!--        <a href="https://twitter.com/shop_smart_ng/" class="fa fa-twitter"></a>-->
+<!--        <a href="https://www.instagram.com/shop_smart_ng/" class="fa fa-instagram"></a>-->
+<!--    </div>-->
+<!---->
+<!--    <div class="footer-address">-->
+<!--        <p>Lekki, Lagos Nigeria <br>-->
+<!--            <a href="tel:+2348086036016">+2348086036016</a><br>-->
+<!--            <a href="mailto:herroyalpianist@gmail.com">herroyalpianist@gmail.com</a>-->
+<!--        </p>-->
+<!--    </div>-->
+<!---->
+<!---->
+<!--    <div class="copyright">-->
+<!--        <p> Copyright  &copy;<script>document.write(new Date().getFullYear());</script>.-->
+<!--            Designed by <a href="morenike.netlify.app">-Morenike-</a>.-->
+<!--            All rights reserved</p>-->
+<!--    </div>-->
+<!---->
+<!--</footer>-->
 
 <!--====== Javascripts & Jquery ======-->
 <script src="script.js"></script>

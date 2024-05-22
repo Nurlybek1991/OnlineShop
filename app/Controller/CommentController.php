@@ -20,13 +20,12 @@ class CommentController
         $this->commentModel = $commentModel;
     }
 
-
-    public function getComment(): void
+    public function postComment()
     {
         if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
-//        $products = $this->commentService->getProducts();
-        require_once './../View/comment.php';
+
+        $userId = $this->authenticationService->getCurrentUser()->getId();
     }
 }

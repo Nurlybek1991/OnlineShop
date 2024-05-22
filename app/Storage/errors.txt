@@ -386,3 +386,25 @@ message: Call to a member function getName() on null
 file: /var/www/html/app/View/main.php
 line: 24
 
+The server cannot process the request: 
+date: 2024/05/23 01:07:54
+message: Call to undefined method Entity\UserProduct::getPostcode()
+file: /var/www/html/app/View/order.php
+line: 363
+
+The server cannot process the request: 
+date: 2024/05/23 01:23:34
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_name does not exist
+LINE 3:                  p.product_name, p.price, p.image
+                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 59
+
+The server cannot process the request: 
+date: 2024/05/23 01:23:41
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_name does not exist
+LINE 3:                  p.product_name, p.price, p.image
+                         ^
+file: /var/www/html/app/Repository/SelectedRepository.php
+line: 59
+
