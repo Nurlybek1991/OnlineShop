@@ -21,7 +21,7 @@ class UserProductRepository extends Repository
 
         $stmt = self::getPdo()->prepare("SELECT up.id AS id, u.id AS user_id, u.name,u.surname,
                  u.phone,u.email,u.password,p.id AS product_id,
-                 p.product_name,p.price,p.image,up.quantity
+                 p.name,p.price,p.image,p.info,up.quantity
         FROM user_products up
                  JOIN users u ON up.user_id = u.id
                  JOIN products p ON up.product_id = p.id
@@ -37,7 +37,7 @@ class UserProductRepository extends Repository
         $arr = [];
         foreach ($userProducts as $userProduct) {
 
-            $arr[] =  $this->hydrate($userProduct);
+            $arr[] = $this->hydrate($userProduct);
         }
 
         return $arr;
@@ -49,7 +49,7 @@ class UserProductRepository extends Repository
 
         $stmt = self::getPdo()->prepare("SELECT up.id AS id, u.id AS user_id, u.name,u.surname,
                  u.phone,u.email,u.password,p.id AS product_id,
-                 p.product_name,p.price,p.image,up.quantity
+                 p.name,p.price,p.image,p.info,up.quantity
         FROM user_products up
                 JOIN users u ON up.user_id = u.id
                 JOIN products p ON up.product_id = p.id
@@ -97,7 +97,7 @@ class UserProductRepository extends Repository
     {
         return new UserProduct($data['id'],
             new User($data['user_id'], $data['name'], $data['surname'], $data['phone'], $data['email'], $data['password']),
-            new Product($data['product_id'], $data['product_name'], $data['price'], $data['image']),
+            new Product($data['product_id'], $data['name'], $data['price'], $data['image'], $data['info']),
             $data['quantity']);
     }
 

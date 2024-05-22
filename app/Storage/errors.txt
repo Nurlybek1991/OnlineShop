@@ -310,3 +310,79 @@ message: Call to a member function getId() on array
 file: /var/www/html/app/View/cart.php
 line: 51
 
+The server cannot process the request: 
+date: 2024/05/23 00:38:07
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/05/23 00:38:11
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/05/23 00:50:24
+message: Call to a member function getId() on null
+file: /var/www/html/app/Controller/MainController.php
+line: 31
+
+The server cannot process the request: 
+date: 2024/05/23 00:51:11
+message: Entity\Product::__construct(): Argument #2 ($name) must be of type string, null given, called in /var/www/html/app/Repository/ProductRepository.php on line 50
+file: /var/www/html/app/Entity/Product.php
+line: 12
+
+The server cannot process the request: 
+date: 2024/05/23 00:53:21
+message: Entity\Product::__construct(): Argument #2 ($name) must be of type string, null given, called in /var/www/html/app/Repository/ProductRepository.php on line 50
+file: /var/www/html/app/Entity/Product.php
+line: 13
+
+The server cannot process the request: 
+date: 2024/05/23 00:54:12
+message: Entity\Product::__construct(): Argument #2 ($name) must be of type string, null given, called in /var/www/html/app/Repository/ProductRepository.php on line 50
+file: /var/www/html/app/Entity/Product.php
+line: 13
+
+The server cannot process the request: 
+date: 2024/05/23 00:54:28
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_name does not exist
+LINE 3:                  p.product_name,p.price,p.image,up.quantity
+                         ^
+file: /var/www/html/app/Repository/UserProductRepository.php
+line: 30
+
+The server cannot process the request: 
+date: 2024/05/23 00:54:35
+message: SQLSTATE[42703]: Undefined column: 7 ERROR:  column p.product_name does not exist
+LINE 3:                  p.product_name,p.price,p.image,up.quantity
+                         ^
+file: /var/www/html/app/Repository/UserProductRepository.php
+line: 30
+
+The server cannot process the request: 
+date: 2024/05/23 00:56:33
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/23 00:56:36
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/23 00:56:38
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/23 00:56:39
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+

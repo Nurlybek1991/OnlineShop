@@ -38,15 +38,15 @@
     <div class="col-lg-6">
         <div class="product-description">
             <h1 class="fade-in"><?php echo $products->getName() ?></h1>
-            <span>SC-1589</span>
+            <span><?php echo $products->getName() ?></span>
             <ul class="fade-in">
-                <li>3000 watts high capacity motor</li>
-                <li>Strong Blades</li>
-                <li>High speed grinding</li>
-                <li>Stainless steel cutting blades </li>
-                <li>polycarbonate jar</li>
-                <li>Great for blending coffee beans and spices</li>
-                <li>Over current/temperature protection system </li>
+                <li><?php echo $products->getInfo() ?></li>
+<!--                <li>Strong Blades</li>-->
+<!--                <li>High speed grinding</li>-->
+<!--                <li>Stainless steel cutting blades </li>-->
+<!--                <li>polycarbonate jar</li>-->
+<!--                <li>Great for blending coffee beans and spices</li>-->
+<!--                <li>Over current/temperature protection system </li>-->
                 <br>
             </ul>
         </div>
