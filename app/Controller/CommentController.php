@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Repository\CommentRepository;
+use Request\CommentRequest;
 use Service\AuthenticationService\AuthenticationServiceInterface;
 use Service\CommentService;
 
@@ -20,12 +21,21 @@ class CommentController
         $this->commentModel = $commentModel;
     }
 
-    public function postComment()
+    public function postComment(CommentRequest $request): void
     {
         if (!$this->authenticationService->check()) {
             header("Location: /login");
         }
 
         $userId = $this->authenticationService->getCurrentUser()->getId();
+        $productId = $request->getProductId();
+        $comment = $request->addMassage();
+
+        $this->commentModel->add($userId,$productId,$comment);
+
+        require_once './../View/productInfo.php';
+
+
+
     }
 }

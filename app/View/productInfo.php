@@ -48,14 +48,21 @@
             <span><?php echo $products->getPrice() . ' тенге' ?></span>
             <a href="/cart" class="cart-btn">Buy Now</a>
         </div>
-
-
-        <div class="comments">
-            <div class="contribute">
+<!--        <div class="comments">-->
+<!--            <div class="contribute">-->
+<!--                <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>-->
+<!--                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">-->
+<!--            </div>-->
+<!--        </div>-->
+        <form action="/addComment" method="post">
+            <div class="quantity">
                 <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>
                 <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">
+                <input type="hidden" name="product_id" value="<?php echo $products->getId(); ?>">
+                <br><br>
+                <button class="openProduct">Cохранить комментарий</button>
             </div>
-        </div>
+        </form>
     </div>
 
 </div>

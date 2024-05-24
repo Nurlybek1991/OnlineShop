@@ -12,6 +12,7 @@ use Core\Autoloader;
 use Core\Container;
 
 use Request\AddProductRequest;
+use Request\CommentRequest;
 use Request\LoginRequest;
 use Request\OrderRequest;
 use Request\RegistrateRequest;
@@ -51,8 +52,10 @@ $app->get('/selected', SelectedController::class, 'getSelected');
 $app->post('/selected', SelectedController::class, 'addSelected', SelectedRequest::class);
 $app->post('/removeSelected', SelectedController::class, 'deleteSelected', SelectedRequest::class);
 
-$app->get('/comment', CommentController::class, 'getComment');
+
 $app->post('/openProduct', ProductController::class, 'getProduct', AddProductRequest::class);
+
+$app->post('/addComment', CommentController::class, 'postComment', CommentRequest::class);
 
 $app->run();
 

@@ -408,3 +408,87 @@ LINE 3:                  p.product_name, p.price, p.image
 file: /var/www/html/app/Repository/SelectedRepository.php
 line: 59
 
+The server cannot process the request: 
+date: 2024/05/24 02:32:50
+message: Call to a member function getId() on null
+file: /var/www/html/app/View/productInfo.php
+line: 62
+
+The server cannot process the request: 
+date: 2024/05/24 02:52:54
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:55:26
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:56:34
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:56:40
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:58:24
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:58:47
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 02:59:32
+message: Call to undefined method Request\CommentRequest::addMassage()
+file: /var/www/html/app/Controller/CommentController.php
+line: 32
+
+The server cannot process the request: 
+date: 2024/05/24 03:00:04
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 03:04:02
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 03:06:34
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 03:07:22
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 03:07:29
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/24 03:07:43
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+

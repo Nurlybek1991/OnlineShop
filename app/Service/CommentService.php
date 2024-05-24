@@ -17,14 +17,15 @@ class CommentService
         $this->commentModel = $commentModel;
     }
 
-    public function getProducts(): array
+    public function getComment(): array
     {
         $user = $this->authenticationService->getCurrentUser();
         if (!$user instanceof User) {
             return [];
         }
+
         $userId = $user->getId();
 
-        return $this->commentModel->getAll($userId);
+        return $this->commentModel->add($userId);
     }
 }
