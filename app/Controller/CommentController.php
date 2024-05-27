@@ -29,12 +29,11 @@ class CommentController
 
         $userId = $this->authenticationService->getCurrentUser()->getId();
         $productId = $request->getProductId();
-        $comment = $request->addMassage();
+        $comment = $request->addComment();
 
-        $this->commentModel->add($userId,$productId,$comment);
+        $this->commentModel->add($userId, $productId, $comment);
 
         require_once './../View/productInfo.php';
-
 
 
     }

@@ -54,14 +54,24 @@
 <!--                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">-->
 <!--            </div>-->
 <!--        </div>-->
-        <form action="/addComment" method="post">
+<!--        <form action="/addComment" method="POST">-->
+<!--            <div class="quantity">-->
+<!--                <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>-->
+<!--                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">-->
+<!--                <input type="hidden" name="product_id" value="--><?php //echo $products->getId(); ?><!--">-->
+<!--                <br><br>-->
+<!--                <button class="openProduct">Cохранить комментарий </button>-->
+<!--            </div>-->
+<!--        </form>-->
+        <h3 class="container-fluid">Добавить комментарий</h3>
+        <form action="/addComment" method="POST" >
             <div class="quantity">
-                <label for="add-comment">Добавить комментарий</label><small> Нажмите Enter</small>
-                <input type="text" id="add-comment" v-model="newComment" @keyup.enter="submit">
                 <input type="hidden" name="product_id" value="<?php echo $products->getId(); ?>">
-                <br><br>
-                <button class="openProduct">Cохранить комментарий</button>
+                <label>
+                    <textarea name="addComment" placeholder="Сообщение" rows="5"></textarea>
+                </label>
             </div>
+            <button type="submit" class="container-fluid">Cохранить комментарий</button>
         </form>
     </div>
 
