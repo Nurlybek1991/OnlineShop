@@ -726,3 +726,243 @@ message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of 
 file: /var/www/html/app/Repository/CommentRepository.php
 line: 7
 
+The server cannot process the request: 
+date: 2024/05/27 20:58:57
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 20:58:58
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 20:59:00
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 20:59:00
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 20:59:02
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 20:59:03
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/05/27 21:04:38
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/27 21:04:45
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/27 21:11:31
+message: Repository\CommentRepository::add(): Argument #3 ($comment) must be of type string, null given, called in /var/www/html/app/Controller/CommentController.php on line 34
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 7
+
+The server cannot process the request: 
+date: 2024/05/27 21:27:07
+message: Too few arguments to function Service\CommentService::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 2 expected
+file: /var/www/html/app/Service/CommentService.php
+line: 14
+
+The server cannot process the request: 
+date: 2024/05/27 21:28:55
+message: Too few arguments to function Service\CommentService::__construct(), 0 passed in /var/www/html/app/Core/Container.php on line 25 and exactly 2 expected
+file: /var/www/html/app/Service/CommentService.php
+line: 14
+
+The server cannot process the request: 
+date: 2024/05/27 21:29:15
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:06:43
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:07:25
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:10:04
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:10:40
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:10:47
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:11:02
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:11:38
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:12:00
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:12:08
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:12:36
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:15:17
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:20:51
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 36
+
+The server cannot process the request: 
+date: 2024/05/29 01:26:53
+message: Call to a member function getImage() on null
+file: /var/www/html/app/View/productInfo.php
+line: 35
+
+The server cannot process the request: 
+date: 2024/05/29 01:37:50
+message: Call to a member function addComment() on string
+file: /var/www/html/app/View/productInfo.php
+line: 79
+
+The server cannot process the request: 
+date: 2024/05/29 01:38:14
+message: Call to a member function addComment() on string
+file: /var/www/html/app/View/productInfo.php
+line: 79
+
+The server cannot process the request: 
+date: 2024/05/29 01:49:01
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:50:52
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:50:54
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:50:58
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:51:24
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:51:43
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:51:55
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:52:19
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:52:22
+message: SQLSTATE[42P01]: Undefined table: 7 ERROR:  missing FROM-clause entry for table "sel"
+LINE 5:                  JOIN users u ON sel.user_id = u.id
+                                         ^
+file: /var/www/html/app/Repository/CommentRepository.php
+line: 28
+
+The server cannot process the request: 
+date: 2024/05/29 01:53:38
+message: Call to undefined method Entity\Comment::addComment()
+file: /var/www/html/app/View/productInfo.php
+line: 79
+

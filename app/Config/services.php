@@ -77,10 +77,10 @@ return [
 
     CommentController::class => function (Container $container) {
         $authenticationService = $container->get(AuthenticationServiceInterface::class);
-        $commentService = $container->get(CommentService::class);
+        $cartService = $container->get(CartService::class);
         $commentModel = $container->get(CommentRepository::class);
 
-        return new CommentController($authenticationService, $commentService, $commentModel);
+        return new CommentController($authenticationService, $cartService, $commentModel);
     },
 
     CartService::class => function (Container $container) {

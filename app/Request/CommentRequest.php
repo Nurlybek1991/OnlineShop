@@ -12,7 +12,7 @@ class CommentRequest extends Request
 
     public function addComment()
     {
-        return $this->body['comment'];
+        return $this->body['addComment'];
     }
 
 }

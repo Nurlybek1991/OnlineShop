@@ -13,7 +13,7 @@
 <header class="container-fluid">
 
     <nav class="navbar navbar-expand-sm  fixed-top">
-        <a class="navbar-brand logo"><img  src="https://silvercrest-blender.netlify.app/img/shopsmart%20white.png"></a>
+<!--        <a class="navbar-brand logo"><img  src="https://silvercrest-blender.netlify.app/img/shopsmart%20white.png"></a>-->
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-label="Toggle  navigation" aria-controls="navbar" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,8 +32,7 @@
 <div class="row">
 
     <div class="col-lg-6">
-        <img src="<?php /** @var TYPE_NAME $products */
-        echo $products->getImage();?>">
+        <img src="<?php echo $products->getImage();?>">
     </div>
 
     <div class="col-lg-6">
@@ -64,7 +63,7 @@
 <!--            </div>-->
 <!--        </form>-->
         <h3 class="container-fluid">Добавить комментарий</h3>
-        <form action="/addComment" method="POST" >
+        <form action="/addComment" method="POST" id = "addComment">
             <div class="quantity">
                 <input type="hidden" name="product_id" value="<?php echo $products->getId(); ?>">
                 <label>
@@ -74,7 +73,14 @@
             <button type="submit" class="container-fluid">Cохранить комментарий</button>
         </form>
     </div>
+<?php if(!empty($comments)):?>
+    <?php foreach ($comments as $com):?>
 
+    <?php echo $com->getComment();?>
+    <?php endforeach; ?>
+<?php else: ?>
+    <div class="supaview">Пока здесь пусто..</div>
+<?php endif; ?>
 </div>
 
 <!--<div id="video" class=" iframe container-fluid">-->
