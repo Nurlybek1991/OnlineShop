@@ -13,16 +13,17 @@ if (empty($products)) {
             <h3><?php echo $product->getProduct()->getName() ?></h3>
             <p><?php echo $product->getProduct()->getPrice() . ' тенге' ?></p>
         </div>
-            <div class="area-c">ПОЛНОЕ ОПИСАНИЕ ТОВАРА</div>
+            <div class="area-c"><?php echo $product->getProduct()->getInfo() ?></div>
 
-                        <form action="/comment" method="POST">
-                            <div class="quantity">
-                                <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                                <button class="quantity">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKw-w-EWVZq_6fvkbeO1gj-uSaRMLObguiH91u9SZE-w&s" width="20px">
-                                </button>
-                            </div>
-                        </form>
+            <form action="/removeSelected" method="POST">
+                <div class="quantity">
+                    <input type="hidden" name="product_id" value="<?php echo $product->getProduct()->getId(); ?>">
+                    <button class="quantity">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"
+                             width="20px" alt="">
+                    </button>
+                </div>
+            </form>
 
         <?php endforeach; ?>
     </div>

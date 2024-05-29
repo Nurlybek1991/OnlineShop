@@ -37,7 +37,11 @@ class SelectedController
         $userId = $this->authenticationService->getCurrentUser()->getId();
         $productId = $request->getProductId();
 
-        $this->selectedModel->add($userId, $productId);
+        $errors = $request->addValidate($userId);
+
+        if (empty($errors)) {
+            $this->selectedModel->add($userId, $productId);
+        }
         header("Location: /main");
     }
 
@@ -50,8 +54,13 @@ class SelectedController
         $userId = $this->authenticationService->getCurrentUser()->getId();
         $productId = $request->getProductId();
 
-        $this->selectedModel->delete($userId, $productId);
+        $errors = $request->deleteValidate($userId);
 
-        header("Location: /main");
+        if (empty($errors)) {
+            $this->selectedModel->delete($userId, $productId);
+        }
+        header("Location: /selected");
     }
+
+
 }

@@ -53,6 +53,7 @@ $app->post('/selected', SelectedController::class, 'addSelected', SelectedReques
 $app->post('/removeSelected', SelectedController::class, 'deleteSelected', SelectedRequest::class);
 
 
+
 $app->post('/openProduct', ProductController::class, 'getProduct', AddProductRequest::class);
 
 $app->post('/addComment', CommentController::class, 'postComment', CommentRequest::class);

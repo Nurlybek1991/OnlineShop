@@ -47,12 +47,11 @@
                             <small><?php echo $cartProduct->getProduct()->getName() ?></small>
                             <br/>
                             <form id="form" action="/remove" method="POST" >
-                                <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
-                                       hidden="" value="<?php echo $cartProduct->getId() ?>">
-                             <a href="">Удалить</a>
+                                <a href="">Удалить</a>
+                                    <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
+                                           hidden="" value="<?php echo $cartProduct->getProduct()->getId() ?>">
                             </form>
                             <br>
-
                             <a href="/order">Заказать</a>
                         </div>
                     </div>

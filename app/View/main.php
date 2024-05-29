@@ -109,22 +109,22 @@ if (empty($products)) {
 
             <form action="/selected" method="POST">
                 <div class="quantity">
-                    <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
+                    <input  type="hidden" name="product_id" id="send" value="<?php echo $product->getId(); ?>">
                     <button class="quantity">
                         <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="" width="20px">
                     </button>
                 </div>
             </form>
 
-            <form action="/removeSelected" method="POST">
-                <div class="quantity">
-                    <input type="hidden" name="product_id" value="<?php echo $product->getId(); ?>">
-                    <button class="quantity">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"
-                             width="20px">
-                    </button>
-                </div>
-            </form>
+<!--            <form action="/removeSelected" method="POST">-->
+<!--                <div class="quantity">-->
+<!--                    <input type="hidden" name="product_id" value="--><?php //echo $product->getId(); ?><!--">-->
+<!--                    <button class="quantity">-->
+<!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"-->
+<!--                             width="20px" alt="">-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </form>-->
 
             <!--            <form action="/comment" method="GET">-->
             <!--                <div class="quantity">-->
@@ -213,8 +213,6 @@ if (empty($products)) {
         }
     }
 </script>
-
-
 <style>
     * {
         margin: 0;
@@ -923,5 +921,4 @@ if (empty($products)) {
         }
     }
 
-    }
 </style>

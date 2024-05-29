@@ -63,6 +63,12 @@ class CartService
         }
     }
 
+    public function remove(int $userId, int $productId): void
+    {
+        $this->userProductModel->removeProduct($userId, $productId);
+
+    }
+
     public function getSumPrice(array $price): float|int|string
     {
         $sum = 0;

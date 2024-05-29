@@ -70,9 +70,10 @@
                     <textarea name="addComment" placeholder="Сообщение" rows="5"></textarea>
                 </label>
             </div>
-            <button type="submit" class="container-fluid">Cохранить комментарий</button>
+            <button type="submit" class="container-fluid">Сохранить</button>
         </form>
     </div>
+    <h3 class="container-fluid">Комментарии</h3>
 <?php if(!empty($comments)):?>
     <?php foreach ($comments as $com):?>
 
