@@ -97,6 +97,18 @@ class CartService
         }
         return $totalQuantity;
 
+    }
 
+    public function deleteProduct(int $productId): void
+    {
+        $user = $this->authenticationService->getCurrentUser();
+
+        if (!$user instanceof User){
+            return;
+        }
+
+        $userId = $user->getId();
+
+        $this->userProductModel->removeProduct($userId,$productId);
     }
 }

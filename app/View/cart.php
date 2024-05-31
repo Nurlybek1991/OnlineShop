@@ -38,7 +38,6 @@
                 <th>Цена</th>
             </tr>
             <tr>
-
                 <td>
                     <div class="cart-info">
                         <img src="<?php echo $cartProduct->getProduct()->getImage() ?>" alt=""/>
@@ -46,11 +45,9 @@
                             <p></p>
                             <small><?php echo $cartProduct->getProduct()->getName() ?></small>
                             <br/>
-                            <form id="form" action="/remove" method="POST" >
-                                <a href="">Удалить</a>
-                                    <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
-                                           hidden="" value="<?php echo $cartProduct->getProduct()->getId() ?>">
-                            </form>
+                                <input type="text" id="productId" class="fadeIn second" name="product_id" placeholder="Product_id"
+                                       hidden="" value="<?php echo $cartProduct->getProduct()->getId() ?>">
+                                <button type="submit" class="registerbtn">Удалить продукт</button>
                             <br>
                             <a href="/order">Заказать</a>
                         </div>
@@ -59,7 +56,6 @@
                 <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
                 <td><?php echo $cartProduct->getProduct()->getPrice() . ' тенге' ?></td>
             </tr>
-
         <?php endforeach; ?>
         </form>
     </table>

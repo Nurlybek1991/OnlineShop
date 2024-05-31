@@ -40,7 +40,7 @@ $app->post('/main', ProductController::class, 'postAddProduct', AddProductReques
 $app->post('/removeProduct', ProductController::class, 'postRemoveProduct',AddProductRequest::class);
 
 $app->get('/cart', CartController::class, 'getCart');
-$app->post('/remove', CartController::class, 'removeProduct',AddProductRequest::class);
+$app->post('/cart', CartController::class, 'clearProduct',AddProductRequest::class);
 
 
 $app->get('/order', OrderController::class, 'getOrder');
