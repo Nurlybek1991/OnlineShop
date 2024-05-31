@@ -111,6 +111,9 @@ if (empty($products)) {
                 <div class="quantity">
                     <input  type="hidden" name="product_id" id="send" value="<?php echo $product->getId(); ?>">
                     <button class="quantity">
+                        <?php if (isset($errors['selected'])): ?>
+                            <label style="color: red"><?php echo $errors['selected']; ?></label>
+                        <?php endif; ?>
                         <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="" width="20px">
                     </button>
                 </div>

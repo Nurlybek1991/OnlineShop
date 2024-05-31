@@ -5,6 +5,19 @@ if (empty($products)) {
     echo '<h1 style="color: red">Продуктов нет!</h1>';
 }
 ?>
+
+<div class="area-a">
+    <div class="quantity">
+        <h1>
+            <span class="name"><span></span><span></span></span>Panda
+
+            <span class="name"><span></span><span></span></span>Logo
+            <!--                </h1>-->
+        </h1>
+        <!--                        <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="Онлайн магазин   Panda Logo" width="125px"/></a>-->
+        <img height="124" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
+    </div>
+
 <div class="container">
     <div class="area-a">
         <?php /** @var TYPE_NAME $products */

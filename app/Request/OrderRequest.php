@@ -9,12 +9,14 @@ class OrderRequest extends Request
 {
 
     private OrderRepository $orderModel;
+    private UserRepository $userModel;
 
 
     public function __construct(string $method, array $body = [], array $headers = [])
     {
         parent::__construct($method, $body, $headers);
         $this->orderModel = new OrderRepository();
+        $this->userModel = new UserRepository();
     }
 
     public function getFirstname()
@@ -107,12 +109,12 @@ class OrderRequest extends Request
                 if ($user) {
                     $errors['email'] = "Такая почта уже существует!";
                 }
-//                elseif (true) {
-//                    $user = $this->userModel->getByEmail($email);
-//                    if (!$user) {
-//                        $errors['email'] = "Такой почты нету в Panda Logo!";
-//                    }
-//                }
+                elseif (true) {
+                    $user = $this->userModel->getByEmail($email);
+                    if (!$user) {
+                        $errors['email'] = "Такой почты нету в Panda Logo!";
+                    }
+                }
             }
         } else {
             $errors['email'] = 'Укажите почту.';

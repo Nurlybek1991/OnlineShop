@@ -26,7 +26,7 @@ class SelectedRequest extends Request
 
         $product = $this->selectedModel->check($userId, $this->getProductId());
         if (!$product) {
-            $errors['removeProduct'] = "Товар не найден в избранных";
+            $errors['removeSelected'] = "Товар не найден в избранных";
         }
 
         return $errors;
@@ -38,7 +38,7 @@ class SelectedRequest extends Request
 
         $product = $this->selectedModel->check($userId, $this->getProductId());
         if ($product) {
-            $errors['main'] = "Товар уже добавлен";
+            $errors['selected'] = "Товар уже добавлен";
         }
 
         return $errors;

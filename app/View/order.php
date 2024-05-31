@@ -355,12 +355,9 @@
             <!--      </span>-->
             <?php
             /** @var TYPE_NAME $orderProducts */
-            foreach ($orderProducts
-
-            as $orderProduct): ?>
+            foreach ($orderProducts as $orderProduct): ?>
             <div>
                 <p class="prod-description inline"><?php echo $orderProduct->getProduct()->getName(); ?>
-                <p class="prod-description inline"><?php echo $orderProduct->getPostcode(); ?>
                 <div class="cart-info">
                    <img src="<?php echo $orderProduct->getProduct()->getImage() ?>" alt=""/>
                     <div class="qty inline"><span class="smalltxt">x</span> <?php echo $orderProduct->getQuantity() . " шт "; ?>
