@@ -9,6 +9,8 @@ class Selected
     private User $user;
     private Product $product;
 
+
+
     public function __construct(int $id, User $user, Product $product)
     {
         $this->id = $id;
@@ -30,5 +32,7 @@ class Selected
     {
         return $this->product;
     }
+
+
 
 }

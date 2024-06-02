@@ -21,11 +21,11 @@ if (empty($products)) {
             <ul id="MenuItems">
                 <li><a href="/cart">
 
-                        <?php print_r($user->getName(). " " . $user->getSurname())  ?></a></li>
-                                                        <li><a href="/login">ВЫЙТИ</a>
-<!--                        --><?php //$this->logout(); ?><!--</li>-->
-                                                        <li><a href="/registrate">АККАУНТ</a><br>
-                                        <?php print_r(" " . $user->getEmail())?></li>
+                        <?php print_r($user->getName() . " " . $user->getSurname()) ?></a></li>
+                <li><a href="/login">ВЫЙТИ</a>
+                    <!--                        --><?php //$this->logout(); ?><!--</li>-->
+                <li><a href="/registrate">АККАУНТ</a><br>
+                    <?php print_r(" " . $user->getEmail()) ?></li>
 
             </ul>
         </nav>
@@ -97,37 +97,29 @@ if (empty($products)) {
                 </div>
             </form>
 
-            <h3>Добавить в избранное</h3>
-
-            <!--            <label class="add-fav">-->
-            <!--                <input type="checkbox" />-->
-            <!--                <i class="icon-heart">-->
-            <!--                    <i class="icon-plus-sign"></i>-->
-            <!--                </i>-->
-            <!--            </label>-->
-
+            <!--            <h3>Добавить в избранное</h3>-->
 
             <form action="/selected" method="POST">
                 <div class="quantity">
-                    <input  type="hidden" name="product_id" id="send" value="<?php echo $product->getId(); ?>">
+                    <input type="hidden" name="product_id" id="send" value="<?php echo $product->getId(); ?>">
                     <button class="quantity">
-                        <?php if (isset($errors['selected'])): ?>
-                            <label style="color: red"><?php echo $errors['selected']; ?></label>
-                        <?php endif; ?>
                         <img src="https://cdn-icons-png.flaticon.com/512/54/54381.png" alt="" width="20px">
+                        Добавить в избранное
                     </button>
                 </div>
             </form>
 
-<!--            <form action="/removeSelected" method="POST">-->
-<!--                <div class="quantity">-->
-<!--                    <input type="hidden" name="product_id" value="--><?php //echo $product->getId(); ?><!--">-->
-<!--                    <button class="quantity">-->
-<!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"-->
-<!--                             width="20px" alt="">-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--            </form>-->
+
+            <!--            <form action="/removeSelected" method="POST">-->
+            <!--                <div class="quantity">-->
+            <!--                    <input type="hidden" name="product_id" value="-->
+            <?php //echo $product->getId(); ?><!--">-->
+            <!--                    <button class="quantity">-->
+            <!--                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkEqb7yH6GMN43ZOyS5_LiZvWutK3h5ihP1Q93v7T6qA&s"-->
+            <!--                             width="20px" alt="">-->
+            <!--                    </button>-->
+            <!--                </div>-->
+            <!--            </form>-->
 
             <!--            <form action="/comment" method="GET">-->
             <!--                <div class="quantity">-->
@@ -923,5 +915,36 @@ if (empty($products)) {
             }
         }
     }
+
+
+    .styled {
+        border: 0;
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+        border-radius: 10px;
+        background-color: rgb(220 0 0 / 100%);
+        background-image: linear-gradient(
+                to top left,
+                rgb(0 0 0 / 20%),
+                rgb(0 0 0 / 20%) 30%,
+                rgb(0 0 0 / 0%)
+        );
+        box-shadow: inset 2px 2px 3px rgb(255 255 255 / 60%),
+        inset -2px -2px 3px rgb(0 0 0 / 60%);
+    }
+
+    .styled:hover {
+        background-color: rgb(255 0 0 / 100%);
+    }
+
+    .styled:active {
+        box-shadow: inset -2px -2px 3px rgb(255 255 255 / 60%),
+        inset 2px 2px 3px rgb(0 0 0 / 60%);
+    }
+
 
 </style>

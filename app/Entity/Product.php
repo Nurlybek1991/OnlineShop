@@ -10,13 +10,15 @@ class Product
     private string $image;
     private string $info;
 
-    public function __construct(int $id, string $name, float $price, string $image, string $info )
+
+    public function __construct(int $id, string $name, float $price, string $image, string $info)
     {
         $this->id = $id;
         $this->name = $name;
         $this->price = $price;
         $this->image = $image;
         $this->info = $info;
+
     }
 
     public function getId(): string

@@ -56,8 +56,9 @@
                 <td><input value="<?php echo $cartProduct->getQuantity() ?>"/></td>
                 <td><?php echo $cartProduct->getProduct()->getPrice() . ' тенге' ?></td>
             </tr>
-        <?php endforeach; ?>
         </form>
+        <?php endforeach; ?>
+
     </table>
     <div class="total-price">
         <table>
