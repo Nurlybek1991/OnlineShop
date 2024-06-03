@@ -4,8 +4,13 @@
         <div class="logo">
             <!--            <a href="index.html"><img src="https://i.imgur.com/E3uTxXY.png" alt="" width="125px" /></a>-->
 
-    <img height="92" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo"/>
+    <img height="150" src="https://i.imgur.com/E3uTxXY.png" alt="Panda Logo" />
+            <h1>
+                <span class="name"><span></span><span></span></span>Panda
 
+                <span class="name"><span></span><span></span></span>Logo
+                <!--                </h1>-->
+            </h1>
 
         </div>
         <nav>

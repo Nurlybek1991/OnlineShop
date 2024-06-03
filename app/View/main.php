@@ -19,12 +19,13 @@ if (empty($products)) {
         </div>
         <nav>
             <ul id="MenuItems">
+                <li><a href="/login">ВЫЙТИ</a>
                 <li><a href="/cart">
 
-                        <?php print_r($user->getName() . " " . $user->getSurname()) ?></a></li>
-                <li><a href="/login">ВЫЙТИ</a>
+                        <?php print_r('Добро пожаловать: ' . $user->getName() . " " . $user->getSurname()) ?></a></li>
+
                     <!--                        --><?php //$this->logout(); ?><!--</li>-->
-                <li><a href="/registrate">АККАУНТ</a><br>
+                <li><a href="/registrate">ВАШ АККАУНТ:</a><br>
                     <?php print_r(" " . $user->getEmail()) ?></li>
 
             </ul>
@@ -35,6 +36,7 @@ if (empty($products)) {
                     height="30px"/>
         </a>
 
+
         <a href="/cart"><br><br><img
                     src="https://w7.pngwing.com/pngs/772/45/png-transparent-shopping-cart-shopping-centre-icon-shopping-cart-text-retail-monochrome-thumbnail.png"
                     alt="" width="30px"
@@ -42,6 +44,7 @@ if (empty($products)) {
             <img src="https://i.ibb.co/6XbqwjD/menu.png" alt="" class="menu-icon" onclick="menutoggle()"/>
         </a>
     </div>
+
 
 </div>
 

@@ -1,6 +1,7 @@
 
 
 <head>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS only -->
@@ -12,6 +13,7 @@
 
 <header class="container-fluid">
 
+
     <nav class="navbar navbar-expand-sm  fixed-top">
 <!--        <a class="navbar-brand logo"><img  src="https://silvercrest-blender.netlify.app/img/shopsmart%20white.png"></a>-->
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-label="Toggle  navigation" aria-controls="navbar" aria-expanded="false">
@@ -19,9 +21,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li><a class="nav-link"  href="#home">Home</a></li>
-                <li><a class="nav-link" href="#video">How it works</a> </li>
-                <li><a class="nav-link" href="#features">Features</a></li>
+                <li><a class="nav-link"  href="/cart">КОРЗИНА</a></li>
+                <li><a class="nav-link" href="/registrate">РЕГИСТРАЦИЯ</a> </li>
+                <li><a class="nav-link" href="/main">НАЗАД</a></li>
 
             </ul>
         </div>
@@ -31,21 +33,23 @@
 
 <div class="row">
 
-    <div class="col-lg-6">
-        <img src="<?php echo $products->getImage();?>">
-    </div>
 
     <div class="col-lg-6">
         <div class="product-description">
-            <h1 class="fade-in"><?php echo $products->getName() ?></h1>
-            <span><?php echo $products->getName() ?></span>
+            <div class="col-lg-6">
+                <h1 class="fade-in"><?php echo $products->getName() ?></h1>
+                <img src="<?php echo $products->getImage();?>">
+            </div>
             <ul class="fade-in">
                 <li><?php echo $products->getInfo() ?></li>
             </ul>
+
+            <span><?php echo $products->getName() ?></span>
+
         </div>
         <div class="product-price">
             <span><?php echo $products->getPrice() . ' тенге' ?></span>
-            <a href="/cart" class="cart-btn">Buy Now</a>
+            <a href="/cart" class="cart-btn">ЗАКАЗАТЬ</a>
         </div>
 <!--        <div class="comments">-->
 <!--            <div class="contribute">-->

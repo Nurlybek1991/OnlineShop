@@ -34,3 +34,201 @@ message: Repository\SelectedRepository::check(): Argument #2 ($productId) must b
 file: /var/www/html/app/Repository/SelectedRepository.php
 line: 26
 
+The server cannot process the request: 
+date: 2024/06/02 19:45:19
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:20
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:22
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:22
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:24
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:25
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:30
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:31
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:33
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 19:45:34
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:39:55
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:39:57
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:00
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:19
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:20
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:21
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:22
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:25
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/02 21:40:31
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:31
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:32
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:33
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:34
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:35
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:37
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:37
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:38
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:39
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 22:28:42
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 24
+
+The server cannot process the request: 
+date: 2024/06/03 23:12:46
+message: syntax error, unexpected token ";"
+file: /var/www/html/app/View/main.php
+line: 34
+
+The server cannot process the request: 
+date: 2024/06/03 23:37:19
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 25
+
+The server cannot process the request: 
+date: 2024/06/03 23:37:20
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 25
+
+The server cannot process the request: 
+date: 2024/06/03 23:37:21
+message: Call to a member function getName() on null
+file: /var/www/html/app/View/main.php
+line: 25
+
