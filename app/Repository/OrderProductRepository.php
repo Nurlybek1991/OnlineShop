@@ -2,6 +2,8 @@
 
 namespace Repository;
 
+use Entity\OrderProduct;
+
 class OrderProductRepository extends Repository
 {
     public function create(int $userId, int $orderId): void

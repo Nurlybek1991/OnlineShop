@@ -13,7 +13,7 @@ services:
       - php-fpm
       - db
   php-fpm:
-    build: .docker
+    build: ../PhpstormProjects/TaskManager/.docker
     restart: always
     volumes:
       - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini

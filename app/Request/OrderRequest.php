@@ -109,12 +109,12 @@ class OrderRequest extends Request
                 if ($user) {
                     $errors['email'] = "Такая почта уже существует!";
                 }
-                elseif (true) {
-                    $user = $this->userModel->getByEmail($email);
-                    if (!$user) {
-                        $errors['email'] = "Такой почты нету в Panda Logo!";
-                    }
-                }
+//                elseif (true) {
+//                    $user = $this->userModel->getByEmail($email);
+//                    if (!$user) {
+//                        $errors['email'] = "Такой почты нету в Panda Logo!";
+//                    }
+//                }
             }
         } else {
             $errors['email'] = 'Укажите почту.';

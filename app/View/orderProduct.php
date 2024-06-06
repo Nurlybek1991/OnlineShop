@@ -1,6 +1,10 @@
 <div class="container">
     <h2>Ваш заказ успешно создан</h2>
     <h2 class="card-deck">
+        <?php echo $user->getName() . $user->getSurname() ?>
+        <?php /** @var TYPE_NAME $orderProducts */
+        foreach ($orderProducts as $orderProduct): ?>
+            <img src="<?php echo $orderProduct->getProduct()->getImage() ?>" alt="Card image"/>
                     <form action="/orderProduct" method="get">
                         <div class="card text-center">
                             <a href="#">
@@ -12,7 +16,7 @@
                             </a>
                         </div>
                     </form>
-
+        <?php endforeach; ?>
 </div>
 <style>
     body {

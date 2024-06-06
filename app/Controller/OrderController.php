@@ -68,6 +68,15 @@ class OrderController
 
     public function getOrderProduct()
     {
+        if (!$this->authenticationService->check()) {
+            header("Location: /login");
+        }
+
+        $user = $this->authenticationService->getCurrentUser();
+        $userId = $user->getId();
+
+        $orderProducts = $this->cartService->getProducts($userId);
+
         require_once './../View/orderProduct.php';
     }
 }
